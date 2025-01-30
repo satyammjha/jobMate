@@ -24,7 +24,6 @@ import {
     CarouselPrevious,
     CarouselNext,
 } from '@/components/ui/carousel';
-import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ArrowUpRight } from 'lucide-react';
 
 const JobDetails = () => {
@@ -67,7 +66,7 @@ const JobDetails = () => {
                 )}
             </div>
 
-            {/* Job Header */}
+
             <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
                 <div>
                     <h1 className="text-3xl font-bold">{job.position}</h1>
@@ -95,7 +94,6 @@ const JobDetails = () => {
                 </div>
             </div>
 
-            {/* Job Details */}
             <Card>
                 <CardContent className="flex items-center gap-4 pt-6">
                     <Avatar className="h-16 w-16">
@@ -112,7 +110,6 @@ const JobDetails = () => {
                 </CardContent>
             </Card>
 
-            {/* Job Description & Skills */}
             <div className="flex gap-8">
                 <Card className="flex-1">
                     <CardHeader>
@@ -136,7 +133,6 @@ const JobDetails = () => {
                 </Card>
             </div>
 
-            {/* Missing Skills & Learning Resources */}
             {missingSkills.length > 0 && (
                 <Card>
                     <CardHeader>
@@ -146,7 +142,7 @@ const JobDetails = () => {
                         <Carousel>
                             <CarouselContent>
                                 {missingSkills.map((skill, index) => (
-                                    <CarouselItem key={index} className="p-4 basis-2/3">
+                                    <CarouselItem key={index} className="p-4 md:basis-2/3 lg:basis-2/3">
                                         <Card>
                                             <CardContent className="p-4">
                                                 <h4 className="font-semibold mb-2">Resources for {skill}</h4>
