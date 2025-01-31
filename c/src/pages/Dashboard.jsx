@@ -48,7 +48,7 @@ const Dashboard = () => {
 
 
             <div className="w-[2px] bg-muted mx-2"></div>
-            <Card className="flex-1 p-6 border-none">
+            <Card className="flex-1 p-6 border-none ">
                 <h2 className="text-xl font-bold mb-4">Job Details</h2>
                 <JobDetails />
             </Card>

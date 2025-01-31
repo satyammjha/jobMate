@@ -22,7 +22,7 @@ export default function Navbar() {
     const links = [
         { name: "Home", path: "/" },
         { name: "Dashboard", path: "/dashboard" },
-        { name: "Resume", path: "/resume" },
+        { name: "Resume", path: "/reviewresume" },
         { name: "Tracker", path: "/tracker" },
         { name: "Referrals", path: "/referrals" },
     ];
@@ -55,8 +55,6 @@ export default function Navbar() {
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-
-
 
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>

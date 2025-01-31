@@ -11,6 +11,10 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			spacing: {
+				'128': '32rem',
+				'144': '36rem',
+			},
 			animation: {
 				scroll:
 					"scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
