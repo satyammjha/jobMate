@@ -5,6 +5,7 @@ import Navbar from './customComponents/Navbar/Navbar';
 import ErrorPage from './pages/ErrorPage';
 import { Footer } from './customComponents/Footer';
 import ResumeReview from './pages/ResumeReview';
+import ApplicationTracker from './pages/Track';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reviewresume" element={<ResumeReview />} />
+            <Route path="/tracker" element={<ApplicationTracker />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
