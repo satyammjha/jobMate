@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useLocation } from "react-router-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import AuthButtons from "../Navbar/SignInButton";
 
 export default function Navbar() {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -25,7 +26,8 @@ export default function Navbar() {
         { name: "Home", path: "/" },
         { name: "Dashboard", path: "/dashboard" },
         { name: "Resume", path: "/reviewresume" },
-        { name: "Tracker", path: "/tracker" }
+        { name: "Tracker", path: "/tracker" },
+
     ];
 
     return (
@@ -33,17 +35,16 @@ export default function Navbar() {
             <Link to="/" className="text-xl font-bold">
                 JobHuntAI
             </Link>
-
+            <AuthButtons />
             <div className="hidden md:flex gap-6">
                 {links.map((link) => (
                     <Link
                         key={link.name}
                         to={link.path}
-                        className={`text-sm font-medium hover:text-primary relative ${
-                            location.pathname === link.path 
-                                ? "text-primary after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[2px] after:bg-primary"
-                                : "text-foreground"
-                        }`}
+                        className={`text-sm font-medium hover:text-primary relative ${location.pathname === link.path
+                            ? "text-primary after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[2px] after:bg-primary"
+                            : "text-foreground"
+                            }`}
                     >
                         {link.name}
                     </Link>
@@ -51,10 +52,10 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center gap-4">
-                <Button 
-                    variant="outline" 
-                    size="icon" 
-                    onClick={toggleTheme} 
+                <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={toggleTheme}
                     className="border-l pl-4 rounded-full"
                 >
                     {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
@@ -64,7 +65,7 @@ export default function Navbar() {
                     <div className="hidden md:flex gap-2">
                         <Button asChild variant="default">
                             <Link className="flex items-center gap-2 px-4">
-                                Try for Free 
+                                Try for Free
                                 <SparkleIcon size={16} className="fill-current" />
                             </Link>
                         </Button>
@@ -109,11 +110,10 @@ export default function Navbar() {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`text-lg font-medium ${
-                                    location.pathname === link.path 
-                                        ? "text-primary"
-                                        : "text-foreground"
-                                }`}
+                                className={`text-lg font-medium ${location.pathname === link.path
+                                    ? "text-primary"
+                                    : "text-foreground"
+                                    }`}
                                 onClick={() => setOpen(false)}
                             >
                                 {link.name}
@@ -122,7 +122,7 @@ export default function Navbar() {
                         {!isLoggedIn ? (
                             <Button asChild variant="default" className="w-full mt-4">
                                 <Link className="flex items-center justify-center gap-2">
-                                    Try for Free 
+                                    Try for Free
                                     <SparkleIcon size={16} className="fill-current" />
                                 </Link>
                             </Button>
