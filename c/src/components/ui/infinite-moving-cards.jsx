@@ -1,7 +1,7 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import { Button } from "./button";
+import { ArrowRight } from "lucide-react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -49,7 +49,7 @@ export const InfiniteMovingCards = ({
     const durations = {
       fast: "20s",
       normal: "40s",
-      slow: "80s"
+      slow: "80s",
     };
     if (containerRef.current) {
       containerRef.current.style.setProperty(
@@ -69,22 +69,24 @@ export const InfiniteMovingCards = ({
         className
       )}
     >
-      <style jsx global>{`
-        @keyframes scroll {
-          to {
-            transform: translate(calc(-50% - 0.5rem));
+      <style>
+        {`
+          @keyframes scroll {
+            to {
+              transform: translate(calc(-50% - 0.5rem));
+            }
           }
-        }
 
-        .animate-scroll {
-          animation: scroll var(--animation-duration, 40s) linear infinite;
-          animation-direction: var(--animation-direction, forwards);
-        }
+          .animate-scroll {
+            animation: scroll var(--animation-duration, 40s) linear infinite;
+            animation-direction: var(--animation-direction, forwards);
+          }
 
-        .animate-scroll:hover {
-          animation-play-state: var(--animation-play-state);
-        }
-      `}</style>
+          .animate-scroll:hover {
+            animation-play-state: var(--animation-play-state);
+          }
+        `}
+      </style>
 
       <ul
         ref={scrollerRef}
@@ -99,26 +101,52 @@ export const InfiniteMovingCards = ({
             className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 
                      border-gray-200 dark:border-slate-700 px-8 py-6 md:w-[450px]
                      bg-white dark:bg-black shadow-lg dark:shadow-neutral-800/50"
-            key={`${item.name}-${idx}`}
+            key={`${item.companyName}-${idx}`}
           >
-            <blockquote>
-              <div
-                aria-hidden="true"
-                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 
-                         h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-              />
-              <span className="relative z-20 text-sm leading-[1.6] text-gray-900 dark:text-gray-100 font-normal">
-                {item.quote}
-              </span>
-              <div className="relative z-20 mt-6 flex flex-row items-center">
-                <span className="flex flex-col gap-1">
-                  <span className="text-sm leading-[1.6] text-gray-600 dark:text-gray-400 font-normal">
-                    {item.name}
+            <blockquote className="flex flex-col gap-4">
+              {/* Company Logo and Position */}
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <img
+                    src={item.companyLogo}
+                    alt={`${item.companyName} logo`}
+                    className="w-12 h-12 object-contain"
+                  />
+                  <span className="font-bold text-xl text-gray-900 dark:text-gray-100">
+                    {item.position} at {item.companyName}
                   </span>
-                  <span className="text-sm leading-[1.6] text-gray-600 dark:text-gray-400 font-normal">
-                    {item.title}
-                  </span>
-                </span>
+                </div>
+                {/* Platform Logo */}
+                <img
+                  src={item.platformLogo}
+                  alt={`${item.platform} logo`}
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
+
+              {/* Salary Range */}
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                <strong>Salary Range:</strong> {item.salaryRange}
+              </div>
+
+              {/* Required Skills */}
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                <strong>Required Skills:</strong> {item.skills.join(", ")}
+              </div>
+
+              <div className="flex gap-4 mt-4">
+                <Button
+                  className="px-4 py-2 text-white rounded-lg"
+                  onClick={() => window.open(item.applyLink, "_blank")}
+                >
+                  Apply Now <ArrowRight className="w-4 h-4" />
+                </Button>
+                <button
+                  className="px-4 py-2 border-2 border-gray-300 text-gray-600 rounded-lg hover:border-gray-400"
+                  onClick={() => alert("Job saved")}
+                >
+                  Save Job
+                </button>
               </div>
             </blockquote>
           </li>

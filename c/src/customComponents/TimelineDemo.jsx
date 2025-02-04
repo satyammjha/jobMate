@@ -3,7 +3,7 @@ import { Timeline } from "../components/ui/timeline";
 import { Upload, Wand2, Briefcase, Rocket, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-export function WorkflowTimeline() {
+export default function WorkflowTimeline() {
     const workflowSteps = [
         {
             title: "Step 1: Upload Resume",

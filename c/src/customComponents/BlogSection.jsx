@@ -11,7 +11,7 @@ import {
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 
-export function BlogsShowcase() {
+export default function BlogsShowcase() {
   return (
     (<BentoGrid className="max-w-4xl mx-auto md:auto-rows-[20rem]">
       {items.map((item, i) => (

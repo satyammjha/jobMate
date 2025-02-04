@@ -1,14 +1,24 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React, { Suspense, lazy } from "react";
+import { Button } from "../components/ui/button";
 import { Upload, Rocket } from "lucide-react";
-import { InfiniteMovingCardsDemo } from "../customComponents/HeroJob";
-import { WorkflowTimeline } from "../customComponents/TimelineDemo";
-import { FileUploadDemo } from "../customComponents/FileUpload";
-import { FeaturesSection } from "../customComponents/Features";
-import { JobPlatformsCarousel } from "../customComponents/JobPlatforms";
-import { BlogsShowcase } from "../customComponents/BlogSection";
 import { motion } from "framer-motion";
-import { Waitlist } from "../customComponents/Waitlist";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
+const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
+const FileUploadDemo = lazy(() => import("../customComponents/FileUpload"));
+const FeaturesSection = lazy(() => import("../customComponents/Features"));
+const JobPlatformsCarousel = lazy(() => import("../customComponents/JobPlatforms"));
+const BlogsShowcase = lazy(() => import("../customComponents/BlogSection"));
+const Waitlist = lazy(() => import("../customComponents/Waitlist"));
+
+const SkeletonLoader = () => (
+    <div className="flex flex-col gap-4">
+        <Skeleton className="h-6 w-3/4 mx-auto" />
+        <Skeleton className="h-4 w-2/3 mx-auto" />
+        <Skeleton className="h-12 w-full mt-4" />
+    </div>
+);
 
 const Home = () => {
     return (
@@ -34,7 +44,10 @@ const Home = () => {
                         </Button>
                     </div>
                 </div>
-                <InfiniteMovingCardsDemo />
+
+                <Suspense fallback={<SkeletonLoader />}>
+                    <InfiniteMovingCardsDemo />
+                </Suspense>
             </div>
 
             <div className="relative z-10 mt-20">
@@ -42,15 +55,23 @@ const Home = () => {
                     className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500 mb-8">
                     Powerful Features
                 </motion.h2>
-                <FeaturesSection />
+                <Suspense fallback={<SkeletonLoader />}>
+                    <FeaturesSection />
+                </Suspense>
             </div>
 
-            <JobPlatformsCarousel />
+            <Suspense fallback={<SkeletonLoader />}>
+                <JobPlatformsCarousel />
+            </Suspense>
 
-            <WorkflowTimeline />
+            <Suspense fallback={<SkeletonLoader />}>
+                <WorkflowTimeline />
+            </Suspense>
 
             <div className="w-full max-w-4xl mx-auto min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg p-8 mt-20">
-                <FileUploadDemo />
+                <Suspense fallback={<SkeletonLoader />}>
+                    <FileUploadDemo />
+                </Suspense>
             </div>
 
             <div className="relative z-10 mt-20 py-20">
@@ -61,10 +82,14 @@ const Home = () => {
                 <p className="text-lg text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
                     Discover valuable career tips and industry trends from our experts
                 </p>
-                <BlogsShowcase />
+                <Suspense fallback={<SkeletonLoader />}>
+                    <BlogsShowcase />
+                </Suspense>
             </div>
 
-            <Waitlist />
+            <Suspense fallback={<SkeletonLoader />}>
+                <Waitlist />
+            </Suspense>
         </>
     );
 };

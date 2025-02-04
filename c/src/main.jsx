@@ -5,9 +5,14 @@ import { ClerkProvider } from '@clerk/clerk-react';
 import App from './App.jsx';
 import './index.css';
 
-const apiKey = import.meta.env.VITE_APP_CLERK_PUBLISHABLE_KEY;
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ClerkProvider publishableKey={apiKey} >
+  <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
     <React.StrictMode>
       <BrowserRouter>
         <App />

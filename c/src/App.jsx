@@ -6,6 +6,7 @@ import ErrorPage from './pages/ErrorPage';
 import { Footer } from './customComponents/Footer';
 import ResumeReview from './pages/ResumeReview';
 import ApplicationTracker from './pages/Track';
+import { SignedIn } from '@clerk/clerk-react';
 
 function App() {
 
@@ -19,14 +20,16 @@ function App() {
         <div className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reviewresume" element={<ResumeReview />} />
             <Route path="/tracker" element={<ApplicationTracker />} />
+
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
-<div className="z-50">
-        <Footer />
+        <div className="z-50">
+          <Footer />
         </div>
       </div>
     </>

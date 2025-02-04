@@ -8,7 +8,7 @@ import {
   IconHeart,
 } from "@tabler/icons-react";
 
-export function FeaturesSection() {
+export default function FeaturesSection() {
   const features = [
     {
       title: "Built for developers",

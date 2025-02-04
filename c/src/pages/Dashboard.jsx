@@ -2,6 +2,7 @@ import { React, useEffect } from "react";
 import JobDetails from "../customComponents/JobDetails";
 import JobItem from "../customComponents/JobItem";
 import { Card } from "../components/ui/card";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 const Dashboard = () => {
 
@@ -34,25 +35,34 @@ const Dashboard = () => {
         },
     ];
 
-
-
     return (
-        <div className="flex h-[88vh] bg-background p-1">
-            <Card className="w-1/3 p-4 overflow-auto border-none hide-scrollbar cursor-pointer :hover:bg-[black]">
-                <div className="space-y-6">
-                    {jobData.map((job, index) => (
-                        <JobItem key={index} {...job} />
-                    ))}
+        <>
+
+            <SignedIn>
+                <div className="flex h-[88vh] bg-background p-1">
+                    <Card className="w-1/3 p-4 overflow-auto border-none hide-scrollbar cursor-pointer :hover:bg-[black]">
+                        <div className="space-y-6">
+                            {jobData.map((job, index) => (
+                                <JobItem key={index} {...job} />
+                            ))}
+                        </div>
+                    </Card>
+
+
+                    <div className="w-[2px] bg-muted mx-2"></div>
+                    <Card className="flex-1 p-6 border-none ">
+                        <h2 className="text-xl font-bold mb-4">Job Details</h2>
+                        <JobDetails />
+                    </Card>
                 </div>
-            </Card>
+            </SignedIn>
 
+            <SignedOut>
 
-            <div className="w-[2px] bg-muted mx-2"></div>
-            <Card className="flex-1 p-6 border-none ">
-                <h2 className="text-xl font-bold mb-4">Job Details</h2>
-                <JobDetails />
-            </Card>
-        </div>
+                <h1>SignInToSeeDashboard</h1>
+
+            </SignedOut>
+        </>
     );
 };
 
