@@ -36,7 +36,6 @@ function App() {
         <div className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
-
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reviewresume" element={<ResumeReview />} />
             <Route path="/tracker" element={<ApplicationTracker />} />
