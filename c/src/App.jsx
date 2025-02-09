@@ -7,6 +7,7 @@ import { Footer } from './customComponents/Footer';
 import ResumeReview from './pages/ResumeReview';
 import ApplicationTracker from './pages/Track';
 import Blogs from './pages/Blogs';
+import Refferal from './pages/Refferal';
 
 
 const singleBlog = {
@@ -40,6 +41,7 @@ function App() {
             <Route path="/reviewresume" element={<ResumeReview />} />
             <Route path="/tracker" element={<ApplicationTracker />} />
             <Route path="/blogs" element={<Blogs blog={singleBlog} />}/>
+            <Route path="/refferals" element={<Refferal/>}/>
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
