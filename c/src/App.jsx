@@ -22,11 +22,8 @@ const singleBlog = {
   ],
 };
 
-
-
 function App() {
 
-  
   return (
     <>
       <div className="dark:bg-black hide-scrollbar">
@@ -40,8 +37,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reviewresume" element={<ResumeReview />} />
             <Route path="/tracker" element={<ApplicationTracker />} />
-            <Route path="/blogs" element={<Blogs blog={singleBlog} />}/>
-            <Route path="/refferals" element={<Refferal/>}/>
+            <Route path="/blogs" element={<Blogs blog={singleBlog} />} />
+            <Route path="/refferals" element={<Refferal />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
