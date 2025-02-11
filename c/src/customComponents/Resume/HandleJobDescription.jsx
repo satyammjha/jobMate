@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
 // import { CopyIcon, SparklesIcon, UploadIcon } from '../../components/ui/file-upload';
 import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
+import { JdContext } from '../../Context/JdContext';
 
 const HandleJobDescription = () => {
     const [jdText, setJdText] = useState('');
@@ -12,7 +13,7 @@ const HandleJobDescription = () => {
     const [gaps, setGaps] = useState([]);
     const [compatibilityScore, setCompatibilityScore] = useState(0);
     const [coverLetters, setCoverLetters] = useState([]);
-    const [skillsData, setSkillsData] = useState([]);
+    const { Jd, setJd } = useContext(JdContext);
 
     const handleJdUpload = (e) => {
         if (e.target.files?.[0]) {
@@ -51,6 +52,8 @@ const HandleJobDescription = () => {
                 "Dynamic professional with proven track record in Node.js and team leadership...",
                 "Detail-oriented full-stack developer passionate about modern web technologies..."
             ]);
+            setJd(jdText);
+            alert(Jd);
         }, 1000);
     };
 
