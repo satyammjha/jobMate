@@ -22,10 +22,6 @@ const HandleJobDescription = () => {
                 setSuggestions(['Add more leadership examples', 'Include CI/CD experience']);
                 setGaps(['CI/CD', 'AWS', 'Team Leadership']);
                 setCompatibilityScore(65);
-                setSkillsData(prev => prev.map(skill => ({
-                    ...skill,
-                    jd: ['React', 'TypeScript', 'Leadership'].includes(skill.name) ? 6 : 0
-                })));
             }, 1000);
         }
     };
