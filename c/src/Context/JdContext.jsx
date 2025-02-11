@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-export const JdContext = createContext(); // Named export
+export const JdContext = createContext();
 
 export const JdProvider = ({ children }) => {
     const [Jd, setJd] = useState('');
