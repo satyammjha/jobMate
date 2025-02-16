@@ -17,8 +17,7 @@ export default function Navbar() {
     const [isLoadingCredits, setIsLoadingCredits] = useState(true);
     const location = useLocation();
     const { user, isSignedIn } = useUser();
-    const { userData, fetchUserData, loading } = useUserData()
-
+    const { userData, fetchUserData, setUserData } = useUserData()
 
     useEffect(() => {
         document.documentElement.classList.toggle("dark", theme === "dark");
@@ -26,63 +25,62 @@ export default function Navbar() {
     }, [theme]);
 
     useEffect(() => {
+        let isMounted = true;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const handleAuthFlow = async () => {
+            if (!isSignedIn || !user) {
 
-        if (isSignedIn && !loading && !userData) {
-            const email = user.primaryEmailAddress?.emailAddress || user.emailAddresses?.[0]?.emailAddress;
-            if (email) {
-                fetchUserData(email).catch((error) => {
-                    console.error("❌ Error fetching user data:", error);
-                });
-            }
-        }
-    }, [user, isSignedIn]);
-    useEffect(() => {
-        const handleSignIn = async () => {
-            if (!isSignedIn || !user) return;
-
-            console.log("🔍 User signed in. Checking details...");
-            const email = user.primaryEmailAddress?.emailAddress || user.emailAddresses?.[0]?.emailAddress || null;
-            if (!email) {
-                console.error("❌ No email found for the user. Skipping signup.");
-                return;
-            }
-
-            console.log(`📧 User email: ${email}`);
-            if (!email.endsWith("@gmail.com")) {
-                console.warn("⚠️ User is not using a Gmail account. Skipping signup.");
-                return;
-            }
-
-            console.log("✅ User is using Gmail. Proceeding with signup...");
-            const resSignIn = localStorage.getItem("resSignIn");
-            if (resSignIn === "true") {
-                console.log("🟢 User already saved in the database. Skipping signup.");
-                return;
-            }
-
-            const urlParams = new URLSearchParams(window.location.search);
-            const referredBy = urlParams.get("ref") || localStorage.getItem("referral");
-
-            const userData = {
-                name: user.fullName,
-                email,
-                referredBy: referredBy || null,
-            };
-
-            console.log("📡 Sending user data to the database:", userData);
-            try {
-                const response = await axios.post("http://localhost:5000/user", userData);
-                console.log("✅ User successfully saved to the database:", response.data);
-                localStorage.setItem("resSignIn", "true");
-                localStorage.setItem("user", JSON.stringify(response.data.user));
+                localStorage.removeItem("user");
                 localStorage.removeItem("referral");
+                localStorage.removeItem("jobDescription");
+                localStorage.removeItem("currentPdf");
+                localStorage.removeItem("coverLetters");
+                localStorage.removeItem("resSignIn");
+                return
+            };
+            try {
+                const email = user.primaryEmailAddress?.emailAddress ||
+                    user.emailAddresses?.[0]?.emailAddress;
+
+                // Validate email format
+                if (!email || !emailRegex.test(email)) {
+                    console.error("Invalid email format");
+                    return;
+                }
+                await fetchUserData(email);
+                const currentUserData = JSON.parse(localStorage.getItem("user"));
+                if (!currentUserData) {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const referredBy = urlParams.get("ref") || localStorage.getItem("referral");
+                    if (urlParams.has("ref")) {
+                        urlParams.delete("ref");
+                        window.history.replaceState({}, "", window.location.pathname);
+                    }
+                    const response = await axios.post("http://localhost:5000/user", {
+                        name: user.fullName,
+                        email,
+                        referredBy
+                    });
+
+                    if (isMounted) {
+                        localStorage.setItem("user", JSON.stringify(response.data.user));
+                        localStorage.removeItem("referral");
+                        fetchUserData(email);
+                    }
+                }
             } catch (error) {
-                console.error("❌ Error saving user to the database:", error.response?.data || error.message);
+                console.error("Auth error:", error);
+                if (error.response?.status === 409) {
+                    fetchUserData(email);
+                }
             }
         };
 
-        handleSignIn();
-    }, []);
+        handleAuthFlow();
+
+        return () => { isMounted = false };
+    }, [isSignedIn, user, fetchUserData]);
+
 
     const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
@@ -186,13 +184,11 @@ export default function Navbar() {
                         }}
                     />
                 </SignedIn>
-
-                {/* Sign In Button */}
                 <SignedOut>
                     <SignInButton mode="modal" afterSignInUrl="/">
                         <Button
                             variant="default"
-                            className="gap-2 hidden md:flex hover:scale-105 transition-transform"
+                            className="gap-2 px-6 py-3 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-700 dark:to-gray-500 hover:from-gray-800 hover:to-gray-600 text-white transition-all shadow-lg hover:shadow-xl"
                             aria-label="Get Started"
                         >
                             Get Started
@@ -200,8 +196,6 @@ export default function Navbar() {
                         </Button>
                     </SignInButton>
                 </SignedOut>
-
-                {/* Mobile Menu */}
                 <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button

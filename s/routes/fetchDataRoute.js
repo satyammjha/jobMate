@@ -1,9 +1,9 @@
 import express from "express";
 import { fetchRefferalList, fetchUserData } from "../controllers/dataController.js";
 
-const router = express.Router();
+const dataRouter = express.Router();
 
-router.get("/fetchRefferalList", fetchRefferalList);
-router.post("/fetchUserData", fetchUserData);
+dataRouter.get("/fetchRefferalList", fetchRefferalList);
+dataRouter.post("/fetchUserData", fetchUserData);
 
-export default router;
+export default dataRouter;

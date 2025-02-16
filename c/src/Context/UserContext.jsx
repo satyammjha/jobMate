@@ -1,27 +1,31 @@
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useContext, useState, useCallback } from "react";
 import axios from "axios";
 
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
     const [userData, setUserData] = useState(null);
-    const [loading, setLoading] = useState(true);
 
     const fetchUserData = useCallback(async (email) => {
-        console.log("Fetching user data...");
         try {
-            const response = await axios.get(`http://localhost:5000/data/fetchuserdata/${email}`);
-            setUserData(response.data);
-            console.log("User data:", response.data);
+            console.log("Fetching user data for:", email);
+            const response = await axios.post(
+                "http://localhost:5000/data/fetchuserdata",
+                { email: email }
+            );
+            setUserData(response.data.user);
+            console.log("User data received:", response.data.user);
         } catch (error) {
             console.error("Error fetching user data:", error);
-        } finally {
-            setLoading(false);
+            if (error.response) {
+                console.error("Status:", error.response.status);
+                console.error("Response:", error.response.data);
+            }
         }
     }, []);
 
     return (
-        <UserContext.Provider value={{ userData, fetchUserData, loading }}>
+        <UserContext.Provider value={{ userData, fetchUserData }}>
             {children}
         </UserContext.Provider>
     );

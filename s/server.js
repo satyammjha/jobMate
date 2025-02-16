@@ -4,7 +4,7 @@ import express from "express";
 import cors from "cors";
 import dbConnection from "./config/db.js";
 import userRouter from "./routes/userRoute.js";
-import referralRouter from "./routes/fetchDataRoute.js";
+import dataRouter from "./routes/fetchDataRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/user", userRouter);
-app.use("/data", referralRouter);
+app.use("/data", dataRouter);
 
 const startServer = async () => {
     try {
