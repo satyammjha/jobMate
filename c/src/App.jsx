@@ -8,6 +8,7 @@ import ResumeReview from './pages/ResumeReview';
 import ApplicationTracker from './pages/Track';
 import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
+import Onboard from './pages/Onboard';
 
 
 const singleBlog = {
@@ -34,11 +35,13 @@ function App() {
         <div className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/ref/:referralCode" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reviewresume" element={<ResumeReview />} />
             <Route path="/tracker" element={<ApplicationTracker />} />
             <Route path="/blogs" element={<Blogs blog={singleBlog} />} />
             <Route path="/refferals" element={<Refferal />} />
+            <Route path="/onboard/refer" element={<Onboard />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>

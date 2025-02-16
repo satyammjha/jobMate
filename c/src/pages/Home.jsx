@@ -1,4 +1,5 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Upload, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,6 +22,17 @@ const SkeletonLoader = () => (
 );
 
 const Home = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const refCode = params.get("ref");
+
+        if (refCode) {
+            localStorage.setItem("referral", refCode);
+        }
+    }, [location]);
+
     return (
         <>
             <div className="relative min-h-screen w-full bg-white dark:bg-black bg-grid-black/[1] dark:bg-grid-white/[1]">

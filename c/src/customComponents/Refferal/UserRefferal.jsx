@@ -63,8 +63,8 @@ const UserRefferal = () => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {referrals.map((referral) => (
-                                <TableRow key={referral.id}>
+                            {referrals.map((referral, index) => (
+                                <TableRow key={index} >
                                     <TableCell>{referral.name}</TableCell>
                                     <TableCell>{referral.email}</TableCell>
                                     <TableCell>{referral.date}</TableCell>
@@ -85,4 +85,4 @@ const UserRefferal = () => {
     )
 }
 
-export default UserRefferal
+export default UserRefferal;

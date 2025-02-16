@@ -15,7 +15,7 @@ import { MessageCircle, Share2, Linkedin, Twitter, ClipboardCheck } from 'lucide
 const RefferalMessage = () => {
     const [isCopied, setIsCopied] = useState(false)
 
-    const referralLink = `https://example.com/refer?ref=${'user123'}`
+    const referralLink = `https://example.com/ref/123456`;
 
     const handleShare = (platform) => {
         let url = ''
