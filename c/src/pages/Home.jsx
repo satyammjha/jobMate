@@ -7,10 +7,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
-const FileUploadDemo = lazy(() => import("../customComponents/FileUpload"));
+// const FileUploadDemo = lazy(() => import("../customComponents/FileUpload"));
 const FeaturesSection = lazy(() => import("../customComponents/Features"));
 const JobPlatformsCarousel = lazy(() => import("../customComponents/JobPlatforms"));
-const BlogsShowcase = lazy(() => import("../customComponents/BlogSection"));
 const Waitlist = lazy(() => import("../customComponents/Waitlist"));
 
 const SkeletonLoader = () => (
@@ -79,13 +78,11 @@ const Home = () => {
             <Suspense fallback={<SkeletonLoader />}>
                 <WorkflowTimeline />
             </Suspense>
-
-            <div className="w-full max-w-4xl mx-auto min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg p-8 mt-20">
+            {/* <div className="w-full max-w-4xl mx-auto min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg p-8 mt-20">
                 <Suspense fallback={<SkeletonLoader />}>
                     <FileUploadDemo />
                 </Suspense>
-            </div>
-
+            </div> */}
             <div className="relative z-10 mt-20 py-20">
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                     className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500 mb-8">
@@ -94,9 +91,7 @@ const Home = () => {
                 <p className="text-lg text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
                     Discover valuable career tips and industry trends from our experts
                 </p>
-                <Suspense fallback={<SkeletonLoader />}>
-                    <BlogsShowcase />
-                </Suspense>
+             
             </div>
 
             <Suspense fallback={<SkeletonLoader />}>

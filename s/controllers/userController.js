@@ -4,9 +4,12 @@ import { increaseReferralCount } from "../utility/increaserefferalCount.js";
 import { updateCredits } from "../utility/updateCredits.js";
 
 const addUserController = async (req, res) => {
+
     console.log("🔹 addUserController reached");
+
     try {
         const { email, name, referredBy } = req.body;
+        console.log("🔹 req.body:", req.body);
 
         if (!email || !name) {
             return res.status(400).json({ message: "Name and email are required." });

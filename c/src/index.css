@@ -32,6 +32,15 @@ body {
   @apply bg-black text-white;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @layer base {
   :root {
     --chart-1: 12 76% 61%;
