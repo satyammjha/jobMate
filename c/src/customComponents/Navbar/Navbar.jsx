@@ -20,7 +20,7 @@ export default function Navbar() {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const [open, setOpen] = useState(false);
     const [credits, setCredits] = useState(null);
-    const [isLoadingCredits, setIsLoadingCredits] = useState(true);
+    const [isLoadingCredits, setIsLoadingCredits] = useState(false);
     const location = useLocation();
     const params = useParams();
     const { user, isSignedIn } = useUser();
@@ -191,7 +191,7 @@ export default function Navbar() {
                             {isLoadingCredits ? (
                                 <Skeleton className="h-4 w-20" />
                             ) : (
-                                `AICredits: ${credits}`
+                                `AICredits: 170`
                             )}
                         </span>
                     </Button>

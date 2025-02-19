@@ -18,7 +18,6 @@ const RefferalMessage = () => {
     const [isCopied, setIsCopied] = useState(false)
     const referralCode = userData?.referralCode;
     const referralLink = `https://localhost/ref/${referralCode}`;
-
     const handleShare = (platform) => {
         let url = ''
         const message = `Join me on this awesome platform! Get free AI credits using my referral link: ${referralLink}`
@@ -51,51 +50,49 @@ const RefferalMessage = () => {
     }
 
     return (
-        <article>
+        <div>
             <Card>
                 <CardHeader>
-                    <h1 className="flex items-center gap-6 text-2xl font-semibold">
-                        <Share2 className="h-6 w-6" aria-hidden="true" />
+                    <CardTitle className="flex items-center gap-6">
+                        <Share2 className="h-6 w-6" />
                         Share Smarter, Earn Faster, AI Together
-                    </h1>
-                    <CardDescription className='mt-9 text-lg'>
+                    </CardTitle>
+                    <CardDescription className='mt-9'>
                         🚀 Unlock Free AI Credits! Share your unique referral link and earn 100 AI credits for every friend who joins. Grow your credits while helping others discover powerful AI tools!
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Dialog>
                         <DialogTrigger asChild>
-                            <Button className="w-full" aria-label="Share referral link">
-                                Share Referral Link
-                            </Button>
+                            <Button className="w-full">Share Referral Link</Button>
                         </DialogTrigger>
 
                         <DialogContent>
                             <DialogHeader>
-                                <h2 className="text-xl font-semibold">Share Referral Link</h2>
-                                <DialogDescription className="text-base">
+                                <DialogTitle>Share Referral Link</DialogTitle>
+                                <DialogDescription>
                                     Earn 100 AI credits for every successful referral
                                 </DialogDescription>
                             </DialogHeader>
 
                             <div className="grid grid-cols-2 gap-4">
-                                <Button variant="outline" onClick={() => handleShare('whatsapp')} aria-label="Share on WhatsApp">
-                                    <MessageCircle className="mr-2 h-4 w-4" aria-hidden="true" />
+                                <Button variant="outline" onClick={() => handleShare('whatsapp')}>
+                                    <MessageCircle className="mr-2 h-4 w-4" />
                                     WhatsApp
                                 </Button>
 
-                                <Button variant="outline" onClick={() => handleShare('linkedin')} aria-label="Share on LinkedIn">
-                                    <Linkedin className="mr-2 h-4 w-4" aria-hidden="true" />
+                                <Button variant="outline" onClick={() => handleShare('linkedin')}>
+                                    <Linkedin className="mr-2 h-4 w-4" />
                                     LinkedIn
                                 </Button>
 
-                                <Button variant="outline" onClick={() => handleShare('twitter')} aria-label="Share on Twitter">
-                                    <Twitter className="mr-2 h-4 w-4" aria-hidden="true" />
+                                <Button variant="outline" onClick={() => handleShare('twitter')}>
+                                    <Twitter className="mr-2 h-4 w-4" />
                                     Twitter/X
                                 </Button>
 
-                                <Button variant="outline" onClick={handleCopyLink} aria-label="Copy referral link">
-                                    <ClipboardCheck className="mr-2 h-4 w-4" aria-hidden="true" />
+                                <Button variant="outline" onClick={handleCopyLink}>
+                                    <ClipboardCheck className="mr-2 h-4 w-4" />
                                     {isCopied ? 'Copied!' : 'Copy Link'}
                                 </Button>
                             </div>
@@ -103,7 +100,7 @@ const RefferalMessage = () => {
                     </Dialog>
                 </CardContent>
             </Card>
-        </article>
+        </div>
     )
 }
 
