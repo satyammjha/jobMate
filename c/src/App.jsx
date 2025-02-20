@@ -9,6 +9,7 @@ import ApplicationTracker from './pages/Track';
 import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
 import Onboard from './pages/Onboard';
+import { Toaster } from 'react-hot-toast';
 
 
 const singleBlog = {
@@ -28,6 +29,7 @@ function App() {
   return (
     <>
       <div className="dark:bg-black hide-scrollbar">
+        <Toaster/>
         <div className="fixed top-0 left-0 w-full z-50">
           <Navbar />
         </div>
