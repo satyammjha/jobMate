@@ -91,7 +91,7 @@ const Home = () => {
                 <p className="text-lg text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
                     Discover valuable career tips and industry trends from our experts
                 </p>
-             
+
             </div>
 
             <Suspense fallback={<SkeletonLoader />}>
