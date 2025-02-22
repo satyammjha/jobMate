@@ -6,7 +6,7 @@ config
 # Node.js dependencies
 node_modules/
 package-lock.json
-
+scrappers/jobs_data.json
 # Logs
 logs/
 *.log
