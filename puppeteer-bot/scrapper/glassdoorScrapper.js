@@ -3,8 +3,10 @@ import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import dotenv from 'dotenv';
 import fs from 'fs-extra';
+
 dotenv.config();
 puppeteer.use(StealthPlugin());
+
 const CLOUDFLARE_OPTIONS = {
     browserDebug: false,
     useChromeProfile: true,
@@ -131,11 +133,20 @@ class CloudflareBypasser {
             if (!this.browser) {
                 this.browser = await this.initializeBrowser();
             }
-
+    
             const page = await this.browser.newPage();
             await page.setUserAgent(USER_AGENTS[Math.floor(Math.random() * USER_AGENTS.length)]);
             await page.setJavaScriptEnabled(true);
-
+    
+            await page.setViewport({
+                width: 1280 + Math.floor(Math.random() * 100),
+                height: 800 + Math.floor(Math.random() * 100),
+                deviceScaleFactor: Math.random() * 0.5 + 0.5,
+                hasTouch: false,
+                isLandscape: false,
+                isMobile: false
+            });
+    
             console.log(`🌐 Navigating to ${url}`);
             await page.goto(url, {
                 waitUntil: 'networkidle2',
@@ -146,31 +157,117 @@ class CloudflareBypasser {
             if (!(await this.solveCloudflare(page))) {
                 throw new Error('Failed to bypass Cloudflare');
             }
-
-            const data = await page.evaluate(() => {
-                const jobs = [];
-                const items = document.querySelectorAll('li.JobsList_jobListItem__wjTHv');
-
-                items.forEach(item => {
-                    jobs.push({
-                        title: item.querySelector('a.JobCard_jobTitle__GLyJ1')?.innerText.trim(),
-                        company: item.querySelector('.EmployerProfile_compactEmployerName__9MGcV')?.innerText.trim(),
-                        salary: item.querySelector('.JobCard_salaryEstimate__QpbTW')?.innerText.replace(/(Employer Est.)|\s/g, ''),
-                        link: item.querySelector('a.JobCard_jobTitle__GLyJ1')?.href,
-                        posted: item.querySelector('.JobCard_listingAge__jJsuc')?.innerText
-                    });
+    
+            await page.waitForSelector('li.JobsList_jobListItem__wjTHv');
+    
+            const allJobs = [];
+            let hasMoreJobs = true;
+    
+            while (hasMoreJobs) {
+                await page.evaluate(() => {
+                    const jobListContainer = document.querySelector('.JobsList_jobListContainer__XYZab');
+                    if (jobListContainer) {
+                        jobListContainer.scrollTop = jobListContainer.scrollHeight;
+                    }
                 });
+    
+                await this.randomDelay(2000, 5000);
+    
+                const showMoreButton = await page.$('.JobsList_buttonWrapper__ticwb button');
+                if (showMoreButton) {
+                    await page.mouse.move(Math.random() * 400 + 100, Math.random() * 300 + 100);
+                    await showMoreButton.click();
+                    await page.waitForSelector('li.JobsList_jobListItem__wjTHv', { visible: true });
+                } else {
+                    hasMoreJobs = false;
+                }
+                const jobCards = await page.$$('li.JobsList_jobListItem__wjTHv');
+                const maxJobs = 2; 
+    
+                for (let i = 0; i < Math.min(jobCards.length, maxJobs); i++) {
+                    const jobCard = jobCards[i];
+    
+                    const jobCardData = await page.evaluate((card) => {
+                        const employer = card.querySelector('.EmployerProfile_compactEmployerName__9MGcV')?.innerText.trim();
+                        const title = card.querySelector('.JobCard_jobTitle__GLyJ1')?.innerText.trim();
+                        const location = card.querySelector('.JobCard_location__Ds1fM')?.innerText.trim();
+                        const salary = card.querySelector('.JobCard_salaryEstimate__QpbTW')?.innerText.trim();
+                        const listingAge = card.querySelector('.JobCard_listingAge__jJsuc')?.innerText.trim();
+                        const applyLink = card.querySelector('.JobCard_trackingLink__HMyun')?.href;
+                        const imageLink = card.querySelector('.avatar-base_Image__2RcF9')?.src;
+    
+                        return {
+                            employer,
+                            title,
+                            location,
+                            salary,
+                            listingAge,
+                            applyLink,
+                            imageLink
+                        };
+                    }, jobCard);
+    
+                    const isRecentJob = this.isJobRecent(jobCardData.listingAge);
+                    if (!isRecentJob) {
+                        continue; 
+                    }
 
-                return jobs;
-            });
-
+                    await jobCard.click();
+                    await page.waitForSelector('.JobDetails_jobDescription__uW_fK', { visible: true });
+    
+                    const showMoreButton = await page.$('.ShowMoreCTA_showMore__EtZpZ');
+                    if (showMoreButton) {
+                        await showMoreButton.click();
+                        await page.waitForSelector('.JobDetails_jobDescription__uW_fK', { visible: true });
+                    }
+    
+                    const jobDetails = await page.evaluate(() => {
+                        const employer = document.querySelector('.EmployerProfile_employerNameHeading__bXBYr h4')?.innerText.trim();
+                        const title = document.querySelector('.heading_Level1__soLZs')?.innerText.trim();
+                        const location = document.querySelector('.JobDetails_location__mSg5h')?.innerText.trim();
+                        const salaryRange = document.querySelector('.SalaryEstimate_salaryRange__brHFy')?.innerText.trim();
+                        const medianSalary = document.querySelector('.SalaryEstimate_medianEstimate__fOYN1')?.innerText.trim();
+    
+                        const descriptionElement = document.querySelector('.JobDetails_jobDescription__uW_fK');
+                        const description = descriptionElement ? descriptionElement.innerText.trim() : null;
+    
+                        return {
+                            employer,
+                            title,
+                            location,
+                            salary: {
+                                range: salaryRange,
+                                median: medianSalary
+                            },
+                            description 
+                        };
+                    });
+    
+                    const combinedJobData = {
+                        ...jobCardData,
+                        ...jobDetails
+                    };
+    
+                    if (combinedJobData) {
+                        allJobs.push(combinedJobData);
+                    }
+                    await this.randomDelay(2000, 5000);
+                }
+            }
+    
             await page.close();
-            return data;
+            return allJobs;
         } catch (error) {
             console.error(`⚠️ Error on ${url}: ${error.message}`);
             await this.rotateIdentity();
             return this.scrape(url);
         }
+    }
+    isJobRecent(listingAge) {
+        if (!listingAge) return false;
+        const daysAgo = parseInt(listingAge.match(/\d+/)?.[0], 10);
+        if (isNaN(daysAgo)) return false;
+        return daysAgo <= 3;
     }
 
     async run(urls) {
@@ -186,13 +283,9 @@ class CloudflareBypasser {
                 console.log(`🌐 Scraping: ${url}`);
                 const data = await this.scrape(url);
                 allData.push(...data);
-                await this.randomDelay(3000, 7000);
-                if (allData.length % 10 === 0) {
-                    await fs.writeJson('jobs_data.json', allData, { spaces: 2 });
-                }
+                await fs.writeJson('jobs_data.json', allData, { spaces: 2 });
             }
 
-            await fs.writeJson('jobs_data.json', allData, { spaces: 2 });
             console.log('✅ Scraping completed successfully!');
         } finally {
             await this.browser?.close();
