@@ -6,7 +6,6 @@ config
 # Node.js dependencies
 node_modules/
 package-lock.json
-scrappers/jobs_data.json
 # Logs
 logs/
 *.log
@@ -49,3 +48,8 @@ src/workers/*.tmp
 .vscode/
 .idea/
 *.swp
+
+
+#json_files
+puppeteer-bot\scrapper\naukri_jobs_data.json
+puppeteer-bot\scrappers\jobs_data.json
