@@ -15,7 +15,6 @@ import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
 import RefferalButton from "../Refferal/RefferalButton";
 import useUserData from "../../Context/UserContext";
-import { toast} from "react-hot-toast";
 
 export default function Navbar() {
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -132,7 +131,7 @@ export default function Navbar() {
 
     return (
         <>
-           
+
             <nav className="flex justify-between items-center px-4 md:px-8 py-3 bg-background/95 backdrop-blur-sm border-b shadow-sm sticky top-0 z-50">
 
                 <Link to="/" className="flex items-center gap-2 group">
@@ -208,13 +207,13 @@ export default function Navbar() {
                         aria-label="Toggle Theme"
                         onClick={() => {
                             toggleTheme();
-                           
+
                         }}
 
                     >
                         {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
                     </Button>
-                    <button onClick={() => toast.success("Test Toast!")}>Click Me</button>
+
                     <SignedIn>
                         <UserButton
                             afterSignOutUrl="/"
@@ -295,7 +294,7 @@ export default function Navbar() {
                             </div>
 
                             <SignedIn>
-                                <div className="mt-4 pt-4 border-t">
+                                <div className="mt-4 pt-4 border-t sm:hidden md:hidden">
                                     <Button
                                         variant="outline"
                                         className="w-full gap-2 hover:scale-105 transition-transform"

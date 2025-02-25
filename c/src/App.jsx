@@ -29,11 +29,10 @@ function App() {
   return (
     <>
       <div className="dark:bg-black hide-scrollbar">
-        <Toaster/>
+        <Toaster />
         <div className="fixed top-0 left-0 w-full z-50">
           <Navbar />
         </div>
-
         <div className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />

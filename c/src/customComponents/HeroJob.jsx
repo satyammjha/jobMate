@@ -6,28 +6,42 @@ import axios from "axios";
 
 export default function InfiniteMovingCardsDemo() {
     const [jobsData, setJobsData] = useState({});
-    useEffect(() => {
+    const [mergedJobsData, setMergedJobsData] = useState([]);
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
         const fetchJobs = async () => {
-            const response = await axios.get("http://localhost:5000/data/fetchJobsData");
-            setJobsData(response.data);
-            console.log("Jobs", response.data);
-        }
+            try {
+                const response = await axios.get("http://localhost:5000/data/fetchJobsData");
+                setJobsData(response.data);
+                const mergedJobs = [...response.data.naukriJobs, ...response.data.gdJobs];
+
+                setMergedJobsData(mergedJobs);
+                console.log("Jobs fetched:", mergedJobs);
+            } catch (error) {
+                console.error("Error fetching jobs:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
         fetchJobs();
     }, []);
 
-
     return (
-        <div className="h-screen w-screen overflow-hidden">
-            <div className="h-full w-full">
-                <InfiniteMovingCards
-                    jobs={items}
-                    direction="left"
-                    speed="slow"
-                    pauseOnHover={true}
-                />
-            </div>
+        <div className="w-screen overflow-hidden flex items-center justify-center">
+            {loading ? (
+                <p className="text-lg text-gray-600">Loading jobs...</p>
+            ) : (
+                <div className="h-full w-full">
+                    <InfiniteMovingCards
+                        jobs={mergedJobsData.length ? mergedJobsData : items}
+                        direction="left"
+                        speed="slow"
+                        pauseOnHover={true}
+                    />
+                </div>
+            )}
         </div>
     );
 }
@@ -52,5 +66,4 @@ const items = [
         ],
         posted: "4 Days Ago"
     },
-
 ];

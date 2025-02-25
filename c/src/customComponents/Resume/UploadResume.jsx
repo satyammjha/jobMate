@@ -106,7 +106,7 @@ function UploadResume() {
                     date: new Date().toLocaleString(),
                 };
                 setCurrentPdf(newPdf);
-                const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+                const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
                 const prompt = `Extract all relevent skills from this resume text as a comma-separated list (max 10 skills): ${fullText}`;
                 const result = await model.generateContent(prompt);
                 const response = await result.response;
@@ -146,12 +146,11 @@ function UploadResume() {
         setIsLoading(true);
 
         try {
-            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
             const prompt = `
             Compare the following resume and job description. Provide:
             1. Compatibility score out of 100
             2. Categorized suggestions
-    
             Resume:
             ${resumeText}
     
@@ -204,7 +203,7 @@ function UploadResume() {
         setIsLoading(true);
 
         try {
-            const review = genAI.getGenerativeModel({ model: "gemini-pro" });
+            const review = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
             const prompt = `Analyze this resume text for strengths, weaknesses, and suggestions: ${text}`;
             const result = await review.generateContent(prompt);
             const response = await result.response;

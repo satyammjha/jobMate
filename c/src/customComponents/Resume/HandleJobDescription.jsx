@@ -88,7 +88,7 @@ const HandleJobDescription = () => {
         localStorage.setItem("jobDescription", jdText);
 
         try {
-            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
             const prompt = `
                 Generate exactly 3 professional cover letters within 180 words each aligning to the ${jdText} and ${globalSkills} also check the company name if available in ${jdText} and personalize it accordingly in valid JSON format.
                 The response should be a JSON object with the strictly following structure:

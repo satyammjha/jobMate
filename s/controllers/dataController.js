@@ -44,13 +44,11 @@ const fetchJobsData = async (req, res) => {
             return res.status(500).json({ message: "Database not connected" });
         }
 
-        // Switch to specific databases
         const ndDb = mongoose.connection.client.db("nd");
         const gdDb = mongoose.connection.client.db("gdjd");
 
-        // Fetch collections
-        const naukriJobs = await ndDb.collection("nds").find().toArray();
-        const gdJobs = await gdDb.collection("jds").find().toArray();
+        const naukriJobs = await ndDb.collection("nds").find().limit(5).toArray();
+        const gdJobs = await gdDb.collection("jds").find().limit(5).toArray();
 
         res.status(200).json({
             message: "Jobs data fetched successfully",
