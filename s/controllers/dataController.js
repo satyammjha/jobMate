@@ -1,4 +1,6 @@
+import mongoose from "mongoose";
 import User from "../models/User.js";
+
 
 const fetchUserData = async (req, res) => {
     try {
@@ -35,4 +37,33 @@ const fetchRefferalList = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 };
-export { fetchRefferalList, fetchUserData };
+
+const fetchJobsData = async (req, res) => {
+    try {
+        if (!mongoose.connection.readyState) {
+            return res.status(500).json({ message: "Database not connected" });
+        }
+
+        // Switch to specific databases
+        const ndDb = mongoose.connection.client.db("nd");
+        const gdDb = mongoose.connection.client.db("gdjd");
+
+        // Fetch collections
+        const naukriJobs = await ndDb.collection("nds").find().toArray();
+        const gdJobs = await gdDb.collection("jds").find().toArray();
+
+        res.status(200).json({
+            message: "Jobs data fetched successfully",
+            naukriJobs,
+            gdJobs,
+        });
+    } catch (error) {
+        console.error("Error fetching job data:", error);
+        res.status(500).json({ message: "Error fetching job data", error: error.message });
+    }
+};
+
+
+
+
+export { fetchRefferalList, fetchUserData, fetchJobsData };

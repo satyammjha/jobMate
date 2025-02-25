@@ -1,32 +1,56 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { InfiniteMovingCards } from "../components/ui/infinite-moving-cards";
-import glassdoor from "../assets/glassdoor.jpg";
+import axios from "axios";
 
 export default function InfiniteMovingCardsDemo() {
+    const [jobsData, setJobsData] = useState({});
+    useEffect(() => {
+
+        const fetchJobs = async () => {
+            const response = await axios.get("http://localhost:5000/data/fetchJobsData");
+            setJobsData(response.data);
+            console.log("Jobs", response.data);
+        }
+
+        fetchJobs();
+    }, []);
+
+
     return (
-        <div className="rounded-md flex flex-col items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent pointer-events-none" />
-            <InfiniteMovingCards
-                items={items}
-                direction="left"
-                speed="slow"
-                className="text-black dark:text-white"
-                pauseOnHover={true}
-            />
+        <div className="h-screen w-screen overflow-hidden">
+            <div className="h-full w-full">
+                <InfiniteMovingCards
+                    jobs={items}
+                    direction="left"
+                    speed="slow"
+                    pauseOnHover={true}
+                />
+            </div>
         </div>
     );
 }
 
 const items = [
     {
-        companyLogo: glassdoor,
-        position: "Software Engineer",
-        companyName: "T",
-        platformLogo: glassdoor,
-        salaryRange: "$80,000 - $100,000/year",
-        skills: ["JavaScript", "React", "Node.js", "CSS"],
-        applyLink: "https://example.com/apply",
+        jobId: "220125017236",
+        title: "Associate (Supply / Field Sales)",
+        link: "https://www.naukri.com/job-listings-associate-supply-field-sales-stanza-living-stanza-living-pune-mumbai-all-areas-2-to-7-years-220125017236",
+        logo: "https://img.naukimg.com/logo_images/groups/v1/3394708.gif",
+        company: "Stanza Living",
+        experience: "2-7 Yrs",
+        salary: "8-10 Lacs PA",
+        location: "Pune, Mumbai (All Areas)",
+        description: "Bachelors degree in Business, Real Estate, Finance, or a related field2+ years of exper relate",
+        tags: [
+            "Property Acquisition",
+            "Franchisee Development",
+            "Lead Generation",
+            "Supply Chain",
+            "Site Acquisition"
+        ],
+        posted: "4 Days Ago"
     },
+
 ];

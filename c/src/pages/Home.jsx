@@ -56,7 +56,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <Suspense fallback={<SkeletonLoader />}>
+                <Suspense fallback={<SkeletonLoader />} className="w-[80vw]">
                     <InfiniteMovingCardsDemo />
                 </Suspense>
             </div>
