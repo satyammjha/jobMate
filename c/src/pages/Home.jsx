@@ -1,13 +1,11 @@
-import React, { Suspense, lazy, useEffect } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Upload, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
-
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
-// const FileUploadDemo = lazy(() => import("../customComponents/FileUpload"));
 const FeaturesSection = lazy(() => import("../customComponents/Features"));
 const JobPlatformsCarousel = lazy(() => import("../customComponents/JobPlatforms"));
 const Waitlist = lazy(() => import("../customComponents/Waitlist"));
@@ -23,14 +21,14 @@ const SkeletonLoader = () => (
 const Home = () => {
     const location = useLocation();
 
+  
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const refCode = params.get("ref");
-
-        if (refCode) {
-            localStorage.setItem("referral", refCode);
-        }
+        if (refCode) localStorage.setItem("referral", refCode);
     }, [location]);
+
+    const headingAnimation = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 } };
 
     return (
         <>
@@ -38,13 +36,11 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-black dark:to-gray-900 opacity-80"></div>
                 <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 pt-20 pb-10">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                        Apply {" "}
-                        <span className="italic font-bold text-green-600 dark:text-green-400">Smarter</span>, Not {" "}
+                        Apply <span className="italic font-bold text-green-600 dark:text-green-400">Smarter</span>, Not{" "}
                         <span className="italic font-bold text-gray-500 dark:text-gray-400">Harder</span>
                     </h1>
                     <p className="mt-4 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
-                        Let AI match your resume to the best jobs and generate personalized
-                        cover letters in seconds.
+                        Let AI match your resume to the best jobs and generate personalized cover letters in seconds.
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row gap-4">
                         <Button className="px-6 py-4 text-lg flex items-center gap-2">
@@ -56,42 +52,33 @@ const Home = () => {
                     </div>
                 </div>
 
-                <Suspense fallback={<SkeletonLoader />} className="w-[80vw]">
-                    <InfiniteMovingCardsDemo />
+                <Suspense fallback={<SkeletonLoader />}>
+                    <InfiniteMovingCardsDemo/>
                 </Suspense>
             </div>
 
             <div className="relative z-10 mt-20">
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500 mb-8">
+                <motion.h2 {...headingAnimation} className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-green-500 mb-8">
                     Powerful Features
                 </motion.h2>
                 <Suspense fallback={<SkeletonLoader />}>
                     <FeaturesSection />
                 </Suspense>
             </div>
-
             <Suspense fallback={<SkeletonLoader />}>
                 <JobPlatformsCarousel />
             </Suspense>
-
             <Suspense fallback={<SkeletonLoader />}>
                 <WorkflowTimeline />
             </Suspense>
-            {/* <div className="w-full max-w-4xl mx-auto min-h-96 border border-dashed bg-white dark:bg-black border-neutral-200 dark:border-neutral-800 rounded-lg p-8 mt-20">
-                <Suspense fallback={<SkeletonLoader />}>
-                    <FileUploadDemo />
-                </Suspense>
-            </div> */}
+
             <div className="relative z-10 mt-20 py-20">
-                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500 mb-8">
+                <motion.h2 {...headingAnimation} className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500 mb-8">
                     Latest Insights
                 </motion.h2>
                 <p className="text-lg text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12">
-                    Discover valuable career tips and industry trends from our experts
+                    Discover valuable career tips and industry trends from our experts.
                 </p>
-
             </div>
 
             <Suspense fallback={<SkeletonLoader />}>
