@@ -10,7 +10,7 @@ import { Skeleton } from "../../components/ui/skeleton";
 import { Badge } from "../../components/ui/badge";
 import { SkillsContext } from "../../Context/SkillsContext";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../components/ui/accordion";
-import { Loader2, UploadCloudIcon} from "lucide-react";
+import { Loader2, UploadCloudIcon } from "lucide-react";
 
 function UploadResume() {
     const [currentPdf, setCurrentPdf] = useState(null);
@@ -167,14 +167,13 @@ function UploadResume() {
             `;
 
             const result = await model.generateContent(prompt);
-            const response = await result.response;
+            const response = result.response;
             let textResponse = response.text();
 
             textResponse = textResponse.replace(/```json|```/g, "").trim();
             textResponse = textResponse.replace(/[\x00-\x1F\x7F]/g, "");
 
             const parsedData = JSON.parse(textResponse);
-
             if (parsedData.score && parsedData.strengths && parsedData.weaknesses && parsedData.suggestions) {
                 setCompatibilityScore(parsedData.score);
                 setSuggestions({

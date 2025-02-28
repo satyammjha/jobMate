@@ -1,9 +1,11 @@
-import React, { Suspense, lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "../components/ui/button";
 import { Upload, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
+import HeroUploadBtn from "../customComponents/Button/HeroButton";
+
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
 const FeaturesSection = lazy(() => import("../customComponents/Features"));
@@ -20,8 +22,8 @@ const SkeletonLoader = () => (
 
 const Home = () => {
     const location = useLocation();
+    const workflowRef = useRef(null);
 
-  
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         const refCode = params.get("ref");
@@ -29,6 +31,12 @@ const Home = () => {
     }, [location]);
 
     const headingAnimation = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 } };
+
+    const scrollToWorkflow = () => {
+        if (workflowRef.current) {
+            workflowRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
 
     return (
         <>
@@ -43,17 +51,19 @@ const Home = () => {
                         Let AI match your resume to the best jobs and generate personalized cover letters in seconds.
                     </p>
                     <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                        <Button className="px-6 py-4 text-lg flex items-center gap-2">
-                            <Upload className="w-5 h-5" /> Upload Resume
-                        </Button>
-                        <Button variant="outline" className="px-6 text-lg flex items-center gap-2 border-2 hover:border-primary hover:bg-accent/10">
-                            <Rocket className="w-5 h-5 animate-pulse" /> How It Works
+                        <HeroUploadBtn />
+                        <Button
+                            variant="outline"
+                            className="px-6 text-lg flex items-center gap-2 border-2 hover:border-primary hover:bg-accent/10"
+                            onClick={scrollToWorkflow}
+                        >
+                            How It Works <Rocket className="w-5 h-5 animate-pulse" />
                         </Button>
                     </div>
                 </div>
 
                 <Suspense fallback={<SkeletonLoader />}>
-                    <InfiniteMovingCardsDemo/>
+                    <InfiniteMovingCardsDemo />
                 </Suspense>
             </div>
 
@@ -65,12 +75,16 @@ const Home = () => {
                     <FeaturesSection />
                 </Suspense>
             </div>
+
             <Suspense fallback={<SkeletonLoader />}>
                 <JobPlatformsCarousel />
             </Suspense>
-            <Suspense fallback={<SkeletonLoader />}>
-                <WorkflowTimeline />
-            </Suspense>
+
+            <div ref={workflowRef} className="relative z-10 mt-20">
+                <Suspense fallback={<SkeletonLoader />}>
+                    <WorkflowTimeline />
+                </Suspense>
+            </div>
 
             <div className="relative z-10 mt-20 py-20">
                 <motion.h2 {...headingAnimation} className="text-4xl lg:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500 mb-8">

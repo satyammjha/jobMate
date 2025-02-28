@@ -1,46 +1,52 @@
 import { cn } from "@/lib/utils";
 import {
-  IconTerminal2,
-  IconEaseInOut,
-  IconCurrencyDollar,
-  IconCloud,
-  IconHelp,
-  IconHeart,
-} from "@tabler/icons-react";
-
+  BrainCircuit,
+  ClipboardEdit,
+  SearchCheck,
+  BarChart4,
+  Zap,
+  BellPlus,
+  HeartHandshake
+} from "lucide-react";
 export default function FeaturesSection() {
   const features = [
     {
-      title: "Built for developers",
-      description: "Built for engineers, developers, dreamers, thinkers and doers.",
-      icon: <IconTerminal2 />,
+      title: "AI-Powered Job Matching",
+      description: "Smart algorithms analyze your resume and preferences to find perfect role matches",
+      icon: <BrainCircuit className="w-6 h-6" />,
     },
     {
-      title: "Ease of use",
-      description: "It's as easy as using an Apple, and as expensive as buying one.",
-      icon: <IconEaseInOut />,
+      title: "Resume Score Analyzer",
+      description: "Instant feedback on your resume's effectiveness with improvement suggestions",
+      icon: <ClipboardEdit className="w-6 h-6" />,
     },
     {
-      title: "Pricing like no other",
-      description: "Our prices are best in the market. No cap, no lock, no credit card required.",
-      icon: <IconCurrencyDollar />,
+      title: "Real-Time Application Tracking",
+      description: "Dashboard to monitor application status across multiple platforms",
+      icon: <SearchCheck className="w-6 h-6" />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
-      icon: <IconCloud />,
+      title: "Salary Comparison Tool",
+      description: "Market rate insights for your role and experience level",
+      icon: <BarChart4 className="w-6 h-6" />,
     },
     {
-      title: "24/7 Customer Support",
-      description: "We are available 100% of the time. At least our AI Agents are.",
-      icon: <IconHelp />,
+      title: "Personalized Job Alerts",
+      description: "Get instant notifications for new matching opportunities",
+      icon: <BellPlus className="w-6 h-6" />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies.",
-      icon: <IconHeart />,
+      title: "Fast Application System",
+      description: "One-click apply to multiple job platforms simultaneously",
+      icon: <Zap className="w-6 h-6" />,
     },
+    {
+      title: "Company Culture Insights",
+      description: "Employee reviews and work environment ratings",
+      icon: <HeartHandshake className="w-6 h-6" />,
+    }
   ];
+
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 relative z-10 py-10 max-w-7xl mx-auto">

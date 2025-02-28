@@ -76,7 +76,6 @@ const ResumeReview = () => {
                 </div>
             </div>
 
-            {/* Sign-In Modal */}
             {showSignInModal && (
                 <Dialog open={showSignInModal} onOpenChange={setShowSignInModal}>
                     <DialogContent className="max-w-md">

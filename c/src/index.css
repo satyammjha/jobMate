@@ -124,3 +124,28 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Add to your global CSS */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-state="open"] .dialog-content {
+  animation: fade-in 0.2s ease-out;
+}
+
+.badge {
+  transition: all 0.15s ease;
+}
+
+.badge:hover {
+  transform: translateY(-1px);
+}
