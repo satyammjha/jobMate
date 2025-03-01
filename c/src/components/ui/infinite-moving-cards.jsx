@@ -1,11 +1,12 @@
-"use client";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import React, { useEffect, useState, useRef } from "react";
 import { Button } from "./button";
-import { ArrowRight, Bookmark, CheckCircleIcon } from "lucide-react";
-import { toast } from "react-hot-toast";
+import { ArrowRight, Bookmark } from "lucide-react";
 import glassdoor from "../../assets/glassdoor.jpg";
 import naukriLogo from "../../assets/naukri.png";
+import { Toaster } from "./sonner";
+import { toast } from "sonner";
+import { Badge } from "./badge";
 
 export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, className }) => {
   const containerRef = useRef(null);
@@ -34,6 +35,7 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
         className
       )}
     >
+      <Toaster position="bottom-center" />
       <style>{`
         @keyframes scroll { to { transform: translate(calc(-50% - 0.5rem)); } }
         .animate-scroll { animation: scroll var(--animation-duration, 40s) linear infinite; animation-direction: var(--animation-direction, forwards); }
@@ -66,24 +68,7 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
                 <button
                   className="p-1.5 hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition-colors"
                   aria-label="Save job"
-                  onClick={() => {
-                    toast.custom(t => (
-                      <div className={`${t.visible ? "animate-enter" : "animate-leave"} max-w-md w-full bg-green-100 border border-green-400 shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-green-500 ring-opacity-50`}>
-                        <div className="flex-1 w-0 p-4 flex items-center">
-                          <CheckCircleIcon className="h-6 w-6 text-green-600 flex-shrink-0" />
-                          <div className="ml-3 flex-1">
-                            <p className="text-sm font-medium text-green-800">Success!</p>
-                            <p className="mt-1 text-sm text-green-700">Job <b>{job.title}</b> saved successfully!</p>
-                          </div>
-                        </div>
-                        <div className="flex border-l border-green-300">
-                          <button onClick={() => toast.dismiss(t.id)} className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-green-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
-                            Close
-                          </button>
-                        </div>
-                      </div>
-                    ));
-                  }}
+                  onClick={() => toast(`Saved ${job.title} to bookmarks`, "success")}
                 >
                   <Bookmark className="w-5 h-5 text-gray-500 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400" />
                 </button>
