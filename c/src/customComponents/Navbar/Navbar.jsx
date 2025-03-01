@@ -60,7 +60,7 @@ export default function Navbar() {
     useEffect(() => {
         let isMounted = true;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    
         const handleAuthFlow = async () => {
             if (!isSignedIn || !user) {
                 localStorage.removeItem("user");
@@ -70,28 +70,30 @@ export default function Navbar() {
                 localStorage.removeItem("resSignIn");
                 return;
             }
+    
             try {
                 const email =
                     user.primaryEmailAddress?.emailAddress ||
                     user.emailAddresses?.[0]?.emailAddress;
+    
                 if (!email || !emailRegex.test(email)) return;
-
+                const storedUser = JSON.parse(localStorage.getItem("user"));
+                if (storedUser?.email === email) {
+                    return; 
+                }
+    
                 await fetchUserData(email);
-                const currentUserData = JSON.parse(localStorage.getItem("user"));
-
-                if (!currentUserData) {
-                    const referredBy = localStorage.getItem("referral");
-                    const response = await axios.post("http://localhost:5000/user", {
-                        name: user.fullName,
-                        email,
-                        referredBy: referredBy || null,
-                    });
-
-                    if (isMounted) {
-                        localStorage.setItem("user", JSON.stringify(response.data.user));
-                        localStorage.removeItem("referral");
-                        fetchUserData(email);
-                    }
+                const referredBy = localStorage.getItem("referral");
+                const response = await axios.post("http://localhost:5000/user", {
+                    name: user.fullName,
+                    email,
+                    referredBy: referredBy || null,
+                });
+    
+                if (isMounted) {
+                    localStorage.setItem("user", JSON.stringify(response.data.user));
+                    localStorage.removeItem("referral");
+                    fetchUserData(email);
                 }
             } catch (error) {
                 console.error("Auth error:", error);
@@ -103,11 +105,11 @@ export default function Navbar() {
                 }
             }
         };
-
+    
         handleAuthFlow();
         return () => { isMounted = false; };
-    }, [isSignedIn, user, fetchUserData]);
-
+    }, [isSignedIn, user]);
+    
     const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
     const links = [

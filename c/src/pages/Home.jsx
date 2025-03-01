@@ -5,6 +5,7 @@ import { Upload, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import HeroUploadBtn from "../customComponents/Button/HeroButton";
+import {JobsGridDemo} from "../customComponents/JobsGrid";
 
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
@@ -75,11 +76,10 @@ const Home = () => {
                     <FeaturesSection />
                 </Suspense>
             </div>
-
             <Suspense fallback={<SkeletonLoader />}>
                 <JobPlatformsCarousel />
             </Suspense>
-
+<JobsGridDemo />
             <div ref={workflowRef} className="relative z-10 mt-20">
                 <Suspense fallback={<SkeletonLoader />}>
                     <WorkflowTimeline />

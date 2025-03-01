@@ -11,6 +11,11 @@ import {
 export default function FeaturesSection() {
   const features = [
     {
+      title: "Accumulated Jobs Data",
+      description: "Access to millions of job listings from various platforms in one place",
+      icon: <BarChart4 className="w-6 h-6" />,
+    },
+    {
       title: "AI-Powered Job Matching",
       description: "Smart algorithms analyze your resume and preferences to find perfect role matches",
       icon: <BrainCircuit className="w-6 h-6" />,
@@ -26,11 +31,6 @@ export default function FeaturesSection() {
       icon: <SearchCheck className="w-6 h-6" />,
     },
     {
-      title: "Salary Comparison Tool",
-      description: "Market rate insights for your role and experience level",
-      icon: <BarChart4 className="w-6 h-6" />,
-    },
-    {
       title: "Personalized Job Alerts",
       description: "Get instant notifications for new matching opportunities",
       icon: <BellPlus className="w-6 h-6" />,
@@ -39,11 +39,6 @@ export default function FeaturesSection() {
       title: "Fast Application System",
       description: "One-click apply to multiple job platforms simultaneously",
       icon: <Zap className="w-6 h-6" />,
-    },
-    {
-      title: "Company Culture Insights",
-      description: "Employee reviews and work environment ratings",
-      icon: <HeartHandshake className="w-6 h-6" />,
     }
   ];
 
