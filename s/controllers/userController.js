@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import generateReferralCode from "../utility/generateRefferalCode.js";
-import { increaseReferralCount } from "../utility/increaserefferalCount.js";
+import { increaseReferralCount } from "../utility/increaseReferralCount.js";
 import { updateCredits } from "../utility/updateCredits.js";
 
 const addUserController = async (req, res) => {
