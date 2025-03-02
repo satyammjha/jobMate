@@ -9,6 +9,7 @@ import ApplicationTracker from './pages/Track';
 import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
 import Onboard from './pages/Onboard';
+import JobDetails from './pages/JobDetails';
 const singleBlog = {
   id: 1,
   title: 'Introduction to React',
@@ -39,6 +40,7 @@ function App() {
             <Route path="/blogs" element={<Blogs blog={singleBlog} />} />
             <Route path="/refferals" element={<Refferal />} />
             <Route path="/onboard/refer" element={<Onboard />} />
+            <Route path="/job-details/:jobId" element={<JobDetails />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>

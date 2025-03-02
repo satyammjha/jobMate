@@ -1,15 +1,19 @@
-FROM node:22-alpine
+# Builder Stage
+FROM node:22-alpine AS builder
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm install --only=production
 
 COPY . .
 
-ENV HOST 0.0.0.0
+# 🏃 Runner Stage
+FROM node:22-alpine AS runner
+WORKDIR /app
 
-EXPOSE 3000
+COPY --from=builder /app /app
 
+EXPOSE 5000
 CMD ["npm", "start"]
