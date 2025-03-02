@@ -79,7 +79,7 @@ const Home = () => {
             <Suspense fallback={<SkeletonLoader />}>
                 {/* <JobPlatformsCarousel /> */}
             </Suspense>
-            <JobsGridDemo />
+            {/* <JobsGridDemo /> */}
             <div ref={workflowRef} className="relative z-10 mt-20">
                 <Suspense fallback={<SkeletonLoader />}>
                     <WorkflowTimeline />
