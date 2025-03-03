@@ -10,6 +10,8 @@ import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
 import Onboard from './pages/Onboard';
 import JobDetails from './pages/JobDetails';
+
+
 const singleBlog = {
   id: 1,
   title: 'Introduction to React',

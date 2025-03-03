@@ -7,7 +7,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../../../components/ui/dialog";
-import { Search, Sparkles, Command, CornerDownLeft, RotateCw, Briefcase, MapPin, Building } from 'lucide-react';
+import { Search, Sparkles, RotateCw, Briefcase, MapPin, Building } from 'lucide-react';
 import { Badge } from '../../../components/ui/badge';
 import { Button } from '../../../components/ui/button';
 import { useJobData } from '../../../Context/jobDataProvider';
@@ -79,36 +79,49 @@ const SearchBar = () => {
         }
     }, []);
 
+
     return (
         <Dialog open={isOpen} onOpenChange={handleOpenChange}>
             <DialogTrigger asChild>
                 <div className="relative group w-full max-w-2xl transition-transform hover:scale-[1.02] active:scale-95">
-                    <div className="absolute blur-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <Input
-                        type="text"
-                        placeholder="Ask AI to find your next job..."
-                        className="pl-12 pr-28 rounded-full bg-background/95 backdrop-blur-sm 
-                                  ring-1 ring-border/50 hover:ring-primary/30 focus-visible:ring-primary/50 
-                                  cursor-text transition-all h-12 shadow-sm text-base sm:text-lg
-                                  focus:ring-2 focus:ring-primary/50"
-                        readOnly
-                        aria-label="Open AI-powered search"
-                    />
-                    <div className="absolute inset-y-0 left-4 flex items-center">
-                        <Search className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/60 group-hover:text-primary transition-colors" />
-                    </div>
-                    <div className="absolute inset-y-0 right-4 flex items-center gap-1.5">
-                        <Badge
-                            variant="outline"
-                            className="px-2 py-1 text-xs font-mono bg-background/80 backdrop-blur-sm 
-                                    shadow-sm hover:bg-primary/5 hidden sm:inline-flex"
-                        >
-                            {navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'}
-                        </Badge>
+                  
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="md:hidden p-2 rounded-full hover:bg-accent h-12 w-12"
+                    >
+                        <Search className="h-6 w-6 text-foreground/60 group-hover:text-primary" />
+                    </Button>
+
+                    <div className="hidden md:block">
+                        <div className="absolute blur-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <Input
+                            type="text"
+                            placeholder="Ask AI to find your next job..."
+                            className="pl-12 pr-28 rounded-full bg-background/95 backdrop-blur-sm 
+                                      ring-1 ring-border/50 hover:ring-primary/30 focus-visible:ring-primary/50 
+                                      cursor-text transition-all h-12 shadow-sm text-base sm:text-lg
+                                      focus:ring-2 focus:ring-primary/50"
+                            readOnly
+                            aria-label="Open AI-powered search"
+                        />
+                        <div className="absolute inset-y-0 left-4 flex items-center">
+                            <Search className="h-4 w-4 sm:h-5 sm:w-5 text-foreground/60 group-hover:text-primary transition-colors" />
+                        </div>
+                        <div className="absolute inset-y-0 right-4 flex items-center gap-1.5">
+                            <Badge
+                                variant="outline"
+                                className="px-2 py-1 text-xs font-mono bg-background/80 backdrop-blur-sm 
+                                          shadow-sm hover:bg-primary/5 hidden sm:inline-flex"
+                            >
+                                {navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'}
+                            </Badge>
+                        </div>
                     </div>
                 </div>
             </DialogTrigger>
 
+           
             <DialogContent
                 role="dialog"
                 aria-labelledby="searchDialogTitle"
@@ -255,14 +268,14 @@ const SearchBar = () => {
                                             <div className="p-4 rounded-xl bg-background/80 backdrop-blur-sm border border-primary/10">
                                                 <h3 className="text-lg font-semibold mb-3">🚀 Quick Searches</h3>
                                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                                    <Button 
-                                                        variant="outline" 
+                                                    <Button
+                                                        variant="outline"
                                                         className="justify-start text-sm h-10"
                                                     >
                                                         Remote Software Engineer
                                                     </Button>
-                                                    <Button 
-                                                        variant="outline" 
+                                                    <Button
+                                                        variant="outline"
                                                         className="justify-start text-sm h-10"
                                                     >
                                                         Marketing Manager 5+ years
@@ -283,8 +296,7 @@ const SearchBar = () => {
                         </div>
                     </div>
                 </div>
-            </DialogContent>
-        </Dialog>
+            </DialogContent>        </Dialog>
     );
 };
 
