@@ -10,6 +10,8 @@ import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
 import Onboard from './pages/Onboard';
 import JobDetails from './pages/JobDetails';
+import SearchBar from './customComponents/Navbar/Search/SearchBar';
+import { FloatingDockDemo } from './customComponents/Navbar/floatingDemo';
 
 
 const singleBlog = {
@@ -25,12 +27,15 @@ const singleBlog = {
 };
 
 function App() {
-
   return (
     <>
       <div className="dark:bg-black hide-scrollbar">
         <div className="fixed top-0 left-0 w-full z-50">
           <Navbar />
+          <div className="mb-6 md:hidden flex flex-col items-center">
+            <SearchBar variant="mobile" />
+          </div>
+          <FloatingDockDemo />
         </div>
         <div className="pt-16">
           <Routes>

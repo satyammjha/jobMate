@@ -177,7 +177,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex-1 max-w-2xl">
-                <SearchBar />
+                <SearchBar variant="desktop" />
             </div>
 
             <div className="flex items-center gap-3 ml-auto shrink-0">
@@ -233,80 +233,6 @@ export default function Navbar() {
                         </Button>
                     </SignInButton>
                 </SignedOut>
-
-                <Sheet open={open} onOpenChange={setOpen}>
-                    <SheetTrigger asChild>
-                        <Button
-                            variant="outline"
-                            size="icon"
-                            className="md:hidden shrink-0"
-                            aria-label="Open Menu"
-                        >
-                            {open ? <X size={24} /> : <Menu size={24} />}
-                        </Button>
-                    </SheetTrigger>
-                    <SheetContent side="left" className="flex flex-col gap-4 p-6 w-[280px]">
-                        <div className="flex flex-col gap-2">
-                            <SignedIn>
-                                {links.map(
-                                    (link) =>
-                                        (!link.protected || user) && (
-                                            <Link
-                                                key={link.name}
-                                                to={link.path}
-                                                className={`relative px-4 py-3 text-base font-medium 
-                          ${location.pathname === link.path
-                                                        ? "text-primary font-semibold"
-                                                        : "text-foreground/80 hover:text-foreground"
-                                                    }`}
-                                                onClick={() => setOpen(false)}
-                                            >
-                                                {link.name}
-                                                {location.pathname === link.path && (
-                                                    <span className="absolute left-4 right-4 bottom-2 h-0.5 bg-primary rounded-full" />
-                                                )}
-                                            </Link>
-                                        )
-                                )}
-                            </SignedIn>
-
-                            <SignedOut>
-                                {links
-                                    .filter((link) => !link.protected)
-                                    .map((link) => (
-                                        <Link
-                                            key={link.name}
-                                            to={link.path}
-                                            className={`relative px-4 py-3 text-base font-medium 
-                        ${location.pathname === link.path
-                                                    ? "text-primary font-semibold"
-                                                    : "text-foreground/80 hover:text-foreground"
-                                                }`}
-                                            onClick={() => setOpen(false)}
-                                        >
-                                            {link.name}
-                                            {location.pathname === link.path && (
-                                                <span className="absolute left-4 right-4 bottom-2 h-0.5 bg-primary rounded-full" />
-                                            )}
-                                        </Link>
-                                    ))}
-                            </SignedOut>
-                        </div>
-
-                        <SignedIn>
-                            <div className="mt-4 pt-4 border-t">
-                                <Button
-                                    variant="outline"
-                                    className="w-full gap-2"
-                                    onClick={() => setOpen(false)}
-                                >
-                                    <Gift size={16} />
-                                    Refer & Earn
-                                </Button>
-                            </div>
-                        </SignedIn>
-                    </SheetContent>
-                </Sheet>
             </div>
         </nav>
     );
