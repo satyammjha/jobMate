@@ -6,7 +6,6 @@ import glassdoor from "../../assets/glassdoor.jpg";
 import naukriLogo from "../../assets/naukri.png";
 import { Toaster } from "./sonner";
 import { toast } from "sonner";
-import { Badge } from "./badge";
 
 export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, className }) => {
   const containerRef = useRef(null);
@@ -35,7 +34,9 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
         className
       )}
     >
-      <Toaster position="bottom-center" />
+      <div className="z-50">
+        <Toaster position="top-center" />
+      </div>
       <style>{`
         @keyframes scroll { to { transform: translate(calc(-50% - 0.5rem)); } }
         .animate-scroll { animation: scroll var(--animation-duration, 40s) linear infinite; animation-direction: var(--animation-direction, forwards); }

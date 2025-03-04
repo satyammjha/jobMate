@@ -10,6 +10,7 @@ import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
 import Onboard from './pages/Onboard';
 import JobDetails from './pages/JobDetails';
+import { FloatingDockDemo } from './customComponents/FloatingNav';
 
 
 const singleBlog = {
@@ -31,6 +32,7 @@ function App() {
       <div className="dark:bg-black hide-scrollbar">
         <div className="fixed top-0 left-0 w-full z-50">
           <Navbar />
+          <FloatingDockDemo />
         </div>
         <div className="pt-16">
           <Routes>
