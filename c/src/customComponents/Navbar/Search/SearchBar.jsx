@@ -7,14 +7,14 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../../../components/ui/dialog";
-import { Search, Sparkles, RotateCw, Briefcase, MapPin, Building } from 'lucide-react';
+import { Search, Sparkles, Command, CornerDownLeft, RotateCw, Briefcase, MapPin, Building, SearchIcon } from 'lucide-react';
 import { Badge } from '../../../components/ui/badge';
 import { Button } from '../../../components/ui/button';
 import { useJobData } from '../../../Context/jobDataProvider';
 
 const createWorker = () => new Worker(new URL('./searchWorker.js', import.meta.url));
 
-const SearchBar = () => {
+const SearchBar = ({ variant = 'desktop' }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +38,7 @@ const SearchBar = () => {
         workerRef.current.addEventListener('message', handleMessage);
         return () => workerRef.current.removeEventListener('message', handleMessage);
     }, []);
+
     const debouncedSearch = useMemo(() => {
         let timeoutId;
 
@@ -79,21 +80,19 @@ const SearchBar = () => {
         }
     }, []);
 
-
     return (
         <Dialog open={isOpen} onOpenChange={handleOpenChange}>
             <DialogTrigger asChild>
-                <div className="relative group w-full max-w-2xl transition-transform hover:scale-[1.02] active:scale-95">
-                  
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="md:hidden p-2 rounded-full hover:bg-accent h-12 w-12"
-                    >
-                        <Search className="h-6 w-6 text-foreground/60 group-hover:text-primary" />
-                    </Button>
+                {variant === 'mobile' ? (
 
-                    <div className="hidden md:block">
+                    <Button
+                        className="md:hidden text-white dark:text-black font-bold fixed bottom-4 right-4 z-50 rounded-md bg-black dark:bg-white shadow-lg"
+                    >
+                        <SearchIcon />
+                    </Button>
+                ) : (
+
+                    <div className="hidden md:block relative group w-full max-w-2xl transition-transform hover:scale-[1.02] active:scale-95">
                         <div className="absolute blur-[2px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                         <Input
                             type="text"
@@ -118,10 +117,9 @@ const SearchBar = () => {
                             </Badge>
                         </div>
                     </div>
-                </div>
+                )}
             </DialogTrigger>
 
-           
             <DialogContent
                 role="dialog"
                 aria-labelledby="searchDialogTitle"
@@ -296,7 +294,8 @@ const SearchBar = () => {
                         </div>
                     </div>
                 </div>
-            </DialogContent>        </Dialog>
+            </DialogContent>
+        </Dialog>
     );
 };
 

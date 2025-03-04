@@ -63,7 +63,6 @@ const Home = () => {
                         </Button>
                     </div>
                 </div>
-
                 <Suspense fallback={<SkeletonLoader />}>
                     <InfiniteMovingCardsDemo />
                 </Suspense>
