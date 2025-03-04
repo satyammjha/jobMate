@@ -14,6 +14,9 @@ import { FloatingDockDemo } from './customComponents/FloatingNav';
 import { SavedJobsProvider } from './Context/SavedJobContext';
 
 
+
+
+
 const singleBlog = {
   id: 1,
   title: 'Introduction to React',
@@ -52,8 +55,8 @@ function App() {
           <Footer />
         </div>
       </div>
-      </SavedJobsProvider>
-  
+    </SavedJobsProvider>
+
   )
 }
 

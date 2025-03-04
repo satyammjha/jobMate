@@ -17,7 +17,7 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
 
   const handleSaveJob = (job) => {
     const jobToSave = {
-      jobId: job.jobId || job._id, // Ensure a unique ID is stored
+      jobId: job.jobId || job._id,
       title: job.title,
       company: job.company,
       location: job.location || "Not Specified",
@@ -25,17 +25,17 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
       experience: job.experience || "Not Mentioned",
       posted: job.posted || "Unknown",
       link: job.link,
-      source: job.link.includes("naukri") ? "Naukri" : "Glassdoor", // Detect the job source
+      source: job.link.includes("naukri") ? "Naukri" : "Glassdoor", 
       tags: job.tags || [],
-      savedDate: new Date().toISOString(), // Store the date & time when job is saved
+      savedDate: new Date().toISOString(), 
       description: job.description || "No description available",
       logo: job.logo || "",
     };
-  
+
     saveJob(jobToSave);
     toast.success(`Saved ${job.title} to bookmarks`);
   };
-  
+
 
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
       )}
     >
       <div className="z-50">
-        <Toaster position="top-center" />
+        <Toaster position="bottom-left" />
       </div>
       <style>{`
         @keyframes scroll { to { transform: translate(calc(-50% - 0.5rem)); } }
@@ -98,12 +98,13 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
                   onClick={() => handleSaveJob(job)}
                 >
                   <Bookmark
-                    className={`w-5 h-5 ${savedJobs.some((saved) => saved._id === job._id)
-                      ? "text-blue-500 dark:text-blue-400"
-                      : "text-gray-500 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400"
+                    className={`w-5 h-5 ${savedJobs.some((saved) => saved.jobId === (job.jobId || job._id))
+                        ? "text-blue-500 dark:text-blue-400"
+                        : "text-gray-500 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400"
                       }`}
                   />
                 </button>
+
               </div>
               <div className="grid grid-cols-2 gap-3 text-sm">
                 {job.location && (

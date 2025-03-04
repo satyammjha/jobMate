@@ -112,7 +112,6 @@ export default function JobDashboard() {
 
   return (
     <div className="container mx-auto p-6 space-y-6">
-      {/* Status Navbar */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
         {statusOptions.map(status => (
           <Card key={status.value} className="p-4 text-center transition-all hover:scale-[1.02]">
@@ -125,9 +124,7 @@ export default function JobDashboard() {
         ))}
       </div>
 
-      {/* Main Content */}
       <div className="grid md:grid-cols-3 gap-6">
-        {/* Job List */}
         <div className="md:col-span-2">
           <Card className="shadow-lg">
             <Table>
@@ -242,9 +239,7 @@ export default function JobDashboard() {
           </Card>
         </div>
 
-        {/* Analytics Panel */}
         <div className="space-y-6">
-          {/* Skills Chart */}
           <Card className="p-6">
             <div className="mb-4 font-semibold flex items-center gap-2">
               <Star className="h-4 w-4" /> Top Required Skills
@@ -266,7 +261,6 @@ export default function JobDashboard() {
             </div>
           </Card>
 
-          {/* Experience Chart */}
           <Card className="p-6">
             <div className="mb-4 font-semibold flex items-center gap-2">
               <TrendingUp className="h-4 w-4" /> Experience Analysis

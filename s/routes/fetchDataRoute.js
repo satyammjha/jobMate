@@ -1,9 +1,11 @@
 import express from "express";
-import { fetchRefferalList, fetchUserData, fetchJobsData } from "../controllers/dataController.js";
+import { fetchReferralList, fetchUserData, fetchJobsData, getSavedJobs, saveJobs } from "../controllers/dataController.js";
 
 const dataRouter = express.Router();
 
-dataRouter.get("/fetchRefferalList", fetchRefferalList);
+dataRouter.get("/fetchRefferalList", fetchReferralList);
 dataRouter.post("/fetchUserData", fetchUserData);
 dataRouter.get("/fetchJobsData", fetchJobsData);
+dataRouter.post("/jobs/save", saveJobs);
+dataRouter.get("/jobs/saved", getSavedJobs);
 export default dataRouter;
