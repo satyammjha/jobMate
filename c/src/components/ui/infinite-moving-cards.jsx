@@ -35,9 +35,6 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
     saveJob(jobToSave);
     toast.success(`Saved ${job.title} to bookmarks`);
   };
-
-
-
   useEffect(() => {
     if (containerRef.current && scrollerRef.current) {
       Array.from(scrollerRef.current.children).forEach(item => {
@@ -49,7 +46,6 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
       setStart(true);
     }
   }, []);
-
   return (
     <div
       ref={containerRef}

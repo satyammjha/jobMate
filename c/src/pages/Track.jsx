@@ -1,41 +1,16 @@
-import { useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { useEffect, useState } from "react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Search, NotebookPen, X, TrendingUp, Clock, Star, CalendarDays, Filter } from "lucide-react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
+import { Card } from "../components/ui/card";
+import { Search, NotebookPen, CalendarDays, X, ExternalLink } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../components/ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "../components/ui/popover";
 import { Calendar } from "../components/ui/calendar";
-
-const jobs = [
-  {
-    _id: '1',
-    title: 'Senior Frontend Engineer',
-    company: "TechNova",
-    status: "Interviewing",
-    savedDate: "2024-03-15",
-    salary: "$120K",
-    experience: 5,
-    skills: ['React', 'TypeScript', 'Node.js'],
-    responseTime: 3,
-    matchPercentage: 85
-  },
-  {
-    _id: '2',
-    title: 'Product Director',
-    company: "FutureLabs",
-    status: "Offered",
-    savedDate: "2024-03-10",
-    salary: "$150K",
-    experience: 8,
-    skills: ['Product Strategy', 'Team Leadership', 'Roadmapping'],
-    responseTime: 5,
-    matchPercentage: 76
-  },
-];
+import { useSavedJobs } from "../Context/SavedJobContext";
+import { Badge } from "../components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar";
 
 const statusOptions = [
   { value: "Saved", label: "Saved", color: "#64748b" },
@@ -46,76 +21,102 @@ const statusOptions = [
 ];
 
 export default function JobDashboard() {
-  const [filters, setFilters] = useState({
-    search: "",
-    status: "all",
-    date: null
-  });
-  const [jobsData, setJobsData] = useState(jobs);
+  const { savedJobs } = useSavedJobs();
+  const [jobsData, setJobsData] = useState([]);
   const [notes, setNotes] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
+  const [dateFilter, setDateFilter] = useState(null);
+  const [statusFilter, setStatusFilter] = useState("all");
 
-  // Calculate metrics
-  const statusCounts = jobsData.reduce((acc, job) => {
-    acc[job.status] = (acc[job.status] || 0) + 1;
-    return acc;
-  }, {});
-
-  const skillsAnalysis = jobsData.flatMap(job => job.skills).reduce((acc, skill) => {
-    acc[skill] = (acc[skill] || 0) + 1;
-    return acc;
-  }, {});
-
-  const experienceData = jobsData.reduce((acc, job) => {
-    acc.total += job.experience;
-    acc.count += 1;
-    return acc;
-  }, { total: 0, count: 0 });
-
-  const processMetrics = () => {
-    const filtered = jobsData.filter(job =>
-      (filters.status === "all" || job.status === filters.status) &&
-      (job.company.toLowerCase().includes(filters.search.toLowerCase()) ||
-        job.title.toLowerCase().includes(filters.search.toLowerCase())) &&
-      (!filters.date || job.savedDate === filters.date.toISOString().split('T')[0])
-    );
-
-    return {
-      filteredJobs: filtered,
-      skillsChart: Object.entries(skillsAnalysis)
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 5)
-        .map(([skill, count]) => ({ skill, count })),
-      avgExperience: experienceData.count > 0
-        ? (experienceData.total / experienceData.count).toFixed(1)
-        : 0
-    };
-  };
-
-  const { filteredJobs, skillsChart, avgExperience } = processMetrics();
+  useEffect(() => {
+    setJobsData(savedJobs);
+  }, [savedJobs]);
 
   const handleStatusChange = (jobId, newStatus) => {
     setJobsData(prev =>
       prev.map(job =>
-        job._id === jobId
-          ? {
-              ...job,
-              status: newStatus,
-              statusHistory: [...(job.statusHistory || []), { status: newStatus, date: new Date().toISOString().split('T')[0] }]
-            }
-          : job
+        job._id === jobId ? { ...job, status: newStatus } : job
       )
     );
   };
-  const resetFilters = () => {
-    setFilters({ search: "", status: "all", date: null });
+
+  const filteredJobs = jobsData.filter(job => {
+    const matchesSearch = job.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         job.company?.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesDate = !dateFilter || 
+                      (job.date && new Date(job.date).toDateString() === dateFilter.toDateString());
+    const matchesStatus = statusFilter === "all" || job.status === statusFilter;
+    
+    return matchesSearch && matchesDate && matchesStatus;
+  });
+
+  const formatSalary = (salary) => {
+    if (!salary) return "Not specified";
+    if (typeof salary === 'number') return `$${salary.toLocaleString()}`;
+    return salary;
   };
 
   return (
     <div className="container mx-auto p-6 space-y-6">
+      <Card className="p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex flex-col md:flex-row gap-4 items-stretch">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search positions or companies..."
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+          
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className="gap-2">
+                <CalendarDays className="h-4 w-4" />
+                {dateFilter && <X className="h-3 w-3" />}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0">
+              <Calendar
+                mode="single"
+                selected={dateFilter}
+                onSelect={setDateFilter}
+                initialFocus
+              />
+            </PopoverContent>
+          </Popover>
+
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
+            <SelectTrigger className="min-w-[140px]">
+              <SelectValue placeholder="Filter by status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Statuses</SelectItem>
+              {statusOptions.map(status => (
+                <SelectItem key={status.value} value={status.value}>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: status.color }} />
+                    {status.label}
+                  </div>
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      </Card>
+
       <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
         {statusOptions.map(status => (
-          <Card key={status.value} className="p-4 text-center transition-all hover:scale-[1.02]">
-            <div className="text-2xl font-bold">{statusCounts[status.value] || 0}</div>
+          <Card 
+            key={status.value} 
+            className="p-4 text-center transition-all hover:scale-[1.02] cursor-pointer"
+            style={{ background: `linear-gradient(45deg, ${status.color}10, transparent)` }}
+            onClick={() => setStatusFilter(status.value)}
+          >
+            <div className="text-2xl font-bold text-foreground">
+              {jobsData.filter(job => job.status === status.value).length}
+            </div>
             <div className="text-sm flex items-center justify-center gap-2" style={{ color: status.color }}>
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: status.color }} />
               {status.label}
@@ -124,168 +125,129 @@ export default function JobDashboard() {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
-        <div className="md:col-span-2">
-          <Card className="shadow-lg">
-            <Table>
-              <TableHeader className="bg-muted/50">
-                <TableRow>
-                  <TableHead colSpan={4}>
-                    <div className="flex items-center gap-4 p-2">
-                      <div className="relative flex-1">
-                        <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input
-                          placeholder="Search jobs..."
-                          className="pl-10"
-                          value={filters.search}
-                          onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
-                        />
-                      </div>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button variant="outline" className="gap-2">
-                            <CalendarDays className="h-4 w-4" />
-                            {filters.date && <X className="h-3 w-3" onClick={() => setFilters(prev => ({ ...prev, date: null }))} />}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0">
-                          <Calendar
-                            mode="single"
-                            selected={filters.date}
-                            onSelect={(date) => setFilters(prev => ({ ...prev, date }))}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <Button variant="ghost" onClick={resetFilters} className="gap-2">
-                        <X className="h-4 w-4" />
-                        Reset Filters
-                      </Button>
+      <Card className="shadow-lg overflow-hidden">
+        <div className="relative overflow-x-auto">
+          <Table className="min-w-[1000px]">
+            <TableHeader className="bg-muted/50">
+              <TableRow>
+                <TableHead className="w-[60px]"></TableHead>
+                <TableHead>Position</TableHead>
+                <TableHead>Company</TableHead>
+                <TableHead className="text-right">Salary</TableHead>
+                <TableHead>Date</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredJobs.map(job => (
+                <TableRow key={job._id} className="hover:bg-muted/10">
+                  <TableCell>
+                    <Avatar className="h-9 w-9">
+                      <AvatarImage src={job.logo} alt={job.company} />
+                      <AvatarFallback>
+                        {job.company?.slice(0, 2).toUpperCase() || "JP"}
+                      </AvatarFallback>
+                    </Avatar>
+                  </TableCell>
+                  <TableCell className="font-medium">
+                    <div className="flex flex-col">
+                      <span>{job.title}</span>
+                      <a 
+                        href={job.link} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-xs text-muted-foreground hover:text-primary flex items-center gap-1"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                        View posting
+                      </a>
                     </div>
-                  </TableHead>
-                </TableRow>
-                <TableRow>
-                  <TableHead>Position</TableHead>
-                  <TableHead>Company</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredJobs.map(job => (
-                  <TableRow key={job._id} className="group hover:bg-muted/50">
-                    <TableCell className="font-medium">{job.title}</TableCell>
-                    <TableCell>{job.company}</TableCell>
-                    <TableCell>
-                      <Select value={job.status} onValueChange={(value) => handleStatusChange(job._id, value)}>
-                        <SelectTrigger className="w-[120px] group-hover:border-primary">
+                  </TableCell>
+                  <TableCell>{job.company}</TableCell>
+                  <TableCell className="text-right">{formatSalary(job.salary)}</TableCell>
+                  <TableCell>
+                    {job.date ? new Date(job.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric'
+                    }) : "N/A"}
+                  </TableCell>
+                  <TableCell>
+                    <Select value={job.status || "Saved"} onValueChange={(value) => handleStatusChange(job._id, value)}>
+                      <SelectTrigger className="w-[140px]">
+                        <div className="flex items-center gap-2">
+                          <div 
+                            className="w-2 h-2 rounded-full" 
+                            style={{ 
+                              backgroundColor: statusOptions.find(s => s.value === (job.status || "Saved"))?.color 
+                            }} 
+                          />
                           <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {statusOptions.map(status => (
-                            <SelectItem key={status.value} value={status.value}>
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {statusOptions.map(status => (
+                          <SelectItem key={status.value} value={status.value}>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: status.color }} />
                               {status.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </TableCell>
-                    <TableCell>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="ghost" size="sm" className="group-hover:text-primary">
-                            <NotebookPen className="h-4 w-4" />
-                          </Button>
-                        </DialogTrigger>
-                 
-
-                        <DialogContent>
-  <DialogHeader>
-    <DialogTitle>{job.company} - Notes</DialogTitle>
-  </DialogHeader>
-
-  <Input
-    value={notes[job._id] ?? job.notes ?? ""} // Ensuring a default empty value
-    onChange={(e) =>
-      setNotes((prev) => ({
-        ...prev,
-        [job._id]: e.target.value, // Correct way to update specific job note
-      }))
-    }
-    placeholder="Enter notes..."
-  />
-
-  <Button
-    onClick={() => {
-      setJobsData((prev) =>
-        prev.map((p) =>
-          p._id === job._id
-            ? { ...p, notes: notes[job._id] ?? "" } // Ensure notes is correctly assigned
-            : p
-        )
-      );
-    }}
-  >
-    Save Notes
-  </Button>
-</DialogContent>
-
-                      </Dialog>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </Card>
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="ghost" size="sm" className="hover:bg-muted/20">
+                          <NotebookPen className="h-4 w-4 mr-2" />
+                          Notes
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>
+                            <div className="flex items-center gap-3">
+                              <Avatar className="h-8 w-8">
+                                <AvatarImage src={job.logo} />
+                                <AvatarFallback>{job.company?.slice(0, 2)}</AvatarFallback>
+                              </Avatar>
+                              <div>
+                                <div>{job.title}</div>
+                                <div className="text-sm text-muted-foreground">{job.company}</div>
+                              </div>
+                            </div>
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="grid gap-4">
+                          <Input
+                            value={notes[job._id] ?? job.notes ?? ""}
+                            onChange={(e) => setNotes(prev => ({ ...prev, [job._id]: e.target.value }))}
+                            placeholder="Add private notes about this opportunity..."
+                            className="min-h-[100px]"
+                          />
+                          <div className="text-sm text-muted-foreground">
+                            These notes are only visible to you
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          
+          {filteredJobs.length === 0 && (
+            <div className="p-8 text-center text-muted-foreground">
+              <Search className="mx-auto h-8 w-8 mb-2" />
+              <p>No jobs found matching your criteria</p>
+            </div>
+          )}
         </div>
-
-        <div className="space-y-6">
-          <Card className="p-6">
-            <div className="mb-4 font-semibold flex items-center gap-2">
-              <Star className="h-4 w-4" /> Top Required Skills
-            </div>
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={skillsChart}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="skill" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar
-                    dataKey="count"
-                    fill="#3b82f6"
-                    radius={[4, 4, 0, 0]}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </Card>
-
-          <Card className="p-6">
-            <div className="mb-4 font-semibold flex items-center gap-2">
-              <TrendingUp className="h-4 w-4" /> Experience Analysis
-            </div>
-            <div className="space-y-4">
-              <div className="text-3xl font-bold text-center">{avgExperience} years</div>
-              <div className="text-center text-muted-foreground">Average Required Experience</div>
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                <div className="text-center p-3 bg-muted/10 rounded-lg">
-                  <div className="text-xl font-bold">
-                    {Math.min(...jobsData.map(job => job.experience))}
-                  </div>
-                  <div className="text-sm">Min Experience</div>
-                </div>
-                <div className="text-center p-3 bg-muted/10 rounded-lg">
-                  <div className="text-xl font-bold">
-                    {Math.max(...jobsData.map(job => job.experience))}
-                  </div>
-                  <div className="text-sm">Max Experience</div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-      </div>
+      </Card>
     </div>
   );
 }
