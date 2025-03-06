@@ -58,8 +58,8 @@ const fetchJobsData = async (req, res) => {
         const ndDb = mongoose.connection.client.db("nd");
         const gdDb = mongoose.connection.client.db("gdjd");
 
-        const naukriJobs = await ndDb.collection("nds").find().limit(5).toArray();
-        const gdJobs = await gdDb.collection("jds").find().limit(5).toArray();
+        const naukriJobs = await ndDb.collection("nds").find().limit(100).toArray();
+        const gdJobs = await gdDb.collection("jds").find().limit(100).toArray();
 
         res.status(200).json({
             message: "Jobs data fetched successfully",

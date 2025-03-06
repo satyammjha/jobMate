@@ -57,33 +57,11 @@ async function sendNaukriDb() {
     await client.close();
   }
 }
-async function sendIndeedDb() {
-  const client = new MongoClient(uri);
-  try {
-    await client.connect();
-    const db = client.db('IndeedDb');
-    const collection = db.collection('indCollect');
 
-    await collection.deleteMany({});
-
-    const fileContent = fs.readFileSync('indeed_job.json', 'utf8');
-    const data = JSON.parse(fileContent);
-    if (Array.isArray(data)) {
-      await collection.insertMany(data);
-      console.log('Indeed data inserted successfully!');
-    } else {
-      console.error('Expected a JSON array in the file.');
-    }
-  } catch (error) {
-    console.error('Error inserting indeed data:', error);
-  } finally {
-    await client.close();
-  }
-}
-const args = process.argv.slice(3);
+const args = process.argv.slice(2);
 
 if (args.length === 0) {
-  console.error("❌ Please provide an argument: 'glassdoor', 'naukri', or 'indeed'");
+  console.error("❌ Please provide an argument: 'glassdoor', 'naukri'");
   process.exit(1);
 }
 
@@ -91,9 +69,7 @@ if (args[0] === 'glassdoor') {
   sendGlassDoorDb();
 } else if (args[0] === 'naukri') {
   sendNaukriDb();
-} else if (args[0] === 'indeed') {
-  sendIndeedDb();
 } else {
-  console.error("❌ Invalid argument provided. Use 'glassdoor', 'naukri', or 'indeed'");
+  console.error("❌ Invalid argument provided. Use 'glassdoor', 'naukri'");
   process.exit(1);
 }
