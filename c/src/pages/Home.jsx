@@ -7,11 +7,11 @@ import { Skeleton } from "@/components/ui/skeleton";
 import HeroUploadBtn from "../customComponents/Button/HeroButton";
 import { JobsGridDemo } from "../customComponents/JobsGrid";
 import FileUpload from "../customComponents/FileUpload";
+import { Helmet } from "react-helmet-async";
 
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
 const FeaturesSection = lazy(() => import("../customComponents/Features"));
-const JobPlatformsCarousel = lazy(() => import("../customComponents/JobPlatforms"));
 const Waitlist = lazy(() => import("../customComponents/Waitlist"));
 
 const SkeletonLoader = () => (
@@ -42,11 +42,27 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Zobly - AI Powered Job Search & Resume Analysis</title>
+                <meta name="description" content="Find top job listings from platforms like Naukri, Glassdoor & more. AI-powered resume analysis & job matching for smarter job applications." />
+                <meta name="keywords" content="jobs, job search, AI job matching, resume analysis, job aggregator, career growth" />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content="Zobly - AI Powered Job Search & Resume Analysis" />
+                <meta property="og:description" content="Find top job listings from platforms like Naukri, Glassdoor & more. AI-powered resume analysis & job matching for smarter job applications." />
+                <meta property="og:image" content="https://zobly.com/og-image.png" />
+                <meta property="og:url" content="https://zobly.com" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Zobly - AI Powered Job Search & Resume Analysis" />
+                <meta name="twitter:description" content="Find top job listings from platforms like Naukri, Glassdoor & more. AI-powered resume analysis & job matching for smarter job applications." />
+                <meta name="twitter:image" content="https://zobly.com/twitter-image.png" />
+            </Helmet>
+
             <div className="relative min-h-screen w-full bg-white dark:bg-black bg-grid-black/[1] dark:bg-grid-white/[1]">
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-black dark:to-gray-900 opacity-80"></div>
                 <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 lg:px-8 pt-20 pb-10">
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
-                        Apply <span className="italic font-bold text-green-600 dark:text-green-400">Smarter</span>, Not{" "}
+                        Apply <span className="italic font-bold text-green-600 dark:text-green-400">Smarter</span>, Not {" "}
                         <span className="italic font-bold text-gray-500 dark:text-gray-400">Harder</span>
                     </h1>
                     <p className="mt-4 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-2xl">
@@ -76,9 +92,6 @@ const Home = () => {
                     <FeaturesSection />
                 </Suspense>
             </div>
-            <Suspense fallback={<SkeletonLoader />}>
-                {/* <JobPlatformsCarousel /> */}
-            </Suspense>
             <JobsGridDemo />
             <div ref={workflowRef} className="relative z-10 mt-20">
                 <Suspense fallback={<SkeletonLoader />}>
@@ -94,7 +107,6 @@ const Home = () => {
                     Discover valuable career tips and industry trends from our experts.
                 </p>
             </div>
-
             <Suspense fallback={<SkeletonLoader />}>
                 <Waitlist />
             </Suspense>
