@@ -58,7 +58,19 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+.scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
 
+.scroll-container::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

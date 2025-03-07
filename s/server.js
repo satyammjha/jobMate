@@ -16,7 +16,10 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/user", userRouter);
 app.use("/data", dataRouter);
 app.get("/", (req, res) => {
-    res.send("zipply server is running fine 🚀");
+    res.send("zobly-api");
+})
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "ok" });
 })
 const startServer = async () => {
     try {

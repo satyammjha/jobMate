@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import axios from 'axios';
 
 const fetchJobs = async () => {
-    const response = await axios.get('http://localhost:5000/data/fetchJobsData');
+    const response = await axios.get('http://43.205.114.6:5000/data/fetchJobsData');
     const { naukriJobs = [], gdJobs = [] } = response.data;
     return [...naukriJobs, ...gdJobs];
 };

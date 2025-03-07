@@ -155,68 +155,132 @@ class CloudflareBypasser {
       }
   
       let allJobs = [];
-      let continueScraping = true;
-      while (continueScraping && allJobs.length < 40) {
-        await page.waitForSelector('.styles_job-listing-container__OCfZC', { timeout: 15000 });
-        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-        await this.randomDelay(2000, 4000);
+      let pageNumber = 1;
+      let previousCount = 0;
+      let samePageCount = 0;
   
-        const newJobs = await page.evaluate(() => {
-          const jobs = [];
-          const container = document.querySelector('.styles_job-listing-container__OCfZC');
-          if (container) {
-            const items = container.querySelectorAll('.srp-jobtuple-wrapper');
-            items.forEach(item => {
-              const jobId = item.getAttribute('data-job-id');
-              const titleElem = item.querySelector('.row1 h2 a.title');
-              const title = titleElem ? titleElem.innerText.trim() : null;
-              const link = titleElem ? titleElem.href : null;
-              const logo = item.querySelector('.row1 .imagewrap img.logoImage')?.src;
-              const company = item.querySelector('.row2 .comp-dtls-wrap a.comp-name')?.innerText.trim();
-              const experience = item.querySelector('.row3 .exp-wrap span.expwdth')?.getAttribute('title')?.trim() || null;
-              const salary = item.querySelector('.row3 .sal-wrap span')?.innerText.trim() || null;
-              const location = item.querySelector('.row3 .loc-wrap span.locWdth')?.getAttribute('title')?.trim() || null;
-              const description = item.querySelector('.row4 .job-desc')?.innerText.trim() || null;
-              let tags = [];
-              const tagElements = item.querySelectorAll('.row5 ul.tags-gt li.dot-gt.tag-li');
-              tagElements.forEach(tag => {
-                tags.push(tag.innerText.trim());
-              });
-              const posted = item.querySelector('.row6 .job-post-day')?.innerText.trim() || null;
-              if (jobId && title && company && link) {
-                jobs.push({ jobId, title, link, logo, company, experience, salary, location, description, tags, posted });
-              }
-            });
+      while (allJobs.length < 100) {
+        console.log(`📄 Processing page ${pageNumber}`);
+        
+        await this.scrollPage(page);
+        
+        const newJobs = await this.extractJobs(page);
+        const uniqueJobs = newJobs.filter(job => 
+          !allJobs.some(existing => existing.jobId === job.jobId)
+        );
+        
+        if (uniqueJobs.length === 0) {
+          console.log('⚠️ No new jobs found, stopping pagination');
+          break;
+        }
+        
+        allJobs.push(...uniqueJobs);
+        console.log(`✅ Page ${pageNumber}: Added ${uniqueJobs.length} jobs (Total: ${allJobs.length})`);
+        
+        if (allJobs.length === previousCount) {
+          samePageCount++;
+          if (samePageCount > 2) {
+            console.log('⚠️ Stuck on same page, stopping pagination');
+            break;
           }
-          return jobs;
-        });
-  
-        newJobs.forEach(job => {
-          if (!allJobs.some(existing => existing.jobId === job.jobId)) {
-            allJobs.push(job);
-          }
-        });
-        console.log(`Collected ${allJobs.length} jobs so far`);
-  
-        const nextButton = await page.$('a.styles_btn-secondary__2AsIP:not([disabled])');
-        if (nextButton && allJobs.length < 40) {
-          console.log('🔄 Clicking Next button...');
-          await nextButton.click();
-          await page.waitForTimeout(3000);
         } else {
-          console.log('No Next button found or target reached.');
-          continueScraping = false;
+          samePageCount = 0;
+          previousCount = allJobs.length;
+        }
+        const nextSuccess = await this.goToNextPage(page);
+        if (!nextSuccess) {
+          console.log('⏹️ No more pages available');
+          break;
+        }
+        
+        pageNumber++;
+        
+        if (await this.isCloudflareChallenge(page)) {
+          await this.solveCloudflare(page);
+        }
+  
+        if (allJobs.length >= 100) {
+          console.log('🎯 Reached target of 100 jobs');
+          break;
         }
       }
+      
       await page.close();
-      return allJobs.slice(0, 40);
+      return allJobs.slice(0, 100);
     } catch (error) {
       console.error(`⚠️ Error on ${url}: ${error.message}`);
       await this.rotateIdentity();
       return this.scrape(url);
     }
   }
-  
+
+  async scrollPage(page) {
+    console.log('🖱️ Scrolling to load all jobs');
+    const scrollHeight = await page.evaluate(() => document.body.scrollHeight);
+    const viewportHeight = page.viewport().height;
+    let currentPosition = 0;
+    
+    while (currentPosition < scrollHeight) {
+      await page.mouse.wheel({ deltaY: Math.random() * 100 + 50 });
+      currentPosition += viewportHeight * 0.8;
+      await page.waitForTimeout(Math.random() * 500 + 300);
+    }
+  }
+
+  async extractJobs(page) {
+    return page.evaluate(() => {
+      const jobs = [];
+      const container = document.querySelector('.styles_job-listing-container__OCfZC');
+      if (!container) return jobs;
+
+      const items = container.querySelectorAll('.srp-jobtuple-wrapper');
+      items.forEach(item => {
+        const jobId = item.getAttribute('data-job-id');
+        const titleElem = item.querySelector('.row1 h2 a.title');
+        const title = titleElem?.innerText?.trim();
+        const link = titleElem?.href;
+        const logo = item.querySelector('.row1 .imagewrap img.logoImage')?.src;
+        const company = item.querySelector('.row2 .comp-dtls-wrap a.comp-name')?.innerText?.trim();
+        const experience = item.querySelector('.row3 .exp-wrap span.expwdth')?.getAttribute('title')?.trim();
+        const salary = item.querySelector('.row3 .sal-wrap span')?.innerText?.trim();
+        const location = item.querySelector('.row3 .loc-wrap span.locWdth')?.getAttribute('title')?.trim();
+        const description = item.querySelector('.row4 .job-desc')?.innerText?.trim();
+        const tags = Array.from(item.querySelectorAll('.row5 ul.tags-gt li.dot-gt.tag-li'))
+          .map(tag => tag.innerText.trim());
+        const posted = item.querySelector('.row6 .job-post-day')?.innerText?.trim();
+
+        if (jobId && title && company && link) {
+          jobs.push({
+            jobId, title, link, logo, company,
+            experience, salary, location, description,
+            tags, posted
+          });
+        }
+      });
+      return jobs;
+    });
+  }
+
+  async goToNextPage(page) {
+    try {
+      console.log('➡️ Attempting to go to next page');
+      const nextButton = await page.$('a.styles_btn-secondary__2AsIP:not([disabled])');
+      
+      if (nextButton) {
+        await nextButton.scrollIntoView();
+        await page.waitForTimeout(1000);
+        await nextButton.click();
+        await page.waitForNavigation({ waitUntil: 'networkidle2', timeout: 30000 });
+        await page.waitForSelector('.styles_job-listing-container__OCfZC', { timeout: 15000 });
+        return true;
+      }
+      return false;
+    } catch (error) {
+      console.log('⚠️ Next page navigation failed:', error.message);
+      return false;
+    }
+  }
+
   async run(urls) {
     try {
       if (!urls.length) {

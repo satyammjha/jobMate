@@ -25,7 +25,7 @@ const ReferralLeaderBoard = memo(() => {
         const fetchReferralList = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:5000/data/fetchRefferalList"
+                    "http://43.205.114.6:5000/data/fetchRefferalList"
                 );
                 if (!response.data?.referralCounts || !Array.isArray(response.data.referralCounts)) {
                     throw new Error("Invalid response format");

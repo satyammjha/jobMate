@@ -52,4 +52,7 @@ src/workers/*.tmp
 
 #json_files
 puppeteer-bot\scrapper\naukri_jobs_data.json
-puppeteer-bot\scrappers\jobs_data.json
+puppeteer-bot\scrapper\jobs_data.json
+
+scrapper\jobs_data.json
+scrapper\naukri_jobs_data.json
