@@ -6,36 +6,6 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
-
-    const jobData = [
-        {
-            company: "TechCorp",
-            logo: "https://placehold.co/600x400.png",
-            position: "Software Engineer",
-            location: "San Francisco, CA",
-            platformLogo: "https://images.pexels.com/photos/170809/pexels-photo-170809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-            postedTime: "2 days ago",
-            matchedPercentage: 85,
-            salary: "$80,000 - $100,000/year",
-            experienceLevel: "Mid-Level",
-            jobType: "Full-time",
-            remoteOption: true,
-        },
-        {
-            company: "DataMinds",
-            logo: "https://example.com/logo2.png",
-            position: "Data Scientist",
-            location: "New York, NY",
-            platformLogo: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Indeed_logo.png",
-            postedTime: "1 week ago",
-            matchedPercentage: 78,
-            salary: "$90,000 - $110,000/year",
-            experienceLevel: "Senior",
-            jobType: "Full-time",
-            remoteOption: false,
-        },
-    ];
-
     return (
         <>
             <Helmet>

@@ -91,7 +91,7 @@ const saveJobs = async (req, res) => {
             return res.status(404).json({ error: "User not found" });
         }
 
-        const newJobs = jobs.filter(job => 
+        const newJobs = jobs.filter(job =>
             !user.savedJobs.some(savedJob => savedJob.jobId === job.jobId)
         );
 
@@ -99,8 +99,8 @@ const saveJobs = async (req, res) => {
             return res.status(400).json({ error: "All jobs are already saved" });
         }
 
-        user.savedJobs.push(...newJobs); 
-        await user.save(); 
+        user.savedJobs.push(...newJobs);
+        await user.save();
 
         res.status(201).json({ message: "Jobs saved successfully", savedJobs: user.savedJobs });
     } catch (error) {
@@ -135,4 +135,33 @@ const getSavedJobs = async (req, res) => {
     }
 };
 
-export { fetchUserData, fetchReferralList, fetchJobsData, saveJobs, getSavedJobs };
+
+//delete saved jobs 
+
+const deleteSavedJobs = async (req, res) => {
+    try {
+        const { email, jobs } = req.body; 
+
+        if (!email || !jobs || !Array.isArray(jobs) || jobs.length === 0) {
+            return res.status(400).json({ error: "Invalid delete request format" });
+        }
+
+        const user = await User.findOneAndUpdate(
+            { email: email },
+            { $pull: { savedJobs: { jobId: { $in: jobs } } } },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        res.status(200).json({ message: "Jobs removed successfully", user });
+    } catch (error) {
+        console.error("Error deleting saved jobs:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+
+export { fetchUserData, fetchReferralList, fetchJobsData, saveJobs, getSavedJobs, deleteSavedJobs };

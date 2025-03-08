@@ -5,7 +5,7 @@ import { Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import HeroUploadBtn from "../customComponents/Button/HeroButton";
-import { JobsGridDemo } from "../customComponents/JobsGrid";
+import { JobsGrid } from "../customComponents/JobsGrid";
 import FileUpload from "../customComponents/FileUpload";
 import { Helmet } from "react-helmet-async";
 
@@ -108,7 +108,7 @@ const Home = () => {
                     >
                         Curated Employment Opportunities
                     </motion.h2>
-                    <JobsGridDemo />
+                    <JobsGrid />
                 </div>
             </section>
 

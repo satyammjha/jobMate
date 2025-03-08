@@ -12,7 +12,7 @@ export const SavedJobsProvider = ({ children }) => {
         const fetchSavedJobs = async () => {
             if (!userData?.email) return;
             try {
-                const response = await axios.get(`http://localhost:5000/data/jobs/saved`, {
+                const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}/data/jobs/saved`, {
                     params: { email: userData.email }
                 });
                 setSavedJobs(response.data.savedJobs || []);
@@ -30,7 +30,7 @@ export const SavedJobsProvider = ({ children }) => {
     const saveJobToServer = async (job) => {
         if (!userData?.email) return;
         try {
-            await axios.post(`http://localhost:5000/data/jobs/save`, {
+            await axios.post(`http://z-lb-1738654449.ap-south-1.elb.amazonaws.com/data/jobs/save`, {
                 email: userData.email,
                 jobs: [job],
             });

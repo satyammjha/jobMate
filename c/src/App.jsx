@@ -5,17 +5,13 @@ import Navbar from './customComponents/Navbar/Navbar';
 import ErrorPage from './pages/ErrorPage';
 import { Footer } from './customComponents/Footer';
 import ResumeReview from './pages/ResumeReview';
-import BookmarkPage from './pages/Track';
 import Blogs from './pages/Blogs';
 import Refferal from './pages/Refferal';
 import Onboard from './pages/Onboard';
 import JobDetails from './pages/JobDetails';
 import { FloatingDockDemo } from './customComponents/FloatingNav';
 import { SavedJobsProvider } from './Context/SavedJobContext';
-
-
-
-
+import SavedJobs from './pages/Track';
 
 const singleBlog = {
   id: 1,
@@ -43,7 +39,7 @@ function App() {
             <Route path="/ref/:referralCode" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/reviewresume" element={<ResumeReview />} />
-            <Route path="/tracker" element={<BookmarkPage />} />
+            <Route path="/tracker" element={<SavedJobs />} />
             <Route path="/blogs" element={<Blogs blog={singleBlog} />} />
             <Route path="/refferals" element={<Refferal />} />
             <Route path="/onboard/refer" element={<Onboard />} />

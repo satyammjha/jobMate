@@ -15,11 +15,12 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 app.use("/user", userRouter);
 app.use("/data", dataRouter);
+
 app.get("/", (req, res) => {
-    res.send("zobly-api-action successful");
+    res.status(200).json({ message: "zobly-api-is-working-fine" });
 })
-app.get("/testroute", (req, res) => {
-    res.send("ci-cd successful");
+app.get("/cicd", (req, res) => {
+    res.send("CI/CD pipeline is working fine && updated the delete job api");
 })
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok" });
