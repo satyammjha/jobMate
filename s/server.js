@@ -18,6 +18,9 @@ app.use("/data", dataRouter);
 app.get("/", (req, res) => {
     res.send("zobly-api-action successful");
 })
+app.get("/testroute", (req, res) => {
+    res.send("ci-cd successful");
+})
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok" });
 })
