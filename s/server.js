@@ -16,7 +16,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use("/user", userRouter);
 app.use("/data", dataRouter);
 app.get("/", (req, res) => {
-    res.send("zobly-api");
+    res.send("zobly-api-action successful");
 })
 app.get("/health", (req, res) => {
     res.status(200).json({ status: "ok" });
