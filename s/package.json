@@ -8,7 +8,11 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": ["job", "aggregation", "API"],
+  "keywords": [
+    "job",
+    "aggregation",
+    "API"
+  ],
   "author": "Satyam Jha",
   "license": "ISC",
   "type": "module",
@@ -17,12 +21,13 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongodb": "^6.13.0",
-    "mongoose": "^8.10.1"
+    "mongoose": "^8.10.1",
+    "nodemailer": "^6.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9",
-    "typescript": "^5.4.5",
+    "@types/express": "^4.17.17",
     "@types/node": "^20.11.21",
-    "@types/express": "^4.17.17"
+    "nodemon": "^3.1.9",
+    "typescript": "^5.4.5"
   }
 }

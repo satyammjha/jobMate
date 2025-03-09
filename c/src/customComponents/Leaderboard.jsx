@@ -21,11 +21,12 @@ const ReferralLeaderBoard = memo(() => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+
     useEffect(() => {
         const fetchReferralList = async () => {
             try {
                 const response = await axios.get(
-                    "http://43.205.114.6:5000/data/fetchRefferalList"
+                    `"${import.meta.env.VITE_APP_API_URL}/data/fetchReferralList"`
                 );
                 if (!response.data?.referralCounts || !Array.isArray(response.data.referralCounts)) {
                     throw new Error("Invalid response format");
