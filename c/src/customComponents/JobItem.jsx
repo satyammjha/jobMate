@@ -9,10 +9,18 @@ const getProgressColor = (percentage) => {
     return "bg-red-500";
 };
 
+const getJobSource = (link) => {
+    if (link.includes("glassdoor")) return "Glassdoor";
+    if (link.includes("naukri")) return "Naukri";
+    if (link.includes("linkedin")) return "LinkedIn";
+    if (link.includes("indeed")) return "Indeed";
+    return "Job Board";
+};
+
 const JobItem = ({
     company,
     logo,
-    position,
+    title,
     location,
     platformLogo,
     postedTime,
@@ -21,66 +29,47 @@ const JobItem = ({
     experienceLevel,
     jobType,
     remoteOption,
+    link,
+    jobDescription,
+    requiredSkills,
+    onClick,
 }) => {
-    return (
-        <Card className="relative flex flex-col p-6 border border-muted rounded-lg shadow-md">
+    const jobSource = getJobSource(link);
 
-            {platformLogo && (
-                <Avatar
-                    src={platformLogo}
-                    alt="Platform Logo"
-                    className="absolute top-4 right-4 h-10 w-10 rounded-full border border-gray-300" // 
-                />
-            )}
+    return (
+        <Card
+            className="relative flex flex-col p-4 border border-muted rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
+            onClick={onClick}
+        >
+            <div className="absolute top-4 right-4 flex items-center gap-2">
+                {platformLogo && (
+                    <Avatar
+                        src={platformLogo}
+                        alt="Platform Logo"
+                        className="h-8 w-8 rounded-full border border-gray-300"
+                    />
+                )}
+                <span className="text-xs text-muted-foreground bg-muted/50 px-2 py-1 rounded-full">
+                    Posted on {jobSource}
+                </span>
+            </div>
 
             <div className="flex items-center space-x-4">
                 <Avatar
                     src={logo || "https://images.pexels.com/photos/170809/pexels-photo-170809.jpeg"}
                     alt={company}
-                    className="h-14 w-14 rounded-full border-2 border-gray-200" // Adjusted size and added 
+                    className="h-12 w-12 rounded-full border-2 border-gray-200"
                 />
                 <div className="flex flex-col">
-                    <h3 className="text-lg font-semibold text-foreground">{position}</h3>
+                    <h3 className="text-lg font-semibold text-foreground">{title}</h3>
                     <p className="text-sm text-muted-foreground">{company}</p>
-
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-muted-foreground flex items-center">
                         🌍 {location}
                     </p>
                 </div>
             </div>
 
-            <div className="flex justify-between items-center mt-4">
-                <div className="text-sm text-muted-foreground">{postedTime}</div>
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-4">
-                {salary && (
-                    <div className="flex flex-col">
-                        <span className="text-sm text-muted-foreground">Salary</span>
-                        <p className="text-sm text-foreground">{salary}</p>
-                    </div>
-                )}
-                {experienceLevel && (
-                    <div className="flex flex-col">
-                        <span className="text-sm text-muted-foreground">Experience Level</span>
-                        <p className="text-sm text-foreground">{experienceLevel}</p>
-                    </div>
-                )}
-                {jobType && (
-                    <div className="flex flex-col">
-                        <span className="text-sm text-muted-foreground">Job Type</span>
-                        <p className="text-sm text-foreground">{jobType}</p>
-                    </div>
-                )}
-                {remoteOption && (
-                    <div className="flex flex-col">
-                        <span className="text-sm text-muted-foreground">Remote Option</span>
-                        <p className="text-sm text-foreground">{remoteOption ? "Yes" : "No"}</p>
-                    </div>
-                )}
-            </div>
-
-            <div className="mt-6">
+            <div className="mt-4">
                 <div className="flex justify-between items-center text-sm text-muted-foreground">
                     <p className="font-semibold">Match: {matchedPercentage}%</p>
                     <span className="text-xs">
@@ -94,10 +83,9 @@ const JobItem = ({
                 <Progress
                     value={matchedPercentage}
                     max={100}
-                    className={`mt-2 h-2 rounded-full bg-black ${getProgressColor(matchedPercentage)} transition-all ease-in-out duration-300`}
+                    className={`mt-2 h-2 rounded-full bg-gray-200 ${getProgressColor(matchedPercentage)} transition-all ease-in-out duration-300`}
                 />
             </div>
-
         </Card>
     );
 };

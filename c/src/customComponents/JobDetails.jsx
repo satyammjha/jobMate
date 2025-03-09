@@ -10,14 +10,6 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import {
-    Dialog,
-    DialogTrigger,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogFooter,
-} from '@/components/ui/dialog';
-import {
     Carousel,
     CarouselContent,
     CarouselItem,
@@ -25,22 +17,12 @@ import {
     CarouselNext,
 } from '@/components/ui/carousel';
 import { ArrowUpRight } from 'lucide-react';
+import {Link} from "react-router-dom"
 
-const JobDetails = () => {
+const JobDetails = ({ job }) => {
     const [isResumeUploaded, setIsResumeUploaded] = useState(false);
     const [skillGap] = useState(['HTML', 'CSS']);
     const [uploadedSkills, setUploadedSkills] = useState([]);
-
-    const job = {
-        company: "TechCorp",
-        companyLogo: "https://placehold.co/600x400.png",
-        position: "Software Engineer",
-        location: "San Francisco, CA",
-        jobDescription: `We're seeking a skilled Software Engineer to join our dynamic team...`,
-        requiredSkills: ["JavaScript", "React", "Node.js", "HTML", "CSS", "REST APIs"],
-        salaryRange: "$80,000 - $100,000/year",
-        matchedPercentage: 85,
-    };
 
     const handleResumeUpload = () => {
         setIsResumeUploaded(true);
@@ -48,6 +30,10 @@ const JobDetails = () => {
     };
 
     const missingSkills = skillGap.filter(skill => !uploadedSkills.includes(skill));
+
+    if (!job) {
+        return <p className="text-muted-foreground">No job selected.</p>;
+    }
 
     return (
         <div className="max-h-full overflow-scroll hide-scrollbar p-6">
@@ -69,23 +55,13 @@ const JobDetails = () => {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
                     <div>
-                        <h1 className="text-3xl font-bold">{job.position}</h1>
+                        <h1 className="text-3xl font-bold">{job.title}</h1>
                         <p className="text-lg text-muted-foreground">{job.company}</p>
                     </div>
                     <div className="flex gap-3 w-full sm:w-auto">
-                        <Dialog>
-                            <DialogTrigger asChild>
-                                <Button className="w-full sm:w-auto">Apply Now <ArrowUpRight /> </Button>
-                            </DialogTrigger>
-                            <DialogContent>
-                                <DialogHeader>
-                                    <DialogTitle>Confirm Application</DialogTitle>
-                                </DialogHeader>
-                                <DialogFooter>
-                                    <Button>Submit Application</Button>
-                                </DialogFooter>
-                            </DialogContent>
-                        </Dialog>
+                        <Link to={job.link} target="_blank" className="w-full sm:w-auto">
+                            <Button className="w-full sm:w-auto">Apply Now <ArrowUpRight /> </Button>
+                        </Link>
                         {isResumeUploaded && (
                             <Button variant="secondary" className="w-full sm:w-auto">
                                 Generate Cover Letter
@@ -97,14 +73,14 @@ const JobDetails = () => {
                 <Card>
                     <CardContent className="flex items-center gap-4 pt-6">
                         <Avatar className="h-16 w-16">
-                            <AvatarImage src={job.companyLogo} alt={job.company} />
+                            <AvatarImage src={job.logo} alt={job.company} />
                             <AvatarFallback>{job.company[0]}</AvatarFallback>
                         </Avatar>
                         <div>
                             <h3 className="text-xl font-semibold">{job.company}</h3>
                             <div className="flex gap-2 mt-1">
                                 <Badge variant="secondary">{job.location}</Badge>
-                                <Badge variant="secondary">{job.salaryRange}</Badge>
+                                <Badge variant="secondary">{job.salary}</Badge>
                             </div>
                         </div>
                     </CardContent>
@@ -125,7 +101,7 @@ const JobDetails = () => {
                         </CardHeader>
                         <CardContent>
                             <div className="flex flex-wrap gap-2">
-                                {job.requiredSkills.map((skill) => (
+                                {job.requiredSkills?.map((skill) => (
                                     <Badge key={skill} variant="secondary">{skill}</Badge>
                                 ))}
                             </div>
