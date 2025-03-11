@@ -87,7 +87,7 @@ const Dashboard = () => {
                         </Card>
 
                         <div className="w-[2px] bg-muted mx-2"></div>
-                        <Card className="flex-1 p-6 border-none ">
+                        <Card className="flex-1 p-6 border-none max-h-[70vh]">
                             <h2 className="text-xl font-bold mb-4">Job Details</h2>
                             {activeJob ? (
                                 <JobDetails job={activeJob} />

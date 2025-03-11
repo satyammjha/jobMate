@@ -9,7 +9,7 @@ import { StatusCards } from "../customComponents/SavedJobs/StatusCards";
 import { JobTable } from "../customComponents/SavedJobs/JobTable";
 import { Card } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Trash2 } from "lucide-react";
+import { BellDotIcon, BellIcon, Trash2 } from "lucide-react";
 import axios from "axios";
 
 export default function JobDashboard() {
@@ -21,10 +21,20 @@ export default function JobDashboard() {
   const [dateFilter, setDateFilter] = useState(null);
   const [statusFilter, setStatusFilter] = useState("all");
   const [selectedJobs, setSelectedJobs] = useState(new Set());
+  const [userNotificationPreference, setUserNotificationPreference] = useState();
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     setJobsData(savedJobs);
   }, [savedJobs]);
+
+  useEffect(() => {
+    if (userData?.notifyAboutExpiringJobs !== undefined) {
+      setUserNotificationPreference(userData.notifyAboutExpiringJobs);
+      setLoading(false);
+    }
+  }, [userData]);
 
   const handleStatusChange = (jobId, newStatus) => {
     setJobsData((prev) =>
@@ -33,6 +43,28 @@ export default function JobDashboard() {
       )
     );
   };
+
+  const toggleNotifications = async () => {
+    try {
+      const response = await axios.put(
+        `http://localhost:5000/notify/toggle-expiring-jobs`,
+        { email: userData.email },
+        { headers: { "Content-Type": "application/json" } }
+      );
+
+      if (response.status === 200 && response.data.success) {
+        console.log("Notification preference updated:", response.data.notifyAboutExpiringJobs);
+        setUserNotificationPreference(response.data.notifyAboutExpiringJobs);
+        toast.success("Notification preference updated successfully!");
+      } else {
+        throw new Error(response.data.message || "Failed to update notification preference");
+      }
+    } catch (error) {
+      console.error("Error updating preference:", error);
+      toast.error("Failed to update notification preference");
+    }
+  };
+
 
   const handleSelectAll = (checked) => {
     const ids = filteredJobs.map((job) => job.jobId);
@@ -114,15 +146,24 @@ export default function JobDashboard() {
       <div className="container mx-auto p-6 space-y-6">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Job Applications</h1>
-          <Button
-            variant="destructive"
-            onClick={handleDelete}
-            disabled={!selectedJobs.size}
-            className="gap-2"
-          >
-            <Trash2 className="h-4 w-4" />
-            Delete Selected
-          </Button>
+          <div className="flex gap-4">
+            <Button onClick={toggleNotifications}>
+
+              {loading ? "Loading..." : userNotificationPreference ? "Turn Notifications Off" : "Turn Notifications On"}
+              <span className="ml-2">
+                {userNotificationPreference ? <BellDotIcon /> : <BellIcon />}
+              </span>
+            </Button>
+            <Button
+              variant="destructive"
+              onClick={handleDelete}
+              disabled={!selectedJobs.size}
+              className="gap-2"
+            >
+              <Trash2 className="h-4 w-4" />
+              Delete Selected
+            </Button>
+          </div>
         </div>
 
         <Card className="p-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

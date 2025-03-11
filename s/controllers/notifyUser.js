@@ -35,25 +35,19 @@ export const notifyUser = async (req, res) => {
 
 export const toggleNotifyExpiringJobs = async (req, res) => {
     const { email } = req.body;
-    
+    console.log("Email passed for :", email);
     try {
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
-
-        if (typeof user.notifyAboutExpiringJobs === 'undefined') {
-            user.notifyAboutExpiringJobs = true;
-        } else {
-            user.notifyAboutExpiringJobs = !user.notifyAboutExpiringJobs;
-        }
-
+        user.notifyAboutExpiringJobs =  !user.notifyAboutExpiringJobs;
         await user.save();
 
         res.json({
             success: true,
-            message: `Notification setting updated successfully!`,
-            notifyAboutExpiringJobs: user.notifyAboutExpiringJobs
+            message: "Notification setting updated successfullyy!",
+            notifyAboutExpiringJobs: user.notifyAboutExpiringJobs,
         });
     } catch (error) {
         console.error("Error updating notification setting:", error);
