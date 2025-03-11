@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/carousel';
 import { ArrowUpRight } from 'lucide-react';
 import {Link} from "react-router-dom"
+import CoverLetterButton from './CoverLetterButton';
 
 const JobDetails = ({ job }) => {
     const [isResumeUploaded, setIsResumeUploaded] = useState(false);
@@ -63,9 +64,7 @@ const JobDetails = ({ job }) => {
                             <Button className="w-full sm:w-auto">Apply Now <ArrowUpRight /> </Button>
                         </Link>
                         {isResumeUploaded && (
-                            <Button variant="secondary" className="w-full sm:w-auto">
-                                Generate Cover Letter
-                            </Button>
+                            <CoverLetterButton />
                         )}
                     </div>
                 </div>
