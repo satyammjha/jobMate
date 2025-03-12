@@ -42,7 +42,7 @@ const CoverLetterButton = () => {
 
     const handleCopy = (content) => {
         navigator.clipboard.writeText(content).then(() => {
-           
+
         });
     };
 
@@ -51,13 +51,11 @@ const CoverLetterButton = () => {
             <Button variant="secondary" className="w-full sm:w-auto" onClick={handleOpenModal}>
                 Generate Cover Letter
             </Button>
-
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
                 <DialogContent className="sm:max-w-2xl">
                     <DialogHeader>
                         <DialogTitle>Generated Cover Letters</DialogTitle>
                     </DialogHeader>
-
                     {isLoading ? (
                         <div className="space-y-4">
                             <Skeleton className="h-10 w-full" />
@@ -65,7 +63,6 @@ const CoverLetterButton = () => {
                             <Skeleton className="h-10 w-full" />
                         </div>
                     ) : (
-                       
                         <Accordion type="single" collapsible>
                             {coverLetters.map((letter) => (
                                 <AccordionItem key={letter.id} value={letter.id.toString()}>

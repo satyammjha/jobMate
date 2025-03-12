@@ -36,7 +36,6 @@ const ResumeReview = () => {
                                 AI-powered insights to boost your job search success
                             </p>
                         </div>
-
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                             <SignedIn>
                                 <Button variant="outline" className="gap-2 px-6 py-3 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">

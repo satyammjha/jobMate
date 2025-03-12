@@ -5,6 +5,7 @@ export const SkillsContext = createContext();
 
 const SkillsContextProvider = ({ children }) => {
     const [globalSkills, setGlobalSkills] = useState([]);
+    
 
     return (
         <SkillsContext.Provider value={{ globalSkills, setGlobalSkills }}>
