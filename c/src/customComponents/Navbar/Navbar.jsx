@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Moon, Sun, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation, useParams } from "react-router-dom";
@@ -16,8 +16,12 @@ import RefferalButton from "../Refferal/RefferalButton";
 import useUserData from "../../Context/UserContext";
 import SearchBar from "./Search/SearchBar";
 import clsx from "clsx";
+import { SkillsContext } from "../../Context/SkillsContext";
 
 export default function Navbar() {
+const { globalSkills, setGlobalSkills } = useContext(SkillsContext);
+console.log("globalSkiils:", globalSkills);
+
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const [credits, setCredits] = useState(null);
     const [isLoadingCredits, setIsLoadingCredits] = useState(false);

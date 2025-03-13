@@ -10,11 +10,11 @@ const fetchJobs = async () => {
 
 const JobDataContext = createContext();
 export const JobDataProvider = ({ children }) => {
+
     const { data: jobs, error, isLoading } = useSWR('jobsData', fetchJobs, {
         revalidateOnFocus: false,
         shouldRetryOnError: false
     });
-
     return (
         <JobDataContext.Provider value={{
             jobs: jobs || [], 
