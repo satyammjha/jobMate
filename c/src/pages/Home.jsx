@@ -8,6 +8,7 @@ import HeroUploadBtn from "../customComponents/Button/HeroButton";
 import { JobsGrid } from "../customComponents/JobsGrid";
 import FileUpload from "../customComponents/FileUpload";
 import { Helmet } from "react-helmet-async";
+import { useJobData } from "../Context/jobDataProvider";
 
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
@@ -23,6 +24,8 @@ const SkeletonLoader = () => (
 );
 
 const Home = () => {
+    const { jobs  } = useJobData();
+    console.log(jobs);
     const location = useLocation();
     const workflowRef = useRef(null);
 
