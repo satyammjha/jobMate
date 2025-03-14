@@ -7,6 +7,7 @@ import userRouter from "./routes/userRoute.js";
 import dataRouter from "./routes/fetchDataRoute.js";
 import emailRouter from "./routes/emailRoutes.js";
 import jobMatchingRouter from "./routes/jobMatchingRoute.js";
+import router from "./routes/agentRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.use("/user", userRouter);
 app.use("/data", dataRouter);
 app.use("/notify", emailRouter);
 app.use("/match", jobMatchingRouter);
+app.use("/", router);
 
 app.get("/", (req, res) => {
     res.status(200).json({ message: "zobly-api-is-working-fine" });

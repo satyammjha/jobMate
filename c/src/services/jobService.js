@@ -18,3 +18,4 @@ export const deleteJobs = async (jobIds, email) => {
     throw error;
   }
 };
+

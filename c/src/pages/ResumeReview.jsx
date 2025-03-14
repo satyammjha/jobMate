@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from "react-helmet-async";
 import { Button } from '../components/ui/button';
 import { SparklesIcon, ScanSearchIcon, RocketIcon } from 'lucide-react';
@@ -9,7 +9,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 
 const ResumeReview = () => {
     const [showSignInModal, setShowSignInModal] = useState(false);
-
     return (
         <>
             <Helmet>

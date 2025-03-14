@@ -9,6 +9,8 @@ import { JobsGrid } from "../customComponents/JobsGrid";
 import FileUpload from "../customComponents/FileUpload";
 import { Helmet } from "react-helmet-async";
 import { useJobData } from "../Context/jobDataProvider";
+import { matchJobs } from "../services/matchJobs";
+import { SkillsContext } from "../Context/SkillsContext";
 
 const InfiniteMovingCardsDemo = lazy(() => import("../customComponents/HeroJob"));
 const WorkflowTimeline = lazy(() => import("../customComponents/TimelineDemo"));
@@ -24,10 +26,34 @@ const SkeletonLoader = () => (
 );
 
 const Home = () => {
-    const { jobs  } = useJobData();
-    console.log(jobs);
+    const { globalSkills } = React.useContext(SkillsContext);
+    const { jobs } = useJobData();
+    console.log("home jobs", jobs, "glob skls", globalSkills);
     const location = useLocation();
     const workflowRef = useRef(null);
+
+    useEffect(() => {
+        console.log("🛠 Running job match effect...");
+        console.log("🔹 Skills:", globalSkills);
+        console.log("🔹 Jobs:", jobs);
+    
+        if (!globalSkills?.length || !jobs?.length) {
+            console.warn("🚫 Skipping API call: No skills or jobs.");
+            return;
+        }
+    
+        const match = async () => {
+            try {
+                const bestJobs = await matchJobs(globalSkills, jobs);
+                console.log("✅ Best matched jobs:", bestJobs);
+            } catch (error) {
+                console.error("❌ Error fetching matched jobs:", error);
+            }
+        };
+    
+        match();
+    }, [globalSkills, jobs]);
+    
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);

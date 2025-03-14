@@ -32,25 +32,41 @@ export const notifyUser = async (req, res) => {
     }
 };
 
+export const toggleNotifyExpiringJobs = async ({ email, action }, res) => {
+    console.log("Email:", email, "Action received:", action);
 
-export const toggleNotifyExpiringJobs = async (req, res) => {
-    const { email } = req.body;
-    console.log("Email passed for :", email);
     try {
         const user = await User.findOne({ email });
+
         if (!user) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
-        user.notifyAboutExpiringJobs =  !user.notifyAboutExpiringJobs;
-        await user.save();
 
-        res.json({
+        if (!action) {
+            user.notifyAboutExpiringJobs = !user.notifyAboutExpiringJobs;
+        } else if (action === "enable") {
+            if (user.notifyAboutExpiringJobs) {
+                return res.json({ success: true, message: "Notifications are already enabled." });
+            }
+            user.notifyAboutExpiringJobs = true;
+        } else if (action === "disable") {
+            if (!user.notifyAboutExpiringJobs) {
+                return res.json({ success: true, message: "Notifications are already disabled." });
+            }
+            user.notifyAboutExpiringJobs = false;
+        } else {
+            return res.status(400).json({ success: false, message: "Invalid action. Use 'enable' or 'disable'." });
+        }
+
+        await user.save();
+        return res.json({
             success: true,
-            message: "Notification setting updated successfullyy!",
+            message: `Job expiry notifications have been ${user.notifyAboutExpiringJobs ? "enabled" : "disabled"}.`,
             notifyAboutExpiringJobs: user.notifyAboutExpiringJobs,
         });
+
     } catch (error) {
         console.error("Error updating notification setting:", error);
-        res.status(500).json({ success: false, message: "Internal Server Error" });
+        return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };

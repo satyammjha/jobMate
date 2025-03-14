@@ -1,12 +1,13 @@
 import sys
 import json
-import numpy as np
+import re
+import os
+import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import nltk
-import os
 from nltk.corpus import stopwords
 
+# Setup NLTK Stopwords
 nltk_data_path = os.path.expanduser("~/nltk_data")
 nltk.data.path.append(nltk_data_path)
 
@@ -16,66 +17,78 @@ except LookupError:
     nltk.download('stopwords', download_dir=nltk_data_path)
     stop_words = set(stopwords.words("english"))
 
+# Updated Skill Mappings for Titles
 skill_mappings = {
-    "javascript": ["react", "node.js", "next.js", "express", "frontend", "backend", "typescript", "vue.js"],
-    "python": ["machine learning", "data science", "tensorflow", "nlp", "flask", "django", "pandas", "numpy"],
-    "ai": ["machine learning", "deep learning", "tensorflow", "nlp", "huggingface", "pytorch", "transformers"],
-    "data science": ["python", "r", "sql", "pandas", "numpy", "data visualization"],
-    "cloud": ["aws", "azure", "gcp", "docker", "kubernetes", "serverless", "terraform"],
-    "devops": ["docker", "kubernetes", "ci/cd", "jenkins", "terraform", "ansible"],
-    "mobile": ["react native", "flutter", "swift", "kotlin", "android", "ios"],
-    "cybersecurity": ["network security", "penetration testing", "encryption", "firewall", "ethical hacking"],
-    "blockchain": ["solidity", "ethereum", "web3.js", "smart contracts", "nfts"],
-    "backend": ["node.js", "express", "django", "flask", "spring boot", "graphql", "rest api"],
-    "frontend": ["react", "vue.js", "angular", "svelte", "css", "tailwind", "bootstrap"],
-    "database": ["sql", "mongodb", "postgresql", "mysql", "firebase", "bigquery"],
-    "ai/ml": ["tensorflow", "pytorch", "scikit-learn", "huggingface", "opencv"],
-    "web scraping": ["selenium", "beautifulsoup", "scrapy", "puppeteer"],
+    "javascript": ["js", "react", "node", "typescript", "frontend", "web"],
+    "typescript": ["ts", "angular", "react"],
+    "react.js": ["react", "reactjs", "frontend"],
+    "node.js": ["node", "nodejs", "backend", "server"],
+    "mongodb": ["mongo", "database", "nosql"],
+    "sql": ["sql", "database", "mysql", "postgresql"],
+    "rest apis": ["api", "rest"],
+    "html": ["html5", "frontend"],
+    "css": ["css3", "styling"],
+    "git": ["github", "version control"]
 }
 
 def expand_skills(skills):
-    skills = [skill.lower() for skill in skills]
+    skills = set(skill.lower() for skill in skills)
     expanded_skills = set(skills)
     for skill in skills:
-        if skill in skill_mappings:
-            expanded_skills.update(skill_mappings[skill]) 
+        expanded_skills.update(skill_mappings.get(skill, []))
     return list(expanded_skills)
 
 def preprocess_text(job):
-    stop_words = set(stopwords.words("english"))
+    # Focus on title and company only
     title = job.get("title", "").lower()
-    description = job.get("description", "").lower()
     company = job.get("company", "").lower()
-    tags = " ".join(job.get("tags", [])).lower() 
+    combined_text = f"{title} {company}"
+    # Tokenize and clean
+    words = re.findall(r'\b[a-z0-9]+\b', combined_text)
+    filtered_words = [word for word in words if word not in stop_words]
+    return ' '.join(filtered_words) if filtered_words else ''
 
-    combined_text = f"{title} {description} {company} {tags}"
-    
-    words = [word for word in combined_text.split() if word not in stop_words]
-    return " ".join(words) if words else "No Description"
-
-def match_jobs(jobs_json, skills_json):
-    jobs = json.loads(jobs_json)
-    skills = json.loads(skills_json)
-
-    if not jobs or not skills:
-        return json.dumps([])
-
-    skills = expand_skills(skills)
-    job_texts = [preprocess_text(job) for job in jobs]
-
-    skills_text = " ".join(skills).lower()
-
-    vectorizer = TfidfVectorizer(ngram_range=(1,2))
+def compute_similarity(skills_text, jobs, job_texts):
+    # Optimized for short texts
+    vectorizer = TfidfVectorizer(
+        ngram_range=(1, 1),
+        max_df=0.9,
+        min_df=1,
+        stop_words="english"
+    )
     job_vectors = vectorizer.fit_transform(job_texts)
     skills_vector = vectorizer.transform([skills_text])
-
     similarity_scores = cosine_similarity(skills_vector, job_vectors)[0]
+    
+    ranked_jobs = []
+    for score, job in zip(similarity_scores, jobs):
+        title = job.get("title", "").lower()
+        title_terms = set(re.findall(r'\b[a-z0-9]+\b', title))
+        # Count title matches with expanded skills
+        skill_match = sum(1 for skill in skills_text.split() 
+                        if any(term in title_terms for term in skill.split()))
+        final_score = score + 0.3 * skill_match  # Adjusted boost
+        ranked_jobs.append((final_score, job))
+    
+    return sorted(ranked_jobs, key=lambda x: x[0], reverse=True)
 
-    ranked_jobs = sorted(zip(similarity_scores, jobs), reverse=True, key=lambda x: x[0])
-
-    return json.dumps([job for score, job in ranked_jobs if score > 0.1])
+def match_jobs(jobs, skills):
+    if not jobs or not skills:
+        return json.dumps([])
+    
+    expanded_skills = expand_skills(skills)
+    job_texts = [preprocess_text(job) for job in jobs]
+    skills_text = ' '.join(expanded_skills)
+    
+    ranked_jobs = compute_similarity(skills_text, jobs, job_texts)
+    return json.dumps([job for score, job in ranked_jobs[:10]])
 
 if __name__ == "__main__":
-    jobs_json = sys.argv[1]
-    skills_json = sys.argv[2]
-    print(match_jobs(jobs_json, skills_json))
+    try:
+        input_data = sys.stdin.read()
+        data = json.loads(input_data)
+        jobs = data.get("jobs", [])
+        skills = data.get("skills", [])
+        print(match_jobs(jobs, skills))
+    except Exception as e:
+        print(json.dumps({"error": str(e)}), file=sys.stderr)
