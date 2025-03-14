@@ -34,7 +34,7 @@ export default function JobDashboard() {
       setUserNotificationPreference(userData.notifyAboutExpiringJobs);
       setLoading(false);
     }
-  }, [userData]);
+  }, [userData, userData?.notifyAboutExpiringJobs]);
 
   const handleStatusChange = (jobId, newStatus) => {
     setJobsData((prev) =>

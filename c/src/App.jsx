@@ -12,6 +12,8 @@ import JobDetails from './pages/JobDetails';
 import { FloatingDockDemo } from './customComponents/FloatingNav';
 import { SavedJobsProvider } from './Context/SavedJobContext';
 import SavedJobs from './pages/Track';
+import { ChatPopup } from './customComponents/Chatbot/chatbot';
+import useUserData from './Context/UserContext';
 
 const singleBlog = {
   id: 1,
@@ -26,12 +28,15 @@ const singleBlog = {
 };
 
 function App() {
+  const { email } = useUserData();
+  console.log("emm2", email);
   return (
     <SavedJobsProvider>
       <div className="dark:bg-black hide-scrollbar">
         <div className="fixed top-0 left-0 w-full z-50">
           <Navbar />
           <FloatingDockDemo />
+          <ChatPopup />
         </div>
         <div className="pt-16">
           <Routes>
