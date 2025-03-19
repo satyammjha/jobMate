@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const SavedJobSchema = new mongoose.Schema({
-    jobId: { type: String }, 
+    jobId: { type: String },
     title: { type: String },
     company: { type: String },
     location: { type: String },
@@ -14,19 +14,19 @@ const SavedJobSchema = new mongoose.Schema({
     savedDate: { type: Date, default: Date.now },
     description: { type: String, default: "No description available" },
     logo: { type: String },
-    expiryDate: { type: Date},
+    expiryDate: { type: Date },
 });
 
 const UserSchema = new mongoose.Schema({
-    name: { type: String, required: true},
-    email: { type: String, required: true},
+    name: { type: String, required: true },
+    email: { type: String, required: true },
     referralCode: { type: String, unique: true, sparse: true },
     referralCount: { type: Number, default: 0 },
     aiCredits: { type: Number, default: 0 },
     referredUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     referredBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     isVerified: { type: Boolean, default: false },
-    savedJobs: { type: [SavedJobSchema], default: [] }, 
+    savedJobs: { type: [SavedJobSchema], default: [] },
     createdAt: { type: Date, default: Date.now },
     notifyAboutExpiringJobs: { type: Boolean, default: false }
 });

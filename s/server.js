@@ -8,6 +8,7 @@ import dataRouter from "./routes/fetchDataRoute.js";
 import emailRouter from "./routes/emailRoutes.js";
 import jobMatchingRouter from "./routes/jobMatchingRoute.js";
 import router from "./routes/agentRoutes.js";
+import creditsRoute from "./routes/creditControlRoutes.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ app.use("/user", userRouter);
 app.use("/data", dataRouter);
 app.use("/notify", emailRouter);
 app.use("/match", jobMatchingRouter);
+app.use("/credit", creditsRoute);
 app.use("/", router);
 
 app.get("/", (req, res) => {
