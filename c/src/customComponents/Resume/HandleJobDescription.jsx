@@ -13,6 +13,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from '../../components/ui/accordion';
+import consumeCredit from '../../services/consumeCredit';
 
 const HandleJobDescription = () => {
     const [jdText, setJdText] = useState('');
@@ -108,6 +109,7 @@ const HandleJobDescription = () => {
             const parsedData = JSON.parse(textResponse);
 
             if (parsedData.cover_letters && Array.isArray(parsedData.cover_letters)) {
+                consumeCredit("coverLetter");
                 setCoverLetters(parsedData.cover_letters);
                 localStorage.setItem("coverLetters", JSON.stringify(parsedData.cover_letters));
             } else {

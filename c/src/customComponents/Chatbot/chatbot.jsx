@@ -80,9 +80,8 @@ export function ChatPopup() {
                     variant="ghost"
                     size="icon"
                     className={cn(
-                        "rounded-full bg-white shadow-xl hover:bg-gray-100 fixed bottom-8 right-8",
-                        "h-14 w-14 transition-all duration-300 hover:scale-110",
-                        !open && "animate-pulse"
+                        "rounded-full bg-white shadow-xl hover:bg-gray-100 z-50 fixed bottom-20 right-4",
+                        "h-12 w-12 transition-all duration-300 hover:scale-110"
                     )}
                 >
                     <Bot className="h-7 w-7 text-primary" />

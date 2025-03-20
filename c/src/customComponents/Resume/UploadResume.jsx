@@ -12,6 +12,7 @@ import { SkillsContext } from "../../Context/SkillsContext";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../../components/ui/accordion";
 import { Loader2, UploadCloudIcon } from "lucide-react";
 import useUserData from "../../Context/UserContext";
+import consumeCredit from "../../services/consumeCredit";
 
 function UploadResume() {
     const { userData } = useUserData();
@@ -155,6 +156,7 @@ function UploadResume() {
             } finally {
                 setIsLoading(false);
                 setProcessingSkills(false);
+                consumeCredit("resume");
                 event.target.value = "";
             }
         };
@@ -344,8 +346,8 @@ function UploadResume() {
                                                     <AccordionTrigger className="hover:no-underline px-4 py-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                                                         <div className="flex items-center gap-3 w-full">
                                                             <span className={`w-3 h-3 rounded-full ${isStrength ? 'bg-green-500' :
-                                                                    isWeakness ? 'bg-red-500' :
-                                                                        'bg-blue-500'
+                                                                isWeakness ? 'bg-red-500' :
+                                                                    'bg-blue-500'
                                                                 }`}></span>
                                                             <span className="font-medium text-gray-700 dark:text-gray-300">
                                                                 {title} ({content.length})
