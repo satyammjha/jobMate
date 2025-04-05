@@ -22,7 +22,6 @@ function App() {
       <div className="dark:bg-black hide-scrollbar">
         <div className="fixed top-0 left-0 w-full z-50">
           <Navbar />
-          
           <FloatingDockDemo />
         </div>
         <ChatPopup />

@@ -36,12 +36,12 @@ const Home = () => {
         console.log("🛠 Running job match effect...");
         console.log("🔹 Skills:", globalSkills);
         console.log("🔹 Jobs:", jobs);
-    
+
         if (!globalSkills?.length || !jobs?.length) {
             console.warn("🚫 Skipping API call: No skills or jobs.");
             return;
         }
-    
+
         const match = async () => {
             try {
                 const bestJobs = await matchJobs(globalSkills, jobs);
@@ -50,10 +50,10 @@ const Home = () => {
                 console.error("❌ Error fetching matched jobs:", error);
             }
         };
-    
+
         match();
     }, [globalSkills, jobs]);
-    
+
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);

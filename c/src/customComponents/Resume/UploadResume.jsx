@@ -120,6 +120,15 @@ function UploadResume() {
         setProcessingSkills(true);
         clearUserData();
 
+        const creditResponse = await consumeCredit("resumeAnalysis", currentUser);
+        if (creditResponse?.response?.status === 400) {
+            alert(creditResponse.response.data.message);
+            setIsLoading(false);
+            setProcessingSkills(false);
+            event.target.value = "";
+            return;
+        }
+
         const reader = new FileReader();
         reader.onload = async function () {
             try {
@@ -143,7 +152,7 @@ function UploadResume() {
                 setCurrentPdf(newPdf);
 
                 const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-                const prompt = `Extract relevant skills from this resume (max 10): ${fullText} and give response lik skill1, skill2, skill3, .... the response should only include skills nothing paragraphs or anything only skills in words !!!most important`;
+                const prompt = `Extract relevant skills from this resume (max 10): ${fullText} and give response like skill1, skill2, skill3, .... the response should only include skills nothing paragraphs or anything only skills in words !!!most important`;
                 const result = await model.generateContent(prompt);
                 const response = await result.response;
                 const skillsList = response.text().split(',').map(skill => skill.trim());
@@ -156,12 +165,13 @@ function UploadResume() {
             } finally {
                 setIsLoading(false);
                 setProcessingSkills(false);
-                consumeCredit("resume");
                 event.target.value = "";
             }
         };
+
         reader.readAsArrayBuffer(file);
     };
+
 
     const generateAIReview = async (text) => {
         if (!text) {

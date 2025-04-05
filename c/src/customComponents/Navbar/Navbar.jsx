@@ -19,8 +19,8 @@ import clsx from "clsx";
 import { SkillsContext } from "../../Context/SkillsContext";
 
 export default function Navbar() {
-const { globalSkills, setGlobalSkills } = useContext(SkillsContext);
-console.log("globalSkiils:", globalSkills);
+    const { globalSkills, setGlobalSkills } = useContext(SkillsContext);
+    console.log("globalSkiils:", globalSkills);
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
     const [credits, setCredits] = useState(null);
@@ -117,7 +117,7 @@ console.log("globalSkiils:", globalSkills);
 
     return (
         <nav className="flex items-center px-4 md:px-8 py-3 bg-background/95 backdrop-blur-sm border-b shadow-sm sticky top-0 z-50">
-           
+
             <Link to="/" className="flex items-center gap-2 shrink-0 mr-4">
                 <Sparkles
                     size={24}

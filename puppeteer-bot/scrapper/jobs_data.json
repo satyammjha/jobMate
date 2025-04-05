@@ -1,733 +1,731 @@
 [
   {
-    "title": "Drupal Backend Developer",
-    "company": "Brilliance.com",
-    "salary": "₹1L()",
-    "link": "https://www.glassdoor.co.in/job-listing/drupal-backend-developer-brilliance-com-JV_IC2933827_KO0,24_KE25,39.htm?jl=1009665200272",
+    "title": "Manager Software Engineering-DevOps, Java, AWS",
+    "company": "Optum",
+    "salary": "₹5L-₹8L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/manager-software-engineering-devops-java-aws-optum-JV_IC2921225_KO0,44_KE45,50.htm?jl=1009697147378",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/1485710/brilliance-squarelogo-1536057369141.png"
+    "logo": "https://media.glassdoor.com/sql/2409113/optum-squareLogo-1711654052254.png"
   },
   {
-    "title": "Jewelry CAD Designer",
-    "company": "Brilliance.com",
-    "salary": "₹38T-₹40T()",
-    "link": "https://www.glassdoor.co.in/job-listing/jewelry-cad-designer-brilliance-com-JV_IC2933827_KO0,20_KE21,35.htm?jl=1009665193799",
+    "title": "IBM Sterling Integrator Architect",
+    "company": "Bluo Software LLC",
+    "salary": "₹10L()",
+    "link": "https://www.glassdoor.co.in/job-listing/ibm-sterling-integrator-architect-bluo-software-llc-JV_IC2851180_KO0,33_KE34,51.htm?jl=1009697179441",
+    "posted": "24h"
+  },
+  {
+    "title": "Product Designer",
+    "company": "SR industries",
+    "salary": "₹4L()",
+    "link": "https://www.glassdoor.co.in/job-listing/product-designer-sr-industries-JV_KO0,16_KE17,30.htm?jl=1009697471446",
+    "posted": "24h"
+  },
+  {
+    "title": "Lead Software Engineer",
+    "company": "Atlas Copco (India) Private Ltd.",
+    "salary": "₹5L-₹8L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/lead-software-engineer-atlas-copco-india-private-ltd-JV_IC2856202_KO0,22_KE23,52.htm?jl=1009688823299",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/10368/atlas-copco-squarelogo.png"
+  },
+  {
+    "title": "Quality Engineering Lead - Playwright, Framework Design & Development",
+    "company": "Optum",
+    "salary": "₹4L-₹7L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/quality-engineering-lead-playwright-framework-design-development-optum-JV_IC2865319_KO0,64_KE65,70.htm?jl=1009697290652",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/1485710/brilliance-squarelogo-1536057369141.png"
+    "logo": "https://media.glassdoor.com/sql/2409113/optum-squareLogo-1711654052254.png"
   },
   {
-    "title": "Fine Jewelry Sales Associate",
-    "company": "Brilliance.com",
-    "salary": "₹44T-₹53T()",
-    "link": "https://www.glassdoor.co.in/job-listing/fine-jewelry-sales-associate-brilliance-com-JV_IC2933827_KO0,28_KE29,43.htm?jl=1009665183669",
+    "title": "Principal Software Engineer",
+    "company": "Optum",
+    "link": "https://www.glassdoor.co.in/job-listing/principal-software-engineer-optum-JV_IC2921225_KO0,27_KE28,33.htm?jl=1009695398292",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/1485710/brilliance-squarelogo-1536057369141.png"
+    "logo": "https://media.glassdoor.com/sql/2409113/optum-squareLogo-1711654052254.png"
   },
   {
-    "title": "Jewelry/Image Retoucher",
-    "company": "Brilliance.com",
-    "salary": "₹38T-₹40T()",
-    "link": "https://www.glassdoor.co.in/job-listing/jewelry-image-retoucher-brilliance-com-JV_IC2933827_KO0,23_KE24,38.htm?jl=1009665189596",
+    "title": "Staff Software Engineer",
+    "company": "Telstra",
+    "link": "https://www.glassdoor.co.in/job-listing/staff-software-engineer-telstra-JV_IC2940587_KO0,23_KE24,31.htm?jl=1009697354113",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/1485710/brilliance-squarelogo-1536057369141.png"
+    "logo": "https://media.glassdoor.com/sql/6563/telstra-squareLogo-1689913293501.png"
   },
   {
-    "title": "Fresher- Recruiter (Night Shift)",
-    "company": "EmpressTechh",
-    "salary": "₹10T-₹14T()",
-    "link": "https://www.glassdoor.co.in/job-listing/fresher-recruiter-night-shift-empresstechh-JV_KO0,29_KE30,42.htm?jl=1009665223244",
-    "posted": "24h"
-  },
-  {
-    "title": "Housekeeper",
-    "company": "Whispering Pines",
-    "salary": "₹8T-₹12T()",
-    "link": "https://www.glassdoor.co.in/job-listing/housekeeper-whispering-pines-JV_KO0,11_KE12,28.htm?jl=1009664719524",
-    "posted": "24h"
-  },
-  {
-    "title": "QuickBooks Accountant",
-    "company": "Transway Transport Co",
-    "salary": "₹95T()",
-    "link": "https://www.glassdoor.co.in/job-listing/quickbooks-accountant-transway-transport-co-JV_IC2940270_KO0,21_KE22,43.htm?jl=1009665116321",
-    "posted": "24h"
-  },
-  {
-    "title": "Doctor (aesthetic physician)",
-    "company": "AESTHETIC ARTISTRY PRIVATE LIMITED",
-    "salary": "₹20T-₹70T()",
-    "link": "https://www.glassdoor.co.in/job-listing/doctor-aesthetic-physician-aesthetic-artistry-private-limited-JV_KO0,26_KE27,61.htm?jl=1009665035393",
-    "posted": "24h"
-  },
-  {
-    "title": "Digital Marketing and Content Writer - Kunnamkulam - Thrissur",
-    "company": "OAT HR Solutions",
-    "salary": "₹15T-₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/digital-marketing-and-content-writer-kunnamkulam-thrissur-oat-hr-solutions-JV_IC2867866_KO0,57_KE58,74.htm?jl=1009665108266",
-    "posted": "24h"
-  },
-  {
-    "title": "Sports Venue Executive (Pal,Surat)",
-    "company": "Hsquare Sports Private Limited",
-    "salary": "₹18T-₹22T()",
-    "link": "https://www.glassdoor.co.in/job-listing/sports-venue-executive-pal-surat-hsquare-sports-private-limited-JV_KO0,32_KE33,63.htm?jl=1009661007074",
-    "posted": "2d"
-  },
-  {
-    "title": "Business Development Manager, AI PC",
-    "company": "Dell",
-    "salary": "₹5L-₹7L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/business-development-manager-ai-pc-dell-JV_IC2940587_KO0,34_KE35,39.htm?jl=1009664927858",
+    "title": "Software Engineer",
+    "company": "Optum",
+    "salary": "₹5L-₹10L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-optum-JV_IC2921225_KO0,17_KE18,23.htm?jl=1009697147376",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/1327/dell-technologies-squareLogo-1727810508219.png"
+    "logo": "https://media.glassdoor.com/sql/2409113/optum-squareLogo-1711654052254.png"
   },
   {
-    "title": "Chat Support Executive",
-    "company": "Prolegion Private Limited",
-    "salary": "₹4L-₹6L()",
-    "link": "https://www.glassdoor.co.in/job-listing/chat-support-executive-prolegion-private-limited-JV_KO0,22_KE23,48.htm?jl=1009664334950",
-    "posted": "24h"
+    "title": "System Administrator/Cybersecurity Liaison - Kwajalein, Republic of the Marshall Islands",
+    "company": "In-Depth Engineering Corporation",
+    "salary": "₹2L()",
+    "link": "https://www.glassdoor.co.in/job-listing/system-administrator-cybersecurity-liaison-kwajalein-republic-of-the-marshall-islands-in-depth-engineering-corporation-JV_KO0,85_KE86,118.htm?jl=1009694482161",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/1059725/in-depth-engineering-squarelogo-1513680385884.png"
   },
   {
-    "title": "Dispatcher",
-    "company": "Trans4 Group Ltd.",
-    "salary": "₹15T-₹18T()",
-    "link": "https://www.glassdoor.co.in/job-listing/dispatcher-trans4-group-ltd-JV_IC2938197_KO0,10_KE11,27.htm?jl=1009384415816",
-    "posted": "24h"
-  },
-  {
-    "title": "Sweeper house keeping",
-    "company": "Hotel paradise chateau",
-    "salary": "₹8T-₹12T()",
-    "link": "https://www.glassdoor.co.in/job-listing/sweeper-house-keeping-hotel-paradise-chateau-JV_IC2893090_KO0,21_KE22,44.htm?jl=1006157139975",
-    "posted": "2d"
-  },
-  {
-    "title": "Social Media Specialist",
-    "company": "Mvr consultants",
-    "salary": "₹10T-₹12T()",
-    "link": "https://www.glassdoor.co.in/job-listing/social-media-specialist-mvr-consultants-JV_IC2884656_KO0,23_KE24,39.htm?jl=1009664747387",
-    "posted": "24h"
-  },
-  {
-    "title": "Team Leader - Retail Support",
+    "title": "Software Development Engineer For Test",
     "company": "BP Energy",
-    "link": "https://www.glassdoor.co.in/job-listing/team-leader-retail-support-bp-energy-JV_IC2856202_KO0,26_KE27,36.htm?jl=1009663596239",
-    "posted": "24h",
+    "salary": "₹1L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/software-development-engineer-for-test-bp-energy-JV_IC2856202_KO0,38_KE39,48.htm?jl=1009687779028",
+    "posted": "7d",
     "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
   },
   {
-    "title": "Senior Data Entry Specialist",
-    "company": "TexAu",
-    "salary": "₹25T-₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/senior-data-entry-specialist-texau-JV_KO0,28_KE29,34.htm?jl=1009661755972",
-    "posted": "2d"
-  },
-  {
-    "title": "Business Analyst - Trainee (Remote)",
-    "company": "SuperProcure",
-    "salary": "₹4L-₹6L()",
-    "link": "https://www.glassdoor.co.in/job-listing/business-analyst-trainee-remote-superprocure-JV_KO0,31_KE32,44.htm?jl=1009664921918",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/3313875/superprocure-squarelogo-1629454787411.png"
-  },
-  {
-    "title": "Social Media Specialist",
-    "company": "Wing AI",
-    "salary": "₹45T-₹50T()",
-    "link": "https://www.glassdoor.co.in/job-listing/social-media-specialist-wing-ai-JV_KO0,23_KE24,31.htm?jl=1009660233710",
-    "posted": "3d"
-  },
-  {
-    "title": "Assistant HR Manager",
-    "company": "Hair and Skin Clinic",
-    "salary": "₹18T-₹25T()",
-    "link": "https://www.glassdoor.co.in/job-listing/assistant-hr-manager-hair-and-skin-clinic-JV_IC2867866_KO0,20_KE21,41.htm?jl=1009665037164",
-    "posted": "24h"
-  },
-  {
-    "title": "Sr Game Mathematician I",
-    "company": "Aristocrat",
-    "salary": "₹9L-₹10L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/sr-game-mathematician-i-aristocrat-JV_IC4477468_KO0,23_KE24,34.htm?jl=1009662832766",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/2320/aristocrat-technologies-squareLogo-1680087626961.png"
-  },
-  {
-    "title": "Management Associate / Senior Associate (India - Remote)",
-    "company": "Abdoolally Ebrahim Housewares Limited",
-    "salary": "₹24L-₹26L()",
-    "link": "https://www.glassdoor.co.in/job-listing/management-associate-senior-associate-india-remote-abdoolally-ebrahim-housewares-limited-JV_KO0,50_KE51,88.htm?jl=1009658000831",
-    "posted": "4d",
-    "logo": "https://media.glassdoor.com/sql/5931452/abdoolally-ebrahim-housewares-squarelogo-1647602613255.png"
-  },
-  {
-    "title": "Patient Services Back Office Associate",
-    "company": "Harris Computer Systems",
-    "link": "https://www.glassdoor.co.in/job-listing/patient-services-back-office-associate-harris-computer-systems-JV_KO0,38_KE39,62.htm?jl=1009662127726",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/222321/harris-computer-squareLogo-1611256172418.png"
-  },
-  {
-    "title": "Steward (Waiter)",
-    "company": "Zooby's Kitchen",
-    "salary": "₹10T-₹15T()",
-    "link": "https://www.glassdoor.co.in/job-listing/steward-waiter-zooby-s-kitchen-JV_KO0,14_KE15,30.htm?jl=1009516906121",
-    "posted": "24h"
-  },
-  {
-    "title": "Design Integration SME",
-    "company": "BP Energy",
-    "link": "https://www.glassdoor.co.in/job-listing/design-integration-sme-bp-energy-JV_IC2856202_KO0,22_KE23,32.htm?jl=1009663140387",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Flight Attendant",
-    "company": "LRS SERVICES PVT LTD",
-    "salary": "₹40T-₹80T()",
-    "link": "https://www.glassdoor.co.in/job-listing/flight-attendant-lrs-services-pvt-ltd-JV_KO0,16_KE17,37.htm?jl=1009659560649",
+    "title": "Junior JavaScript Developer - Remote work",
+    "company": "BairesDev",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-javascript-developer-remote-work-bairesdev-JV_IC2833209_KO0,39_KE40,49.htm?jl=1009692029643",
     "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/3427242/lrs-services-squarelogo-1663835969432.png"
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
   },
   {
-    "title": "Traditional Consulting - Consultant, MBA Full-time, India",
+    "title": "Senior Software Engineer - EDI, Global Converse, ITC",
+    "company": "CONVERSE",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-software-engineer-edi-global-converse-itc-converse-JV_KO0,48_KE49,57.htm?jl=1009694076645",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/3754/converse-squarelogo-1497649984646.png"
+  },
+  {
+    "title": "Staff Software Engineer",
+    "company": "Telstra",
+    "link": "https://www.glassdoor.co.in/job-listing/staff-software-engineer-telstra-JV_IC2940587_KO0,23_KE24,31.htm?jl=1009697354129",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/6563/telstra-squareLogo-1689913293501.png"
+  },
+  {
+    "title": "Release and Test Principal Software Engineer",
+    "company": "ARM",
+    "link": "https://www.glassdoor.co.in/job-listing/release-and-test-principal-software-engineer-arm-JV_IC2940587_KO0,44_KE45,48.htm?jl=1009697219222",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/7834/arm-squarelogo-1702516301656.png"
+  },
+  {
+    "title": "Manual Software Tester",
+    "company": "KostCare Infotech PVT. LTD.",
+    "salary": "₹4L-₹6L()",
+    "link": "https://www.glassdoor.co.in/job-listing/manual-software-tester-kostcare-infotech-pvt-ltd-JV_KO0,22_KE23,48.htm?jl=1009693755501",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/978148/kostcare-infotech-squarelogo-1527183409675.png"
+  },
+  {
+    "title": "Lead Software Engineer - EDI, Global Converse, ITC",
+    "company": "CONVERSE",
+    "link": "https://www.glassdoor.co.in/job-listing/lead-software-engineer-edi-global-converse-itc-converse-JV_KO0,46_KE47,55.htm?jl=1009694076647",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/3754/converse-squarelogo-1497649984646.png"
+  },
+  {
+    "title": "Software Engineer II",
+    "company": "Indeed",
+    "salary": "₹29L-₹44L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-ii-indeed-JV_KO0,20_KE21,27.htm?jl=1009693531410",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/100561/indeed-squareLogo-1671046570073.png"
+  },
+  {
+    "title": "Software Developer",
+    "company": "ISC global solution private limited",
+    "salary": "₹3L-₹12L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-isc-global-solution-private-limited-JV_KO0,18_KE19,54.htm?jl=1009693946900",
+    "posted": "2d"
+  },
+  {
+    "title": "Junior Software Tester - Manual & Automation",
+    "company": "Percipience Labs LLP",
+    "salary": "₹9T-₹27T()",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-tester-manual-automation-percipience-labs-llp-JV_KO0,40_KE41,61.htm?jl=1009688669749",
+    "posted": "7d",
+    "logo": "https://media.glassdoor.com/sql/5405407/think-gestalt-squarelogo-1645098504594.png"
+  },
+  {
+    "title": "Junior Software Engineer",
+    "company": "Quantra Technology Solutions Private Limited",
+    "salary": "₹19T-₹39T()",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-engineer-quantra-technology-solutions-private-limited-JV_IC2833209_KO0,24_KE25,69.htm?jl=1009696431663",
+    "posted": "24h"
+  },
+  {
+    "title": "Global IT Software Engineer Manager",
     "company": "Boston Consulting Group",
-    "link": "https://www.glassdoor.co.in/job-listing/traditional-consulting-consultant-mba-full-time-india-boston-consulting-group-JV_KO0,53_KE54,77.htm?jl=1009656816277",
+    "link": "https://www.glassdoor.co.in/job-listing/global-it-software-engineer-manager-boston-consulting-group-JV_IC2921225_KO0,35_KE36,59.htm?jl=1009689597563",
     "posted": "6d",
     "logo": "https://media.glassdoor.com/sql/3879/boston-consulting-group-squareLogo-1692189677151.png"
   },
   {
-    "title": "Tutor",
-    "company": "Erudite Academy",
-    "salary": "₹12T-₹20T()",
-    "link": "https://www.glassdoor.co.in/job-listing/tutor-erudite-academy-JV_KO0,5_KE6,21.htm?jl=1009663147471",
-    "posted": "24h"
-  },
-  {
-    "title": "Demand & Planning Service Manager",
+    "title": "Senior Space Planning Advisor",
     "company": "BP Energy",
-    "salary": "₹4L-₹10L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/demand-planning-service-manager-bp-energy-JV_IC2856202_KO0,31_KE32,41.htm?jl=1009662588921",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Male Chemistry Teacher",
-    "company": "Shree Swaminarayan Gurukul International School",
-    "salary": "₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/male-chemistry-teacher-shree-swaminarayan-gurukul-international-school-JV_IC2944251_KO0,22_KE23,70.htm?jl=1009664257705",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/5931071/shree-swaminarayan-gurukul-international-school-squarelogo-1646393479997.png"
-  },
-  {
-    "title": "Waiter",
-    "company": "SHELTER HOTEL",
-    "salary": "₹8T()",
-    "link": "https://www.glassdoor.co.in/job-listing/waiter-shelter-hotel-JV_KO0,6_KE7,20.htm?jl=1009531358257",
-    "posted": "4d"
-  },
-  {
-    "title": "Virtual Customer Service (Kolkata, West Bengal), India",
-    "company": "ADCI - West Bengal",
-    "link": "https://www.glassdoor.co.in/job-listing/virtual-customer-service-kolkata-west-bengal-india-adci-west-bengal-JV_KO0,50_KE51,67.htm?jl=1009664405006",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/6036/amazon-squarelogo-1552847650117.png"
-  },
-  {
-    "title": "Business Analyst",
-    "company": "BP Energy",
-    "salary": "₹10L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/business-analyst-bp-energy-JV_IC2856202_KO0,16_KE17,26.htm?jl=1009412618327",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Prop Desk Trader",
-    "company": "I Cap India Investments Private Limited",
-    "salary": "₹3L-₹10L()",
-    "link": "https://www.glassdoor.co.in/job-listing/prop-desk-trader-i-cap-india-investments-private-limited-JV_KO0,16_KE17,56.htm?jl=1009659601113",
-    "posted": "3d"
-  },
-  {
-    "title": "Trainee Analyst- Analytics",
-    "company": "HSBC",
-    "salary": "₹8L-₹10L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/trainee-analyst-analytics-hsbc-JV_IC2940587_KO0,25_KE26,30.htm?jl=1009664755086",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/3482/hsbc-holdings-squarelogo.png"
-  },
-  {
-    "title": "Logistics and Customer Support",
-    "company": "FCI London",
-    "salary": "₹25T-₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/logistics-and-customer-support-fci-london-JV_KO0,30_KE31,41.htm?jl=1009660240236",
-    "posted": "3d"
-  },
-  {
-    "title": "Operations Associate-WFH",
-    "company": "Lattice Technologies Pvt Ltd",
-    "salary": "₹3L-₹5L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/operations-associate-wfh-lattice-technologies-pvt-ltd-JV_IC2921225_KO0,24_KE25,53.htm?jl=1009658685234",
-    "posted": "4d",
-    "logo": "https://media.glassdoor.com/sql/8057007/1lattice-squareLogo-1686728562010.png"
-  },
-  {
-    "title": "Architectural Journalism Content Writer - Intern ( Candidates from Navi Mumbai & Thane)",
-    "company": "Biltrax Construction Data",
-    "salary": "₹5T()",
-    "link": "https://www.glassdoor.co.in/job-listing/architectural-journalism-content-writer-intern-candidates-from-navi-mumbai-thane-biltrax-construction-data-JV_KO0,80_KE81,106.htm?jl=1009656833886",
-    "posted": "6d",
-    "logo": "https://media.glassdoor.com/sql/3439467/biltrax-construction-data-squareLogo-1713336580588.png"
-  },
-  {
-    "title": "HR Manager",
-    "company": "AESTHETIC ARTISTRY PRIVATE LIMITED",
-    "salary": "₹20T-₹35T()",
-    "link": "https://www.glassdoor.co.in/job-listing/hr-manager-aesthetic-artistry-private-limited-JV_KO0,10_KE11,45.htm?jl=1009665036120",
-    "posted": "24h"
-  },
-  {
-    "title": "Team Leader - Customer Solutions Hub",
-    "company": "BP Energy",
-    "salary": "₹4L-₹5L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/team-leader-customer-solutions-hub-bp-energy-JV_IC2856202_KO0,34_KE35,44.htm?jl=1009662717490",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Photo Editor (Freelancer)",
-    "company": "Gusti Leder GmbH",
-    "salary": "₹3L-₹5L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/photo-editor-freelancer-gusti-leder-gmbh-JV_IC2940587_KO0,23_KE24,40.htm?jl=1009660283360",
-    "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/3872541/gusti-leder-squarelogo-1627550950963.png"
-  },
-  {
-    "title": "Filing Executive - Immigration",
-    "company": "Arora Immigration In Education Consultancy",
-    "salary": "₹18T()",
-    "link": "https://www.glassdoor.co.in/job-listing/filing-executive-immigration-arora-immigration-in-education-consultancy-JV_IC2939045_KO0,28_KE29,71.htm?jl=1009662892201",
-    "posted": "24h"
-  },
-  {
-    "title": "Global Service Manager, SAP Infrastructure",
-    "company": "Sandoz",
-    "link": "https://www.glassdoor.co.in/job-listing/global-service-manager-sap-infrastructure-sandoz-JV_KO0,41_KE42,48.htm?jl=1009661066269",
+    "salary": "₹4L-₹9L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-space-planning-advisor-bp-energy-JV_IC2856202_KO0,29_KE30,39.htm?jl=1009693995861",
     "posted": "2d",
-    "logo": "https://media.glassdoor.com/sql/35211/sandoz-squareLogo-1696507811945.png"
+    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
   },
   {
-    "title": "Visa Filing Officer - AIEC",
-    "company": "Arora Immigration In Education Consultancy",
-    "salary": "₹18T()",
-    "link": "https://www.glassdoor.co.in/job-listing/visa-filing-officer-aiec-arora-immigration-in-education-consultancy-JV_IC2939045_KO0,24_KE25,67.htm?jl=1009662672609",
-    "posted": "24h"
-  },
-  {
-    "title": "Accounts Payable Specialist",
-    "company": "Portside, Inc.",
-    "link": "https://www.glassdoor.co.in/job-listing/accounts-payable-specialist-portside-inc-JV_KO0,27_KE28,40.htm?jl=1009663865899",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/8356522/portside-us-squarelogo-1683620173795.png"
-  },
-  {
-    "title": "ESG Sustainability",
-    "company": "ENGIE Energy India Private Limited",
-    "link": "https://www.glassdoor.co.in/job-listing/esg-sustainability-engie-energy-india-private-limited-JV_IC2856202_KO0,18_KE19,53.htm?jl=1009663122331",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/1052655/engie-squarelogo-1576749990991.png"
-  },
-  {
-    "title": "Data Analyst",
-    "company": "Hotsourced India Pvt Ltd",
-    "salary": "₹10L-₹15L()",
-    "link": "https://www.glassdoor.co.in/job-listing/data-analyst-hotsourced-india-pvt-ltd-JV_KO0,12_KE13,37.htm?jl=1009654825399",
-    "posted": "7d"
-  },
-  {
-    "title": "Program Manager",
-    "company": "I2B Solution",
-    "salary": "₹15L-₹24L()",
-    "link": "https://www.glassdoor.co.in/job-listing/program-manager-i2b-solution-JV_KO0,15_KE16,28.htm?jl=1009658062414",
-    "posted": "4d"
-  },
-  {
-    "title": "Tele Caller",
-    "company": "WE LOVE DIGITAL MARKETING",
-    "salary": "₹12T-₹15T()",
-    "link": "https://www.glassdoor.co.in/job-listing/tele-caller-we-love-digital-marketing-JV_KO0,11_KE12,37.htm?jl=1009661395493",
-    "posted": "2d"
-  },
-  {
-    "title": "Clinical Safety Associate- VAF",
-    "company": "ProductLife Group",
-    "link": "https://www.glassdoor.co.in/job-listing/clinical-safety-associate-vaf-productlife-group-JV_KO0,29_KE30,47.htm?jl=1009660354572",
-    "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/1131174/groupe-productlife-squarelogo-1455797705701.png"
-  },
-  {
-    "title": "Visa counsellor",
-    "company": "The German Specialist",
-    "salary": "₹15T-₹25T()",
-    "link": "https://www.glassdoor.co.in/job-listing/visa-counsellor-the-german-specialist-JV_IC4469455_KO0,15_KE16,37.htm?jl=1009656684339",
+    "title": "Healthcare Software Support Specialist",
+    "company": "Sureze Sdn Bhd",
+    "salary": "₹15T-₹63T()",
+    "link": "https://www.glassdoor.co.in/job-listing/healthcare-software-support-specialist-sureze-sdn-bhd-JV_KO0,38_KE39,53.htm?jl=1009688821455",
     "posted": "6d"
   },
   {
-    "title": "DMN - Kolkata - Executive Admin",
-    "company": "Larsen & Toubro",
-    "salary": "₹7L-₹15L()",
-    "link": "https://www.glassdoor.co.in/job-listing/dmn-kolkata-executive-admin-larsen-toubro-JV_IC2901633_KO0,27_KE28,41.htm?jl=1009661495446",
-    "posted": "2d",
-    "logo": "https://media.glassdoor.com/sql/394137/l-and-t-technology-services-squareLogo-1679988099178.png"
+    "title": "Software Engineer",
+    "company": "Capgemini Engineering",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-capgemini-engineering-JV_IC2940587_KO0,17_KE18,39.htm?jl=1009697613257",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/28187/capgemini-engineering-squareLogo-1683293407841.png"
   },
   {
-    "title": "Telemarketer",
-    "company": "uCustoms Ltd.",
-    "salary": "₹50T()",
-    "link": "https://www.glassdoor.co.in/job-listing/telemarketer-ucustoms-ltd-JV_KO0,12_KE13,25.htm?jl=1009653782425",
-    "posted": "7d"
+    "title": "Member of Technical Staff – LLM/AI",
+    "company": "Athenahealth",
+    "salary": "₹5L-₹7L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/member-of-technical-staff-llm-ai-athenahealth-JV_IC2833209_KO0,32_KE33,45.htm?jl=1009689369607",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/18207/athenahealth-squareLogo-1634738869862.png"
   },
   {
-    "title": "Office Administrator",
-    "company": "HGC",
-    "salary": "₹22T()",
-    "link": "https://www.glassdoor.co.in/job-listing/office-administrator-hgc-JV_IC2930756_KO0,20_KE21,24.htm?jl=1009653777136",
+    "title": "Jr. Software Developer",
+    "company": "SOTI Inc.",
+    "salary": "₹3L-₹4L()",
+    "link": "https://www.glassdoor.co.in/job-listing/jr-software-developer-soti-inc-JV_IC2940587_KO0,21_KE22,30.htm?jl=1009687657426",
     "posted": "7d",
-    "logo": "https://media.glassdoor.com/sql/2924070/hgc-the-harman-group-squarelogo-1584626524064.png"
+    "logo": "https://media.glassdoor.com/sql/156148/soti-squareLogo-1718636908876.png"
   },
   {
-    "title": "Data Analytics - Marketing",
-    "company": "Sprinto",
-    "link": "https://www.glassdoor.co.in/job-listing/data-analytics-marketing-sprinto-JV_KO0,24_KE25,32.htm?jl=1009520232138",
+    "title": "Software Engineer",
+    "company": "Rich Robust",
+    "salary": "₹25T-₹40T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-rich-robust-JV_IC4469455_KO0,17_KE18,29.htm?jl=1009693420142",
+    "posted": "3d"
+  },
+  {
+    "title": "Junior JavaScript Developer - Remote work",
+    "company": "BairesDev",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-javascript-developer-remote-work-bairesdev-JV_IC2940587_KO0,39_KE40,49.htm?jl=1009692029652",
     "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/6218573/sprinto-squareLogo-1651756122645.png"
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
   },
   {
-    "title": "Office Assistant",
-    "company": "In A Reputed Lawyer's Office",
-    "salary": "₹10T-₹13T()",
-    "link": "https://www.glassdoor.co.in/job-listing/office-assistant-in-a-reputed-lawyer-s-office-JV_IC2873126_KO0,16_KE17,45.htm?jl=1005710935910",
+    "title": "Lead Software Engineer - Data Integration, Global Converse, ITC",
+    "company": "CONVERSE",
+    "link": "https://www.glassdoor.co.in/job-listing/lead-software-engineer-data-integration-global-converse-itc-converse-JV_KO0,59_KE60,68.htm?jl=1009694076648",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/3754/converse-squarelogo-1497649984646.png"
+  },
+  {
+    "title": "Software developer fresher",
+    "company": "Ads Ever Media",
+    "salary": "₹10T-₹15T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-fresher-ads-ever-media-JV_KO0,26_KE27,41.htm?jl=1009688801807",
+    "posted": "6d"
+  },
+  {
+    "title": "Intern – Software Tester",
+    "company": "ANSRSource India",
+    "salary": "₹16T-₹18T()",
+    "link": "https://www.glassdoor.co.in/job-listing/intern-software-tester-ansrsource-india-JV_KO0,22_KE23,39.htm?jl=1009697451847",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/349153/ansr-source-squarelogo-1424068886339.png"
+  },
+  {
+    "title": "Junior Software Developer",
+    "company": "intellisourcetech",
+    "salary": "₹9L()",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-developer-intellisourcetech-JV_IC2856202_KO0,25_KE26,43.htm?jl=1009694965245",
     "posted": "2d"
   },
   {
-    "title": "Management Trainee",
-    "company": "Wipro Limited",
-    "salary": "₹8L-₹9L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/management-trainee-wipro-limited-JV_IC2921225_KO0,18_KE19,32.htm?jl=1009662542957",
+    "title": "Senior Software Engineer",
+    "company": "Computershare",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-software-engineer-computershare-JV_IC2865319_KO0,24_KE25,38.htm?jl=1009695578515",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9936/wipro-squareLogo-1670620181456.png"
+    "logo": "https://media.glassdoor.com/sql/29192/computershare-squareLogo-1682427345488.png"
   },
   {
-    "title": "Team Leader - Construction Services",
+    "title": "Junior Software Engineer",
+    "company": "Verve Square Technologies",
+    "salary": "₹5L-₹7L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-engineer-verve-square-technologies-JV_IC2856202_KO0,24_KE25,50.htm?jl=1009695932559",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/5072090/verve-square-technologies-squarelogo-1644485787622.png"
+  },
+  {
+    "title": "Software Developer",
+    "company": "The Algorithm",
+    "salary": "₹30T-₹50T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-the-algorithm-JV_KO0,18_KE19,32.htm?jl=1009693959829",
+    "posted": "2d"
+  },
+  {
+    "title": "Software Engineer (.Net Full Stack) - X Delivery",
+    "company": "Boston Consulting Group",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-net-full-stack-x-delivery-boston-consulting-group-JV_IC2921225_KO0,43_KE44,67.htm?jl=1009696553320",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/3879/boston-consulting-group-squareLogo-1692189677151.png"
+  },
+  {
+    "title": "Software Engineer I",
+    "company": "Mastercard",
+    "salary": "₹3L-₹10L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-i-mastercard-JV_IC2856202_KO0,19_KE20,30.htm?jl=1009693763418",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/3677/mastercard-squarelogo-1468516067022.png"
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Cognex technology pvt ltd",
+    "salary": "₹3L-₹12L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-cognex-technology-pvt-ltd-JV_KO0,17_KE18,43.htm?jl=1009696566223",
+    "posted": "24h"
+  },
+  {
+    "title": "Software Application Support Engineer Trainee",
+    "company": "Optimum Informatics Pvt Ltd",
+    "salary": "₹2L-₹4L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-application-support-engineer-trainee-optimum-informatics-pvt-ltd-JV_KO0,45_KE46,73.htm?jl=1009697140974",
+    "posted": "24h"
+  },
+  {
+    "title": "Software Tester",
+    "company": "PSQUARE COMPANY",
+    "salary": "₹15T-₹30T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-tester-psquare-company-JV_IC4469455_KO0,15_KE16,31.htm?jl=1009690716489",
+    "posted": "4d"
+  },
+  {
+    "title": "We Are Looking for Assistant Manager in Software Training Academy -MALE",
+    "company": "FITA Academy",
+    "salary": "₹20T-₹25T()",
+    "link": "https://www.glassdoor.co.in/job-listing/we-are-looking-for-assistant-manager-in-software-training-academy-male-fita-academy-JV_KO0,70_KE71,83.htm?jl=1009697254224",
+    "posted": "24h"
+  },
+  {
+    "title": "Senior Member of Technical Staff LLM/AI - SMTS",
+    "company": "Athenahealth",
+    "salary": "₹5L-₹7L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-member-of-technical-staff-llm-ai-smts-athenahealth-JV_IC2833209_KO0,44_KE45,57.htm?jl=1009689712271",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/18207/athenahealth-squareLogo-1634738869862.png"
+  },
+  {
+    "title": "Web/ mobile Application Developer",
+    "company": "Genre of Design",
+    "salary": "₹11T-₹29T()",
+    "link": "https://www.glassdoor.co.in/job-listing/web-mobile-application-developer-genre-of-design-JV_KO0,32_KE33,48.htm?jl=1009690680179",
+    "posted": "4d"
+  },
+  {
+    "title": "Senior enterprise technology engineer",
     "company": "BP Energy",
-    "link": "https://www.glassdoor.co.in/job-listing/team-leader-construction-services-bp-energy-JV_IC2856202_KO0,33_KE34,43.htm?jl=1009663140401",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Administrator - L1",
-    "company": "Wipro Limited",
-    "salary": "₹3L-₹7L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/administrator-l1-wipro-limited-JV_IC2884656_KO0,16_KE17,30.htm?jl=1009663116062",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9936/wipro-squareLogo-1670620181456.png"
-  },
-  {
-    "title": "P&C Services Advisor",
-    "company": "BP Energy",
-    "link": "https://www.glassdoor.co.in/job-listing/pc-services-advisor-bp-energy-JV_IC2856202_KO0,19_KE20,29.htm?jl=1009654448461",
-    "posted": "7d",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Workforce Planning Analyst",
-    "company": "Optum",
-    "salary": "₹28.00Perhour()",
-    "link": "https://www.glassdoor.co.in/job-listing/workforce-planning-analyst-optum-JV_IC2921225_KO0,26_KE27,32.htm?jl=1009659256399",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-enterprise-technology-engineer-bp-energy-JV_IC2856202_KO0,37_KE38,47.htm?jl=1009693370957",
     "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/2409113/optum-squareLogo-1711654052254.png"
+    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
   },
   {
-    "title": "Lead Artist",
+    "title": "Enterprise Software Sales Executive",
+    "company": "Simplify Healthcare Technology",
+    "salary": "₹18L()",
+    "link": "https://www.glassdoor.co.in/job-listing/enterprise-software-sales-executive-simplify-healthcare-technology-JV_KO0,35_KE36,66.htm?jl=1009689305571",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/1291710/simplify-healthcare-squarelogo-1534841087490.png"
+  },
+  {
+    "title": "Software Engineer - Intern",
+    "company": "DigiMantra Labs",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-intern-digimantra-labs-JV_IC4469455_KO0,24_KE25,40.htm?jl=1009695384046",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/1788139/digimantra-labs-squareLogo-1691472065340.png"
+  },
+  {
+    "title": "Junior Software Engineer",
+    "company": "Pi Tech Solutions",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-engineer-pi-tech-solutions-JV_IC2856202_KO0,24_KE25,42.htm?jl=1009691604640",
+    "posted": "3d"
+  },
+  {
+    "title": "Global IT Software Senior Engineer",
+    "company": "Boston Consulting Group",
+    "salary": "₹8L-₹10L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/global-it-software-senior-engineer-boston-consulting-group-JV_IC2921225_KO0,34_KE35,58.htm?jl=1009689597562",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/3879/boston-consulting-group-squareLogo-1692189677151.png"
+  },
+  {
+    "title": "Senior enterprise technology engineer",
+    "company": "BP Energy",
+    "salary": "₹4L-₹7L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-enterprise-technology-engineer-bp-energy-JV_IC2856202_KO0,37_KE38,47.htm?jl=1009689367371",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
+  },
+  {
+    "title": "software developer",
+    "company": "Elite carrer solution",
+    "salary": "₹3L-₹12L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-elite-carrer-solution-JV_KO0,18_KE19,40.htm?jl=1009696434962",
+    "posted": "24h"
+  },
+  {
+    "title": "Software Engineer",
+    "company": "amdocs",
+    "salary": "₹6L-₹10L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-amdocs-JV_IC2921225_KO0,17_KE18,24.htm?jl=1009692412292",
+    "posted": "3d",
+    "logo": "https://media.glassdoor.com/sql/8418/amdocs-squareLogo-1634117990259.png"
+  },
+  {
+    "title": "Remote US Legal Assistant for US Software Comapny",
+    "company": "U.S. Tech Client (Remote Opportunity)",
+    "salary": "₹40L()",
+    "link": "https://www.glassdoor.co.in/job-listing/remote-us-legal-assistant-for-us-software-comapny-us-tech-client-remote-opportunity-JV_KO0,49_KE50,83.htm?jl=1009697991505",
+    "posted": "24h"
+  },
+  {
+    "title": "Senior Data Engineer",
+    "company": "iXceed Solutions",
+    "salary": "₹15L-₹20L()",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-data-engineer-ixceed-solutions-JV_IC2935226_KO0,20_KE21,37.htm?jl=1009697289809",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/864261/ixceed-solutions-squareLogo-1621275062686.png"
+  },
+  {
+    "title": "Emulation and Prototyping Architect - SoC Performance/Power Exploration/Verification",
+    "company": "ARM",
+    "link": "https://www.glassdoor.co.in/job-listing/emulation-and-prototyping-architect-soc-performance-power-exploration-verification-arm-JV_IC2940587_KO0,82_KE83,86.htm?jl=1009695486651",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/7834/arm-squarelogo-1702516301656.png"
+  },
+  {
+    "title": "Senior Member of Technical Staff - Java",
+    "company": "Athenahealth",
+    "salary": "₹5L-₹8L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-member-of-technical-staff-java-athenahealth-JV_IC2856202_KO0,37_KE38,50.htm?jl=1009689369605",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/18207/athenahealth-squareLogo-1634738869862.png"
+  },
+  {
+    "title": "MERN Developer",
+    "company": "Octopus Technology",
+    "salary": "₹25T-₹50T()",
+    "link": "https://www.glassdoor.co.in/job-listing/mern-developer-octopus-technology-JV_KO0,14_KE15,33.htm?jl=1009695864033",
+    "posted": "24h"
+  },
+  {
+    "title": "Accountant (Xero Software)",
+    "company": "Aum Global",
+    "salary": "₹30T-₹35T()",
+    "link": "https://www.glassdoor.co.in/job-listing/accountant-xero-software-aum-global-JV_IC2879615_KO0,24_KE25,35.htm?jl=1009693271415",
+    "posted": "3d"
+  },
+  {
+    "title": "Software Developer",
+    "company": "Arinos infosolutions pvt ltd",
+    "salary": "₹3L-₹12L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-arinos-infosolutions-pvt-ltd-JV_IC2833209_KO0,18_KE19,47.htm?jl=1009692625974",
+    "posted": "3d"
+  },
+  {
+    "title": "Trainee Software Developer",
+    "company": "MERP Systems, Inc.",
+    "salary": "₹3L-₹5L()",
+    "link": "https://www.glassdoor.co.in/job-listing/trainee-software-developer-merp-systems-inc-JV_IC2869972_KO0,26_KE27,43.htm?jl=1009696703910",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/830285/merp-systems-squarelogo-1633673582547.png"
+  },
+  {
+    "title": "Junior Software Developer",
+    "company": "Regent Logistics Pte Ltd",
+    "salary": "₹15T-₹20T()",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-developer-regent-logistics-pte-ltd-JV_KO0,25_KE26,50.htm?jl=1009697117071",
+    "posted": "24h"
+  },
+  {
+    "title": "Software Engineer Intern",
+    "company": "QServices Inc.",
+    "salary": "₹8T-₹15T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-intern-qservices-inc-JV_IC4469455_KO0,24_KE25,38.htm?jl=1009694024933",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/1475460/qservices-squareLogo-1679317033069.png"
+  },
+  {
+    "title": "Software Developer",
+    "company": "Nexperia Technologies Pvt Ltd.",
+    "salary": "₹3L-₹5L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-nexperia-technologies-pvt-ltd-JV_KO0,18_KE19,48.htm?jl=1009693751956",
+    "posted": "2d"
+  },
+  {
+    "title": "Software Developer",
+    "company": "youngshin automotive india pvt ltd",
+    "salary": "₹12T-₹45T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-youngshin-automotive-india-pvt-ltd-JV_IC2833209_KO0,18_KE19,53.htm?jl=1009695424609",
+    "posted": "24h"
+  },
+  {
+    "title": "Junior JavaScript Developer - Remote work",
+    "company": "BairesDev",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-javascript-developer-remote-work-bairesdev-JV_IC2876676_KO0,39_KE40,49.htm?jl=1009692029649",
+    "posted": "3d",
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
+  },
+  {
+    "title": "Senior Software Engineer - SAP Cloud Platform Integration, Global Converse, ITC",
+    "company": "CONVERSE",
+    "link": "https://www.glassdoor.co.in/job-listing/senior-software-engineer-sap-cloud-platform-integration-global-converse-itc-converse-JV_KO0,75_KE76,84.htm?jl=1009694076644",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/3754/converse-squarelogo-1497649984646.png"
+  },
+  {
+    "title": "WPF Developer",
+    "company": "Drongo AI Private Limited",
+    "salary": "₹6L()",
+    "link": "https://www.glassdoor.co.in/job-listing/wpf-developer-drongo-ai-private-limited-JV_IC2940587_KO0,13_KE14,39.htm?jl=1009695182908",
+    "posted": "24h"
+  },
+  {
+    "title": "Full Stack Developer (C# with React ,6+ yrs)",
+    "company": "Kiash Soluitons LLP",
+    "salary": "₹20L-₹35L()",
+    "link": "https://www.glassdoor.co.in/job-listing/full-stack-developer-c-with-react-6-yrs-kiash-soluitons-llp-JV_IC2921225_KO0,39_KE40,59.htm?jl=1009688916232",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/6941225/kiash-solutions-squarelogo-1655898091688.png"
+  },
+  {
+    "title": "Junior Software Developer (Python) - Fresher",
+    "company": "QUEST INNOVATIVE SOLUTIONS PVT.LTD",
+    "salary": "₹15T-₹20T()",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-developer-python-fresher-quest-innovative-solutions-pvt-ltd-JV_IC2887994_KO0,40_KE41,75.htm?jl=1009695213752",
+    "posted": "24h"
+  },
+  {
+    "title": "Software Developer",
+    "company": "ALFA RECRUIT",
+    "salary": "₹45T-₹2L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-alfa-recruit-JV_KO0,18_KE19,31.htm?jl=1009693580564",
+    "posted": "2d"
+  },
+  {
+    "title": "Web Developer",
+    "company": "Rx Connections",
+    "salary": "₹50T-₹60T()",
+    "link": "https://www.glassdoor.co.in/job-listing/web-developer-rx-connections-JV_KO0,13_KE14,28.htm?jl=1009695638074",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/4362476/rx-connect-specialty-pharmacy-squarelogo-1620722104483.png"
+  },
+  {
+    "title": "Python Backend Developer",
+    "company": "Enlighten Schola",
+    "salary": "₹8L-₹12L()",
+    "link": "https://www.glassdoor.co.in/job-listing/python-backend-developer-enlighten-schola-JV_IC2935226_KO0,24_KE25,41.htm?jl=1009693980369",
+    "posted": "2d"
+  },
+  {
+    "title": "Sr. Python Developer",
+    "company": "iVoz Ai",
+    "salary": "₹13T-₹65T()",
+    "link": "https://www.glassdoor.co.in/job-listing/sr-python-developer-ivoz-ai-JV_KO0,19_KE20,27.htm?jl=1009693771692",
+    "posted": "2d"
+  },
+  {
+    "title": "Associate Principal Engineer",
     "company": "Aristocrat",
     "salary": "₹6L-₹9L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/lead-artist-aristocrat-JV_IC4477468_KO0,11_KE12,22.htm?jl=1009659294955",
-    "posted": "3d",
+    "link": "https://www.glassdoor.co.in/job-listing/associate-principal-engineer-aristocrat-JV_IC4477468_KO0,28_KE29,39.htm?jl=1009688508468",
+    "posted": "7d",
     "logo": "https://media.glassdoor.com/sql/2320/aristocrat-technologies-squareLogo-1680087626961.png"
   },
   {
-    "title": "Visa Filing Officer",
-    "company": "i9 Global Links",
-    "salary": "₹15T-₹18T()",
-    "link": "https://www.glassdoor.co.in/job-listing/visa-filing-officer-i9-global-links-JV_KO0,19_KE20,35.htm?jl=1009664354306",
+    "title": "EDP Executive",
+    "company": "Mehta Excel Private Limited",
+    "salary": "₹15T-₹25T()",
+    "link": "https://www.glassdoor.co.in/job-listing/edp-executive-mehta-excel-private-limited-JV_IC2935609_KO0,13_KE14,41.htm?jl=1009695347206",
     "posted": "24h"
   },
   {
-    "title": "IB PYP Homeroom Teachers",
-    "company": "Teapod",
-    "salary": "₹65T-₹90T()",
-    "link": "https://www.glassdoor.co.in/job-listing/ib-pyp-homeroom-teachers-teapod-JV_KO0,24_KE25,31.htm?jl=1009665126703",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/5725887/teapod-consultancy-services-squarelogo-1647421574680.png"
+    "title": "Junior JavaScript Developer - Remote work",
+    "company": "BairesDev",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-javascript-developer-remote-work-bairesdev-JV_IC5003513_KO0,39_KE40,49.htm?jl=1009692029647",
+    "posted": "3d",
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
   },
   {
-    "title": "Accounts Receivable",
-    "company": "CARGOZ FZE",
-    "salary": "₹11T-₹40T()",
-    "link": "https://www.glassdoor.co.in/job-listing/accounts-receivable-cargoz-fze-JV_IC2934887_KO0,19_KE20,30.htm?jl=1009663604137",
-    "posted": "24h"
-  },
-  {
-    "title": "Junior Graphic Designer (4-Hour Shift)",
-    "company": "Kustom Pro",
-    "salary": "₹8T-₹10T()",
-    "link": "https://www.glassdoor.co.in/job-listing/junior-graphic-designer-4-hour-shift-kustom-pro-JV_IC2836484_KO0,36_KE37,47.htm?jl=1009664734059",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/5995721/kustom-pro-squarelogo-1646744487757.png"
-  },
-  {
-    "title": "Office Administrator / Office Executive (GOREGAON)",
-    "company": "PRECISION ENGINEERING INDUSTRIES",
-    "salary": "₹13T-₹16T()",
-    "link": "https://www.glassdoor.co.in/job-listing/office-administrator-office-executive-goregaon-precision-engineering-industries-JV_KO0,46_KE47,79.htm?jl=1009658764025",
-    "posted": "4d"
-  },
-  {
-    "title": "State Head",
-    "company": "ASTC PVT LTD",
-    "salary": "₹50T-₹90T()",
-    "link": "https://www.glassdoor.co.in/job-listing/state-head-astc-pvt-ltd-JV_KO0,10_KE11,23.htm?jl=1009661366568",
-    "posted": "2d"
-  },
-  {
-    "title": "Process Associate - Operations (Freshers can also apply)",
-    "company": "Knack Global",
-    "salary": "₹22T-₹25T()",
-    "link": "https://www.glassdoor.co.in/job-listing/process-associate-operations-freshers-can-also-apply-knack-global-JV_IC2942216_KO0,52_KE53,65.htm?jl=1009654272197",
-    "posted": "7d",
-    "logo": "https://media.glassdoor.com/sql/967182/knack-global-squarelogo-1521535890322.png"
-  },
-  {
-    "title": "PPFG Specialist - TSI",
-    "company": "BP Energy",
-    "link": "https://www.glassdoor.co.in/job-listing/ppfg-specialist-tsi-bp-energy-JV_IC2856202_KO0,19_KE20,29.htm?jl=1009655821498",
-    "posted": "6d"
-  },
-  {
-    "title": "Sourcing Senior Advisor",
-    "company": "BP Energy",
-    "salary": "₹87T()",
-    "link": "https://www.glassdoor.co.in/job-listing/sourcing-senior-advisor-bp-energy-JV_IC2856202_KO0,23_KE24,33.htm?jl=1009658071590",
-    "posted": "4d",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Legal Associate",
-    "company": "Law veritas",
-    "salary": "₹10T-₹15T()",
-    "link": "https://www.glassdoor.co.in/job-listing/legal-associate-law-veritas-JV_KO0,15_KE16,27.htm?jl=1009664754200",
-    "posted": "24h"
-  },
-  {
-    "title": "Office Assistant (Admissions Front Desk)",
-    "company": "The Khaitan School",
-    "salary": "₹25T-₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/office-assistant-admissions-front-desk-the-khaitan-school-JV_IC4477468_KO0,38_KE39,57.htm?jl=1009657601676",
+    "title": "Junior Software Developer",
+    "company": "Clovion Inc.",
+    "salary": "₹9T-₹20T()",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-developer-clovion-inc-JV_IC2833190_KO0,25_KE26,37.htm?jl=1009689847247",
     "posted": "5d"
   },
   {
-    "title": "Cofounder for export business",
-    "company": "Serenepulse Technologies",
-    "salary": "₹5L-₹12L()",
-    "link": "https://www.glassdoor.co.in/job-listing/cofounder-for-export-business-serenepulse-technologies-JV_KO0,29_KE30,54.htm?jl=1009663571530",
-    "posted": "24h"
-  },
-  {
-    "title": "Physics Teacher",
-    "company": "Ramakrishna Mission School Aalo",
-    "salary": "₹18T-₹20T()",
-    "link": "https://www.glassdoor.co.in/job-listing/physics-teacher-ramakrishna-mission-school-aalo-JV_KO0,15_KE16,47.htm?jl=1009664044460",
-    "posted": "24h"
-  },
-  {
-    "title": "Cataloging Executive",
-    "company": "Ugly Creatives",
-    "salary": "₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/cataloging-executive-ugly-creatives-JV_KO0,20_KE21,35.htm?jl=1009658578446",
-    "posted": "4d"
-  },
-  {
-    "title": "Production incharge",
-    "company": "MANGLA RUBBER TECHNOLOGIES",
-    "salary": "₹15T-₹20T()",
-    "link": "https://www.glassdoor.co.in/job-listing/production-incharge-mangla-rubber-technologies-JV_IC2873126_KO0,19_KE20,46.htm?jl=1009661213811",
-    "posted": "2d"
-  },
-  {
-    "title": "Clinical Microbiologist - Relocate to the UK",
-    "company": "NHS Professionals Doctors Gateway",
-    "salary": "₹64L-₹79L()",
-    "link": "https://www.glassdoor.co.in/job-listing/clinical-microbiologist-relocate-to-the-uk-nhs-professionals-doctors-gateway-JV_KO0,42_KE43,76.htm?jl=1009654731059",
-    "posted": "7d"
-  },
-  {
-    "title": "Legal Head",
-    "company": "Onkar Placement",
-    "salary": "₹3L()",
-    "link": "https://www.glassdoor.co.in/job-listing/legal-head-onkar-placement-JV_KO0,10_KE11,26.htm?jl=1009664976357",
-    "posted": "24h"
-  },
-  {
-    "title": "INTERN- WAREHOUSE",
-    "company": "PUMA",
-    "link": "https://www.glassdoor.co.in/job-listing/intern-warehouse-puma-JV_IC2921225_KO0,16_KE17,21.htm?jl=1009663178374",
+    "title": "Artificial Intelligence Engineer, Trilogy (Remote) - $100,000/year USD",
+    "company": "Crossover",
+    "link": "https://www.glassdoor.co.in/job-listing/artificial-intelligence-engineer-trilogy-remote-100-000-year-usd-crossover-JV_KO0,64_KE65,74.htm?jl=1009378703326",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/10474/puma-squareLogo-1656925067533.png"
+    "logo": "https://media.glassdoor.com/sql/1041838/crossover-for-work-squareLogo-1652306165124.png"
   },
   {
-    "title": "Store Keeper",
-    "company": "TCS The Corner Stone Institute",
-    "salary": "₹50T-₹65T()",
-    "link": "https://www.glassdoor.co.in/job-listing/store-keeper-tcs-the-corner-stone-institute-JV_IC2831731_KO0,12_KE13,43.htm?jl=1009657805406",
-    "posted": "4d"
-  },
-  {
-    "title": "Mergers & Acquisitions Analyst",
-    "company": "Nordstern Pathways",
-    "salary": "₹7L-₹10L()",
-    "link": "https://www.glassdoor.co.in/job-listing/mergers-acquisitions-analyst-nordstern-pathways-JV_IC2921225_KO0,28_KE29,47.htm?jl=1009658619967",
-    "posted": "4d"
-  },
-  {
-    "title": "Head of Partnership B2B Travel Technology",
-    "company": "Yanolja Cloud Solution",
-    "salary": "₹3L()",
-    "link": "https://www.glassdoor.co.in/job-listing/head-of-partnership-b2b-travel-technology-yanolja-cloud-solution-JV_KO0,41_KE42,64.htm?jl=1009662881517",
-    "posted": "24h"
-  },
-  {
-    "title": "Plant Executive/ Quality Executive",
-    "company": "Patanjali Peya Pvt Ltd",
-    "salary": "₹25T-₹30T()",
-    "link": "https://www.glassdoor.co.in/job-listing/plant-executive-quality-executive-patanjali-peya-pvt-ltd-JV_KO0,33_KE34,56.htm?jl=1009660010468",
-    "posted": "3d"
-  },
-  {
-    "title": "Enterprise Technology Engineer - ESRI",
-    "company": "BP Energy",
-    "salary": "₹5L-₹8L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/enterprise-technology-engineer-esri-bp-energy-JV_IC2856202_KO0,35_KE36,45.htm?jl=1009659882731",
-    "posted": "3d"
-  },
-  {
-    "title": "Welder",
-    "company": "Unique Power Technologies",
-    "salary": "₹15T-₹18T()",
-    "link": "https://www.glassdoor.co.in/job-listing/welder-unique-power-technologies-JV_IC2942216_KO0,6_KE7,32.htm?jl=1009658483926",
-    "posted": "4d",
-    "logo": "https://media.glassdoor.com/sql/4272128/equal-india-squarelogo-1635933753505.png"
-  },
-  {
-    "title": "Booking Coordinator",
-    "company": "Falcon Bus Lines Private Limited",
-    "salary": "₹10T-₹12T()",
-    "link": "https://www.glassdoor.co.in/job-listing/booking-coordinator-falcon-bus-lines-private-limited-JV_IC2931245_KO0,19_KE20,52.htm?jl=1009654292116",
-    "posted": "7d"
-  },
-  {
-    "title": "Skin therapist",
-    "company": "DERMA DOCK Skin, Hair and Laser Clinic",
-    "salary": "₹25T-₹40T()",
-    "link": "https://www.glassdoor.co.in/job-listing/skin-therapist-derma-dock-skin-hair-and-laser-clinic-JV_KO0,14_KE15,52.htm?jl=1009306559224",
-    "posted": "24h"
-  },
-  {
-    "title": "Business Development Manager (Mumbai)",
-    "company": "PRECISION ENGINEERING INDUSTRIES",
-    "salary": "₹35T-₹40T()",
-    "link": "https://www.glassdoor.co.in/job-listing/business-development-manager-mumbai-precision-engineering-industries-JV_KO0,35_KE36,68.htm?jl=1009660083194",
-    "posted": "3d"
-  },
-  {
-    "title": "Customer Excellence Coordinator",
-    "company": "BP Energy",
-    "salary": "₹4L-₹5L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/customer-excellence-coordinator-bp-energy-JV_IC2856202_KO0,31_KE32,41.htm?jl=1009664649622",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
-  },
-  {
-    "title": "Business Analyst",
-    "company": "Optum",
-    "link": "https://www.glassdoor.co.in/job-listing/business-analyst-optum-JV_IC4477468_KO0,16_KE17,22.htm?jl=1009659256406",
+    "title": "Junior JavaScript Developer - Remote work",
+    "company": "BairesDev",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-javascript-developer-remote-work-bairesdev-JV_IC2940587_KO0,39_KE40,49.htm?jl=1009692029735",
     "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/2409113/optum-squareLogo-1711654052254.png"
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
   },
   {
-    "title": "Business Analyst",
-    "company": "Wipro Limited",
-    "salary": "₹3L-₹9L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/business-analyst-wipro-limited-JV_IC2921225_KO0,16_KE17,30.htm?jl=1009664737838",
+    "title": "Technical Lead II",
+    "company": "Johnson Controls",
+    "salary": "₹8L-₹10L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/technical-lead-ii-johnson-controls-JV_IC2856202_KO0,17_KE18,34.htm?jl=1009697546001",
     "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/9936/wipro-squareLogo-1670620181456.png"
+    "logo": "https://media.glassdoor.com/sql/365/johnson-controls-squareLogo-1727880459317.png"
   },
   {
-    "title": "Specialist Customer Care Support",
-    "company": "Barclays",
-    "salary": "₹6L-₹9L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/specialist-customer-care-support-barclays-JV_IC4477468_KO0,32_KE33,41.htm?jl=1009663367177",
-    "posted": "24h",
-    "logo": "https://media.glassdoor.com/sql/3456/barclays-squareLogo-1620301796378.png"
-  },
-  {
-    "title": "Production Supervisors (3 Positions)",
-    "company": "Amalgam",
-    "salary": "₹20T()",
-    "link": "https://www.glassdoor.co.in/job-listing/production-supervisors-3-positions-amalgam-JV_IC2869972_KO0,34_KE35,42.htm?jl=1009663333963",
+    "title": "ConnectWise RMM",
+    "company": "TechPio Services LLP",
+    "salary": "₹25T()",
+    "link": "https://www.glassdoor.co.in/job-listing/connectwise-rmm-techpio-services-llp-JV_IC4469455_KO0,15_KE16,36.htm?jl=1009695238859",
     "posted": "24h"
   },
   {
-    "title": "Solutions Lead",
-    "company": "BP Energy",
-    "salary": "₹3L-₹9L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/solutions-lead-bp-energy-JV_IC2856202_KO0,14_KE15,24.htm?jl=1009660004892",
-    "posted": "3d",
-    "logo": "https://media.glassdoor.com/sql/9011/bp-squarelogo-1618580256453.png"
+    "title": "Lead Member of Technical Staff- Machine Learning & AI",
+    "company": "Athenahealth",
+    "link": "https://www.glassdoor.co.in/job-listing/lead-member-of-technical-staff-machine-learning-ai-athenahealth-JV_IC2940587_KO0,50_KE51,63.htm?jl=1009689369606",
+    "posted": "6d",
+    "logo": "https://media.glassdoor.com/sql/18207/athenahealth-squareLogo-1634738869862.png"
   },
   {
-    "title": "Analyst",
-    "company": "Barclays",
-    "salary": "₹6L-₹8L(GlassdoorEst.)",
-    "link": "https://www.glassdoor.co.in/job-listing/analyst-barclays-JV_IC4477468_KO0,7_KE8,16.htm?jl=1009658864257",
-    "posted": "4d",
-    "logo": "https://media.glassdoor.com/sql/3456/barclays-squareLogo-1620301796378.png"
-  },
-  {
-    "title": "Procurement Practice New Associate",
-    "company": "Accenture",
-    "link": "https://www.glassdoor.co.in/job-listing/procurement-practice-new-associate-accenture-JV_IC2921225_KO0,34_KE35,44.htm?jl=1009660829129",
-    "posted": "2d",
-    "logo": "https://media.glassdoor.com/sql/4138/accenture-squareLogo-1709650590794.png"
-  },
-  {
-    "title": "Storekeeper",
-    "company": "ARABIAN GRILL",
-    "salary": "₹15T-₹25T()",
-    "link": "https://www.glassdoor.co.in/job-listing/storekeeper-arabian-grill-JV_IC2868437_KO0,11_KE12,25.htm?jl=1009662455418",
-    "posted": "24h"
-  },
-  {
-    "title": "Digital science lead - India",
-    "company": "BP Energy",
-    "link": "https://www.glassdoor.co.in/job-listing/digital-science-lead-india-bp-energy-JV_IC2856202_KO0,26_KE27,36.htm?jl=1009655821475",
+    "title": "Java Software Engineer",
+    "company": "Ficode Software Solutions Private Limited",
+    "salary": "₹40T-₹60T()",
+    "link": "https://www.glassdoor.co.in/job-listing/java-software-engineer-ficode-software-solutions-private-limited-JV_IC4469455_KO0,22_KE23,64.htm?jl=1009688971737",
     "posted": "6d"
   },
   {
-    "title": "Executive Assistant (EA)",
-    "company": "Playpower Labs",
-    "link": "https://www.glassdoor.co.in/job-listing/executive-assistant-ea-playpower-labs-JV_KO0,22_KE23,37.htm?jl=1009657182448",
-    "posted": "6d",
-    "logo": "https://media.glassdoor.com/sql/615434/playpower-labs-squarelogo-1531293679415.png"
+    "title": "Python Developer, Trilogy (Remote) - $100,000/year USD",
+    "company": "Crossover",
+    "link": "https://www.glassdoor.co.in/job-listing/python-developer-trilogy-remote-100-000-year-usd-crossover-JV_IC2940587_KO0,48_KE49,58.htm?jl=1009695580674",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/1041838/crossover-for-work-squareLogo-1652306165124.png"
+  },
+  {
+    "title": "Software Developer",
+    "company": "Riskbirbal Insurance Brokers Pvt Ltd",
+    "salary": "₹25T-₹30T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-riskbirbal-insurance-brokers-pvt-ltd-JV_IC4468593_KO0,18_KE19,55.htm?jl=1009696594261",
+    "posted": "24h"
+  },
+  {
+    "title": "Freelance Software Tester (MERN Stack)",
+    "company": "Osumare Marketing Solutions Pvt Ltd",
+    "salary": "₹5T-₹10T()",
+    "link": "https://www.glassdoor.co.in/job-listing/freelance-software-tester-mern-stack-osumare-marketing-solutions-pvt-ltd-JV_KO0,36_KE37,72.htm?jl=1009691329838",
+    "posted": "3d",
+    "logo": "https://media.glassdoor.com/sql/1549810/osumare-squarelogo-1524568168611.png"
+  },
+  {
+    "title": "Software Tester",
+    "company": "Khumbu Information Systems Pvt Ltd",
+    "salary": "₹3L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-tester-khumbu-information-systems-pvt-ltd-JV_IC2865319_KO0,15_KE16,50.htm?jl=1009695403095",
+    "posted": "24h"
+  },
+  {
+    "title": "Full Stack Developer - React + Node - Remote Work",
+    "company": "BairesDev",
+    "link": "https://www.glassdoor.co.in/job-listing/full-stack-developer-react-node-remote-work-bairesdev-JV_IC2876676_KO0,43_KE44,53.htm?jl=1009692029599",
+    "posted": "3d",
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
+  },
+  {
+    "title": "Female Tele Caller - MAAC South",
+    "company": "Contemsys software Private limited",
+    "salary": "₹10T-₹12T()",
+    "link": "https://www.glassdoor.co.in/job-listing/female-tele-caller-maac-south-contemsys-software-private-limited-JV_KO0,29_KE30,64.htm?jl=1009695409487",
+    "posted": "24h"
+  },
+  {
+    "title": "Associate Software Engineer",
+    "company": "Verint Systems Inc.",
+    "link": "https://www.glassdoor.co.in/job-listing/associate-software-engineer-verint-systems-inc-JV_IC2940587_KO0,27_KE28,46.htm?jl=1009695388488",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/14765/verint-systems-squareLogo-1621979755533.png"
+  },
+  {
+    "title": "Robotics Software Intern",
+    "company": "Airbus India Private Limited",
+    "link": "https://www.glassdoor.co.in/job-listing/robotics-software-intern-airbus-india-private-limited-JV_IC2940587_KO0,24_KE25,53.htm?jl=1009697083747",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/3059/airbus-squarelogo-1702511286787.png"
+  },
+  {
+    "title": "Junior Software Tester",
+    "company": "Optimizeq Private Limited",
+    "link": "https://www.glassdoor.co.in/job-listing/junior-software-tester-optimizeq-private-limited-JV_KO0,22_KE23,48.htm?jl=1009691309644",
+    "posted": "3d"
+  },
+  {
+    "title": "Personal Assistant",
+    "company": "Optiontown Software Pvt Ltd",
+    "salary": "₹15T-₹30T()",
+    "link": "https://www.glassdoor.co.in/job-listing/personal-assistant-optiontown-software-pvt-ltd-JV_IC4469218_KO0,18_KE19,46.htm?jl=1009688746364",
+    "posted": "6d"
+  },
+  {
+    "title": "Software Developer",
+    "company": "NexTech plm solution Pvt.Ltd",
+    "salary": "₹3L-₹5L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-nextech-plm-solution-pvt-ltd-JV_KO0,18_KE19,47.htm?jl=1009688612948",
+    "posted": "7d"
+  },
+  {
+    "title": "Software Engineer Associate",
+    "company": "Ascendas Technologies",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-associate-ascendas-technologies-JV_IC2833209_KO0,27_KE28,49.htm?jl=1009695871133",
+    "posted": "24h"
+  },
+  {
+    "title": "Software Developer (MATLAB, JAVA, Python)",
+    "company": "Softscholars Technologies",
+    "salary": "₹10T-₹15T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-matlab-java-python-softscholars-technologies-JV_IC2836047_KO0,37_KE38,63.htm?jl=1009697172292",
+    "posted": "24h"
+  },
+  {
+    "title": "Full Stack Developer - React + Node - Remote Work",
+    "company": "BairesDev",
+    "salary": "₹2L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/full-stack-developer-react-node-remote-work-bairesdev-JV_IC2873112_KO0,43_KE44,53.htm?jl=1009692029598",
+    "posted": "3d",
+    "logo": "https://media.glassdoor.com/sql/864485/bairesdev-squareLogo-1687442521020.png"
+  },
+  {
+    "title": "Software Engineer",
+    "company": "Visual IT Solutions Pvt Ltd",
+    "salary": "₹4L()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-engineer-visual-it-solutions-pvt-ltd-JV_KO0,17_KE18,45.htm?jl=1009693930018",
+    "posted": "2d",
+    "logo": "https://media.glassdoor.com/sql/342444/visual-it-solutions-squarelogo-1524821071517.png"
+  },
+  {
+    "title": "Software Tester",
+    "company": "Vega6 Webware Technologies Pvt. Ltd",
+    "salary": "₹30T-₹40T()",
+    "link": "https://www.glassdoor.co.in/job-listing/software-tester-vega6-webware-technologies-pvt-ltd-JV_IC4477468_KO0,15_KE16,50.htm?jl=1009690661870",
+    "posted": "4d",
+    "logo": "https://media.glassdoor.com/sql/1952429/vega6-squarelogo-1639119862411.png"
+  },
+  {
+    "title": "Software Development Engineer",
+    "company": "SPHINXHIRE.AI PRIVATE LIMITED",
+    "link": "https://www.glassdoor.co.in/job-listing/software-development-engineer-sphinxhire-ai-private-limited-JV_KO0,29_KE30,59.htm?jl=1009689532955",
+    "posted": "6d"
+  },
+  {
+    "title": "Software Developer",
+    "company": "Oracle",
+    "salary": "₹7L-₹9L(GlassdoorEst.)",
+    "link": "https://www.glassdoor.co.in/job-listing/software-developer-oracle-JV_IC2940587_KO0,18_KE19,25.htm?jl=1009696324479",
+    "posted": "24h",
+    "logo": "https://media.glassdoor.com/sql/1737/oracle-squarelogo-1570718316042.png"
   }
 ]

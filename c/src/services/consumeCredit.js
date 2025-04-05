@@ -1,10 +1,9 @@
 import axios from "axios"
-import useUserData from "../Context/UserContext";
 
-const { email } = useUserData();
-const consumeCredit = async (action) => {
+const consumeCredit = async (action, email) => {
+    console.log("Consume Credit Function Called", action, email)
     try {
-        const response = await axios.post("http:5000//localhost/credit", {
+        const response = await axios.post("http://localhost:5000/credit", {
             email: email,
             action: action
         });

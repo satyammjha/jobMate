@@ -146,13 +146,12 @@ export const InfiniteMovingCards = ({ jobs, direction, speed, pauseOnHover, clas
                 >
                   <Bookmark
                     className={`w-5 h-5 transition-colors duration-200 ease-in-out ${savedJobs.some((saved) => saved.jobId === (job.jobId || job._id))
-                        ? "text-blue-600 dark:text-blue-400"
-                        : "text-gray-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
+                      ? "text-blue-600 dark:text-blue-400"
+                      : "text-gray-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400"
                       }`}
                   />
                   <span className="text-gray-700 dark:text-gray-300 font-medium">Save</span>
                 </Button>
-
               </div>
             </div>
           </li>

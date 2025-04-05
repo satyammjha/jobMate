@@ -28,7 +28,9 @@ const UserSchema = new mongoose.Schema({
     isVerified: { type: Boolean, default: false },
     savedJobs: { type: [SavedJobSchema], default: [] },
     createdAt: { type: Date, default: Date.now },
-    notifyAboutExpiringJobs: { type: Boolean, default: false }
+    notifyAboutExpiringJobs: { type: Boolean, default: false },
+    resumeUploads: { type: Number, default: 0 },
+    resumeUploadTimestamp: { type: Date },
 });
 
 UserSchema.index({ email: 1 });
