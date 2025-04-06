@@ -14,37 +14,38 @@ import { SavedJobsProvider } from './Context/SavedJobContext';
 import SavedJobs from './pages/Track';
 import { ChatPopup } from './customComponents/Chatbot/chatbot';
 import useUserData from './Context/UserContext';
+import { MatchedJobsContext } from './Context/MatchedJobs';
 function App() {
   const { email } = useUserData();
   console.log("emm2", email);
   return (
-    <SavedJobsProvider>
-      <div className="dark:bg-black hide-scrollbar">
-        <div className="fixed top-0 left-0 w-full z-50">
-          <Navbar />
-          <FloatingDockDemo />
+      <SavedJobsProvider>
+        <div className="dark:bg-black hide-scrollbar">
+          <div className="fixed top-0 left-0 w-full z-50">
+            <Navbar />
+            <FloatingDockDemo />
+          </div>
+          <ChatPopup />
+          <div className="pt-16">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/ref/:referralCode" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/reviewresume" element={<ResumeReview />} />
+              <Route path="/tracker" element={<SavedJobs />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/refferals" element={<Refferal />} />
+              <Route path="/onboard/refer" element={<Onboard />} />
+              <Route path="/job-details/:jobId" element={<JobDetails />} />
+              <Route path="*" element={<ErrorPage />} />
+            </Routes>
+          </div>
+
+          <div className="z-50">
+            <Footer />
+          </div>
         </div>
-        <ChatPopup />
-        <div className="pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ref/:referralCode" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/reviewresume" element={<ResumeReview />} />
-            <Route path="/tracker" element={<SavedJobs />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/refferals" element={<Refferal />} />
-            <Route path="/onboard/refer" element={<Onboard />} />
-            <Route path="/job-details/:jobId" element={<JobDetails />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-        </div>
-        
-        <div className="z-50">
-          <Footer />
-        </div>
-      </div>
-    </SavedJobsProvider>
+      </SavedJobsProvider>
   )
 }
 

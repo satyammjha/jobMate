@@ -9,9 +9,18 @@ import emailRouter from "./routes/emailRoutes.js";
 import jobMatchingRouter from "./routes/jobMatchingRoute.js";
 import router from "./routes/agentRoutes.js";
 import creditsRoute from "./routes/creditControlRoutes.js";
+import { requestProfilerMiddleware } from "expresseye";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(
+    requestProfilerMiddleware({
+        logTo: "console",
+        threshold: 300
+    })
+)
+
 
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));

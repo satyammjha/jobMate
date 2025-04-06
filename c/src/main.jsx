@@ -9,12 +9,14 @@ import { JdProvider } from './Context/JdContext.jsx';
 import { UserProvider } from './Context/UserContext.jsx';
 import { JobDataProvider } from './Context/jobDataProvider.jsx';
 import { HelmetProvider } from 'react-helmet-async';
+import MatchedJobsContextProvider from './Context/MatchedJobs.jsx';
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 if (!PUBLISHABLE_KEY) {
     throw new Error("Missing Publishable Key");
 }
 ReactDOM.createRoot(document.getElementById('root')).render(
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+
         <HelmetProvider>
             <UserProvider>
                 <JobDataProvider>
@@ -22,7 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                         <SkillsContextProvider>
                             <React.StrictMode>
                                 <BrowserRouter>
-                                    <App />
+                                    <MatchedJobsContextProvider>
+                                        <App />
+                                    </MatchedJobsContextProvider>
                                 </BrowserRouter>
                             </React.StrictMode>
                         </SkillsContextProvider>
