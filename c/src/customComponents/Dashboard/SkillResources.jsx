@@ -56,8 +56,8 @@ const SkillResources = ({ skills }) => {
                         tag: skill,
                         per_page: 3
                     },
-                    headers: DEV_TO_API_KEY ? { 
-                        'api-key': DEV_TO_API_KEY 
+                    headers: DEV_TO_API_KEY ? {
+                        'api-key': DEV_TO_API_KEY
                     } : {}
                 }
             );
@@ -77,13 +77,13 @@ const SkillResources = ({ skills }) => {
         const fetchResources = async () => {
             try {
                 const results = {};
-                
+
                 for (const skill of skills) {
                     const [videos, articles] = await Promise.all([
                         fetchYouTubeVideos(skill),
                         fetchDevToArticles(skill)
                     ]);
-                    
+
                     results[skill] = {
                         videos: videos.slice(0, 3),
                         articles: articles.slice(0, 3)
@@ -115,8 +115,8 @@ const SkillResources = ({ skills }) => {
                     <Carousel className="w-full">
                         <CarouselContent className="-ml-4">
                             {Object.entries(resources).map(([skill, data], index) => (
-                                <CarouselItem 
-                                    key={index} 
+                                <CarouselItem
+                                    key={index}
                                     className="pl-4 md:basis-1/2 lg:basis-1/3"
                                 >
                                     <Card className="h-full m-2">
@@ -124,13 +124,13 @@ const SkillResources = ({ skills }) => {
                                             <h4 className="font-semibold mb-4">
                                                 Resources for {skill}
                                             </h4>
-                                            
+
                                             <Tabs defaultValue="videos" className="w-full">
                                                 <TabsList className="grid grid-cols-2 w-full">
                                                     <TabsTrigger value="videos">Videos</TabsTrigger>
                                                     <TabsTrigger value="articles">Articles</TabsTrigger>
                                                 </TabsList>
-                                                
+
                                                 <TabsContent value="videos">
                                                     <div className="space-y-4">
                                                         {data.videos.map((video, idx) => (
@@ -204,8 +204,8 @@ const SkillResources = ({ skills }) => {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <CarouselPrevious className="left-2"/>
-                        <CarouselNext className="right-2"/>
+                        <CarouselPrevious className="left-2" />
+                        <CarouselNext className="right-2" />
                     </Carousel>
                 )}
             </CardContent>

@@ -104,7 +104,7 @@ const Home = () => {
             </section>
 
             <section className="py-20 bg-white dark:bg-black">
-                <div className="max-w-7xl mx-auto px-4">
+                <div className="mx-auto px-4">
                     <motion.h2
                         {...headingAnimation}
                         className="text-4xl lg:text-5xl font-bold text-center text-gray-900 dark:text-white mb-12"
