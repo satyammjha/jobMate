@@ -15,6 +15,7 @@ import SavedJobs from './pages/Track';
 import { ChatPopup } from './customComponents/Chatbot/chatbot';
 import useUserData from './Context/UserContext';
 import { MatchedJobsContext } from './Context/MatchedJobs';
+import { FeedbackDrawer } from './customComponents/Feedback';
 function App() {
   const { email } = useUserData();
   console.log("emm2", email);
@@ -23,6 +24,7 @@ function App() {
         <div className="dark:bg-black hide-scrollbar">
           <div className="fixed top-0 left-0 w-full z-50">
             <Navbar />
+            <FeedbackDrawer />
             <FloatingDockDemo />
           </div>
           <ChatPopup />
