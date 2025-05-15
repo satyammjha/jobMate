@@ -1,227 +1,121 @@
-import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { Virtuoso } from 'react-virtuoso';
+import React, { useState, useCallback } from 'react';
 import { Input } from '../../../components/ui/input';
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../../../components/ui/dialog";
-import { Search, Sparkles, Command, RotateCw, Briefcase, MapPin, Building, SearchIcon } from 'lucide-react';
+import { Search, Briefcase, MapPin, Building, X } from 'lucide-react';
 import { Badge } from '../../../components/ui/badge';
-import { Button } from '../../../components/ui/button';
 import { useJobData } from '../../../Context/jobDataProvider';
-import { useDebounce } from '../../../hooks/useDebounce';
+import { Dialog, DialogContent, DialogTrigger } from "../../../components/ui/dialog";
 
-const createWorker = () => new Worker(new URL('./searchWorker.js', import.meta.url));
+// Keep existing search logic unchanged
+const performSearch = (jobs, query) => {
+  if (!query.trim()) return [];
+  const lowercaseQuery = query.toLowerCase();
+  return jobs.filter(job => {
+    return (
+      (job.title && job.title.toLowerCase().includes(lowercaseQuery)) ||
+      (job.company && job.company.toLowerCase().includes(lowercaseQuery)) ||
+      (job.location && job.location.toLowerCase().includes(lowercaseQuery)) ||
+      (job.tags && job.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))) ||
+      (job.matchedSkills && job.matchedSkills.some(skill => skill.toLowerCase().includes(lowercaseQuery)))
+    );
+  }).slice(0, 20);
+};
 
-const JobItem = React.memo(({ job }) => (
-  <div className="group p-4 rounded-xl border bg-background/95 backdrop-blur-sm 
-                 hover:bg-accent transition-all cursor-pointer shadow-sm
-                 hover:shadow-md hover:border-primary/20 active:scale-[0.99]
-                 transform duration-200 hover:-translate-y-0.5"
-       role="button"
-       tabIndex={0}>
-    <div className="flex items-start gap-4">
-      <div className="p-2 bg-primary/10 rounded-xl flex-shrink-0">
-        <Briefcase className="h-6 w-6 text-primary" />
+const JobItem = React.memo(({ job }) => {
+  const skills = job.tags || job.matchedSkills || [];
+  return (
+    <div className="flex items-start gap-3 p-3 border-b hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+      <div className="p-2 bg-primary/10 rounded-lg flex-shrink-0">
+        <Briefcase className="h-5 w-5 text-primary" />
       </div>
-      <div className="flex-grow space-y-2">
-        <h4 className="font-semibold text-base line-clamp-1">{job.title}</h4>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <Building className="h-4 w-4" />
-            <span className="truncate">{job.company}</span>
+      <div className="flex-grow">
+        <h4 className="font-medium text-sm line-clamp-1 dark:text-white">{job.title}</h4>
+        <div className="flex gap-3 mt-1">
+          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+            <Building className="h-3 w-3" />
+            <span className="dark:text-slate-300">{job.company}</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <MapPin className="h-4 w-4" />
-            <span className="truncate">{job.location}</span>
-          </div>
+          {job.location && (
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <MapPin className="h-3 w-3" />
+              <span className="dark:text-slate-300">{job.location}</span>
+            </div>
+          )}
         </div>
-        {job.skills && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {job.skills.map((skill) => (
-              <Badge key={skill}
-                     variant="secondary"
-                     className="px-2 py-0.5 text-xs bg-primary/5 text-primary/80">
+        {skills.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-2">
+            {skills.slice(0, 2).map((skill) => (
+              <Badge key={skill} variant="secondary" className="px-1.5 py-0 text-xs bg-primary/5 dark:bg-primary/20">
                 {skill}
               </Badge>
             ))}
+            {skills.length > 2 && (
+              <Badge variant="secondary" className="px-1.5 py-0 text-xs bg-primary/5 dark:bg-primary/20">
+                +{skills.length - 2}
+              </Badge>
+            )}
           </div>
         )}
       </div>
     </div>
-  </div>
-));
+  );
+});
 
-const SkeletonLoader = () => (
-  <div className="space-y-3 pr-2 pb-4">
-    {[...Array(5)].map((_, index) => (
-      <div key={index} className="p-4 rounded-xl border bg-background/95 animate-pulse">
-        <div className="flex items-start gap-4">
-          <div className="h-12 w-12 rounded-xl bg-muted/50" />
-          <div className="flex-grow space-y-2">
-            <div className="h-5 w-3/4 rounded bg-muted/50" />
-            <div className="flex gap-4">
-              <div className="h-4 w-1/4 rounded bg-muted/50" />
-              <div className="h-4 w-1/4 rounded bg-muted/50" />
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-);
-
-const SearchBar = ({ variant = 'desktop' }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const { jobs } = useJobData();
-  const workerRef = useRef(null);
-  const debouncedQuery = useDebounce(query, 200);
-  const virtuosoRef = useRef(null);
+  const searchResults = performSearch(jobs, query);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    
-    const worker = createWorker();
-    workerRef.current = worker;
-    
-    const handleMessage = ({ data }) => {
-      setSearchResults(data);
-      setIsLoading(false);
-      virtuosoRef.current?.scrollToIndex(0);
-    };
-
-    worker.addEventListener('message', handleMessage);
-    worker.postMessage({ type: 'INIT', jobs });
-
-    return () => {
-      worker.removeEventListener('message', handleMessage);
-      worker.terminate();
-    };
-  }, [isOpen, jobs]);
-
-  useEffect(() => {
-    if (!workerRef.current) return;
-    if (!debouncedQuery.trim()) return setSearchResults([]);
-    
-    setIsLoading(true);
-    workerRef.current.postMessage({ type: 'SEARCH', query: debouncedQuery });
-  }, [debouncedQuery]);
-
-  useEffect(() => {
-    const handler = (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        setIsOpen(true);
-      }
-    };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, []);
-
-  const handleOpenChange = useCallback((open) => {
-    setIsOpen(open);
-    if (!open) {
-      setQuery('');
-      setSearchResults([]);
-    }
+  const handleChange = useCallback((e) => {
+    setQuery(e.target.value);
   }, []);
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleOpenChange}>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        {variant === 'mobile' ? (
-          <Button className="md:hidden fixed bottom-4 right-4 z-50 rounded-full shadow-lg p-3 h-auto"
-                  aria-label="Open mobile search">
-            <SearchIcon className="h-5 w-5" />
-          </Button>
-        ) : (
-          <div className="hidden md:block relative w-full max-w-2xl">
+        <div className="w-full max-w-lg mx-auto cursor-text">
+          <div className="relative">
             <Input
-              placeholder="Ask AI to find your next job..."
-              className="pl-12 pr-28 rounded-full bg-background/95 backdrop-blur-sm 
-                        ring-1 ring-border/50 cursor-text h-12 shadow-lg text-base"
               readOnly
-              aria-label="Open AI-powered search"
+              placeholder="Search jobs..."
+              className="pl-10 py-2 border dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              onClick={() => setIsOpen(true)}
             />
-            <div className="absolute inset-y-0 left-4 flex items-center">
-              <Search className="h-5 w-5 text-foreground/60" />
-            </div>
-            <div className="absolute inset-y-0 right-4 flex items-center">
-              <Badge variant="outline"
-                     className="px-2.5 py-1 text-xs font-mono bg-background/90">
-                {navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'}
-              </Badge>
-            </div>
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           </div>
-        )}
+        </div>
       </DialogTrigger>
 
-      <DialogContent
-        className="max-w-[95vw] md:max-w-3xl p-0 h-[90dvh] sm:h-[80dvh] rounded-2xl">
-        <div className="h-full flex flex-col bg-background/95 backdrop-blur-lg">
-          <DialogHeader className="px-6 pt-6">
-            <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              <div className="flex items-center gap-3">
-                <Sparkles className="h-7 w-7 text-primary" />
-                <span>AI Job Search</span>
-              </div>
-            </DialogTitle>
-          </DialogHeader>
+      <DialogContent className="max-w-2xl p-0 overflow-hidden shadow-xl dark:border-slate-700">
+        <div className="bg-white dark:bg-slate-900">
+          <div className="flex items-center px-4 border-b dark:border-slate-700">
+            <Search className="h-5 w-5 text-muted-foreground mr-2" />
+            <input
+              value={query}
+              onChange={handleChange}
+              placeholder="Search by job title, company, skills..."
+              className="w-full py-4 bg-transparent outline-none placeholder:text-muted-foreground dark:text-white"
+              autoFocus
+            />
+            
+          </div>
 
-          <div className="flex flex-col h-full p-6 gap-4">
-            <div className="relative">
-              <Input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Try: 'Remote React developer jobs with stock options'"
-                className="pl-12 pr-24 rounded-xl py-5 text-base border-primary/20"
-                autoFocus
-                aria-label="AI search input"
-              />
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary/80" />
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2 items-center">
-                {isLoading && <RotateCw className="h-4 w-4 animate-spin text-muted-foreground" />}
-                <Badge variant="outline" className="px-2 py-0.5 text-xs border-primary/20">
-                  {navigator.platform.includes('Mac') ? '⌘K' : 'Ctrl+K'}
-                </Badge>
+          <div className="max-h-[60vh] overflow-y-auto">
+            {searchResults.length > 0 ? (
+              searchResults.map((job) => (
+                <JobItem key={job._id} job={job} />
+              ))
+            ) : query ? (
+              <div className="p-6 text-center text-sm text-muted-foreground dark:text-slate-400">
+                No jobs found for "{query}"
               </div>
-            </div>
-
-            <div className="flex-1 overflow-hidden">
-              {isLoading ? (
-                <SkeletonLoader />
-              ) : searchResults.length > 0 ? (
-                <Virtuoso
-                  ref={virtuosoRef}
-                  data={searchResults}
-                  totalCount={searchResults.length}
-                  itemContent={(index, job) => <JobItem job={job} />}
-                  components={{ List: React.forwardRef(({ style, children }, ref) => (
-                    <div ref={ref} style={style} className="pr-2 pb-4 space-y-3">
-                      {children}
-                    </div>
-                  ))}}
-                  className="scroll-container"
-                />
-              ) : query ? (
-                <div className="flex flex-col items-center justify-center h-full gap-4">
-                  <Search className="h-12 w-12 text-primary/30" />
-                  <p className="text-lg font-medium text-foreground/80">
-                    No matches found
-                  </p>
-                </div>
-              ) : (
-                <div className="h-full flex items-center justify-center text-muted-foreground">
-                  Start typing to search {jobs.length.toLocaleString()} opportunities
-                </div>
-              )}
-            </div>
+            ) : (<>
+              <div className="p-6 text-center text-sm text-muted-foreground dark:text-slate-400">
+                Start typing to search {jobs.length.toLocaleString()} opportunities
+              </div>
+           
+            </>
+            )}
           </div>
         </div>
       </DialogContent>
