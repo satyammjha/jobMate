@@ -14,12 +14,12 @@ import { requestProfilerMiddleware } from "expresseye";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(
-    requestProfilerMiddleware({
-        logTo: "console",
-        threshold: 300
-    })
-)
+// app.use(
+//     requestProfilerMiddleware({
+//         logTo: "console",
+//         threshold: 300
+//     })
+// )
 
 
 app.use(cors());

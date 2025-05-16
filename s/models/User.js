@@ -31,6 +31,14 @@ const UserSchema = new mongoose.Schema({
     notifyAboutExpiringJobs: { type: Boolean, default: false },
     resumeUploads: { type: Number, default: 0 },
     resumeUploadTimestamp: { type: Date },
+    lastRefillDate: { type: Date },
+    notifications: [
+  {
+    message: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
+    read: { type: Boolean, default: false }
+  }
+],
 });
 
 UserSchema.index({ email: 1 });

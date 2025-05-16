@@ -17,13 +17,13 @@ import useUserData from "../../Context/UserContext";
 import SearchBar from "./Search/SearchBar";
 import clsx from "clsx";
 import { SkillsContext } from "../../Context/SkillsContext";
+import Notifications from "./Notifications";
 
 export default function Navbar() {
   const { globalSkills } = useContext(SkillsContext);
-  const [theme, setTheme] = useState(() => 
+  const [theme, setTheme] = useState(() =>
     localStorage.getItem("theme") || "light"
   );
-  const [credits, setCredits] = useState(null);
   const location = useLocation();
   const params = useParams();
   const { user, isSignedIn } = useUser();
@@ -38,8 +38,8 @@ export default function Navbar() {
   }, [theme]);
 
   // Memoized theme toggle
-  const toggleTheme = useCallback(() => 
-    setTheme(prev => prev === "light" ? "dark" : "light"), 
+  const toggleTheme = useCallback(() =>
+    setTheme(prev => prev === "light" ? "dark" : "light"),
     []
   );
 
@@ -66,8 +66,8 @@ export default function Navbar() {
 
     const handleAuthFlow = async () => {
       try {
-        const email = user.primaryEmailAddress?.emailAddress || 
-                     user.emailAddresses[0]?.emailAddress;
+        const email = user.primaryEmailAddress?.emailAddress ||
+          user.emailAddresses[0]?.emailAddress;
         if (!email || !/^\S+@\S+\.\S+$/.test(email)) return;
 
         await fetchUserData(email);
@@ -76,14 +76,14 @@ export default function Navbar() {
           email,
           referredBy: localStorage.getItem("referral"),
         });
-        
+
         localStorage.setItem("user", JSON.stringify(response.data.user));
         localStorage.removeItem("referral");
       } catch (error) {
         console.error("Auth error:", error);
         if (error.response?.status === 409) {
-          const email = user.primaryEmailAddress?.emailAddress || 
-                       user.emailAddresses[0]?.emailAddress;
+          const email = user.primaryEmailAddress?.emailAddress ||
+            user.emailAddresses[0]?.emailAddress;
           fetchUserData(email);
         }
       }
@@ -112,7 +112,7 @@ export default function Navbar() {
         <SignedIn>
           <Button
             variant="ghost"
-            size="icon" 
+            size="icon"
             className={clsx(
               "rounded-full text-foreground/80 hover:text-foreground",
               theme === "dark" ? "bg-black-200" : "bg-white-300"
@@ -132,8 +132,8 @@ export default function Navbar() {
           >
             <Trophy size={16} className="text-primary" />
             <span className="text-sm font-medium">
-              {userData?.aiCredits !== undefined ? 
-                `Credits: ${userData.aiCredits}` : 
+              {userData?.aiCredits !== undefined ?
+                `Credits: ${userData.aiCredits}` :
                 <Skeleton className="h-4 w-20" />}
             </span>
           </Button>
@@ -146,6 +146,7 @@ export default function Navbar() {
               },
             }}
           />
+          <Notifications />
         </SignedIn>
 
         <SignedOut>

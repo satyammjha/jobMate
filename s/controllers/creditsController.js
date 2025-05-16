@@ -2,7 +2,7 @@ import User from "../models/User.js";
 
 const actionLimits = {
     resumeAnalysis: 10,
-    coverLetter: 20,
+    coverLetter: 10,
     desc: 10
 };
 
