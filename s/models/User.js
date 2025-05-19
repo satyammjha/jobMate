@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { type } from "os";
 
 const SavedJobSchema = new mongoose.Schema({
     jobId: { type: String },
@@ -26,6 +27,7 @@ const UserSchema = new mongoose.Schema({
     referredUsers: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     referredBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     isVerified: { type: Boolean, default: false },
+    clerkUserId: { type: String, unique: true },
     savedJobs: { type: [SavedJobSchema], default: [] },
     createdAt: { type: Date, default: Date.now },
     notifyAboutExpiringJobs: { type: Boolean, default: false },
@@ -41,6 +43,15 @@ const UserSchema = new mongoose.Schema({
 ],
 });
 
+const newsLetterSchema = new mongoose.Schema({
+  email:{type:String, required:true},
+  subscribedAt: { type: Date, default: Date.now },
+  isSubscribed: { type: Boolean, default: true },
+  unsubscribedAt: { type: Date },
+});
+
+
 UserSchema.index({ email: 1 });
 
 export default mongoose.model("User", UserSchema);
+export const NewsLetter = mongoose.model("NewsLetter", newsLetterSchema);

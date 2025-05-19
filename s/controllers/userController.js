@@ -9,6 +9,7 @@ const addUserController = async (req, res) => {
 
     try {
         const { email, name, referredBy } = req.body;
+        const clerkUserId = req.clerkUserId; 
         console.log("🔹 req.body:", req.body);
 
         if (!email || !name) {
@@ -31,7 +32,7 @@ const addUserController = async (req, res) => {
         let aiCredits = referredBy ? 50 : 100;
         let referredByUser = null;
 
-        user = new User({ email, name, referralCode, aiCredits });
+        user = new User({ email, name, clerkUserId, referralCode, aiCredits });
 
         if (referredBy) {
             referredByUser = await User.findOne({ referralCode: referredBy });
