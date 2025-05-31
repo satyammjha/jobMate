@@ -110,6 +110,11 @@ export const notifyUser = async (req, res) => {
         });
     }
 };
+
+
+
+
+
 export const toggleNotifyExpiringJobs = async ({ email, action }, res) => {
     console.log("Email:", email, "Action received:", action);
 

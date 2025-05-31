@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
 import User from "../models/User.js";
+import job from "../models/jobs.js"
 
 /**
  * @desc    Fetch user data by email
@@ -50,51 +50,29 @@ const fetchReferralList = async (req, res) => {
  * @access  Public
  */
 
-const fetchJobsData = async (parameters = {}) => {
-    console.log("Params recd:", parameters);
-    try {
-        if (!mongoose.connection || mongoose.connection.readyState !== 1) {
-            console.error("❌ Database connection error");
-            return { error: "Database not connected" };
-        }
+const fetchJobsData = async (parameters = {}, res) => {
+  try {
+    const query = {};
 
-        console.log("🔍 Fetching jobs...");
-
-        const ndDb = mongoose.connection.client.db("nd");
-        const gdDb = mongoose.connection.client.db("gdjd");
-
-        let query = {};
-
-        if (parameters.title) {
-            query.title = { $regex: new RegExp(parameters.title, "i") };
-        }
-        if (parameters.company) {
-            query.company = { $regex: new RegExp(parameters.company, "i") };
-        }
-
-        let naukriJobs = [], gdJobs = [];
-
-        if (!parameters.platform || parameters.platform.toLowerCase() === "naukri") {
-            naukriJobs = await ndDb.collection("nds").find(query).limit(100).toArray();
-        }
-        if (!parameters.platform || parameters.platform.toLowerCase() === "glassdoor") {
-            gdJobs = await gdDb.collection("jds").find(query).limit(100).toArray();
-        }
-
-        return { message: "Jobs fetched successfully", naukriJobs, gdJobs };
-
-    } catch (error) {
-        console.error("❌ Error fetching job data:", error.stack);
-        return { error: "Error fetching job data", details: error.message };
+    if (parameters.job_title) {
+      query.job_title = { $regex: parameters.job_title, $options: "i" };
     }
+
+    if (parameters.location) {
+      query.location = { $regex: parameters.location, $options: "i" };
+    }
+
+    const jobs = await job.find(query);
+
+    return res.status(200).json({ message: "Jobs fetched successfully", jobs });
+
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
 };
 
 
-// Extracts numeric salary from string
-const extractSalary = (salaryString) => {
-    const match = salaryString.match(/₹(\d+)L/);
-    return match ? parseInt(match[1]) : null;
-};
+
 /**
  * @desc    Save jobs to user's savedJobs array
  * @route   POST /api/jobs/save
@@ -162,7 +140,7 @@ const getSavedJobs = async (req, res) => {
 
 const deleteSavedJobs = async (req, res) => {
     try {
-        const { email, jobs } = req.body; 
+        const { email, jobs } = req.body;
 
         if (!email || !jobs || !Array.isArray(jobs) || jobs.length === 0) {
             return res.status(400).json({ error: "Invalid delete request format" });

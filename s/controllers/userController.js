@@ -9,7 +9,7 @@ const addUserController = async (req, res) => {
 
     try {
         const { email, name, referredBy } = req.body;
-        const clerkUserId = req.clerkUserId; 
+        const clerkUserId = req.userId;
         console.log("🔹 req.body:", req.body);
 
         if (!email || !name) {

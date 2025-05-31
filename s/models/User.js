@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { type } from "os";
 
 const SavedJobSchema = new mongoose.Schema({
     jobId: { type: String },
@@ -29,7 +28,7 @@ const UserSchema = new mongoose.Schema({
     isVerified: { type: Boolean, default: false },
     clerkUserId: { type: String, unique: true },
     savedJobs: { type: [SavedJobSchema], default: [] },
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now, required: false },
     notifyAboutExpiringJobs: { type: Boolean, default: false },
     resumeUploads: { type: Number, default: 0 },
     resumeUploadTimestamp: { type: Date },

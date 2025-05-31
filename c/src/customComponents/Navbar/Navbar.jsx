@@ -69,25 +69,25 @@ export default function Navbar() {
     const handleAuthFlow = async () => {
       try {
         const token = await getToken();
-        console.log("Token:", token); 
+        console.log("Token:", token);
         const email = user.primaryEmailAddress?.emailAddress ||
           user.emailAddresses[0]?.emailAddress;
         if (!email || !/^\S+@\S+\.\S+$/.test(email)) return;
 
         await fetchUserData(email);
         const response = await axios.post(
-  "http://localhost:5000/user",
-  {
-    name: user.fullName,
-    email,
-    referredBy: localStorage.getItem("referral"),
-  },
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+          "http://localhost:5000/user",
+          {
+            name: user.fullName,
+            email,
+            referredBy: localStorage.getItem("referral"),
+          },
+          {
+            headers: {
+              Authorization: `${token}`,
+            },
+          }
+        );
 
 
         localStorage.setItem("user", JSON.stringify(response.data.user));
