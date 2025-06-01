@@ -1,0 +1,1 @@
+export { default as uploadPdf } from "./uploadPdfRoute.js";

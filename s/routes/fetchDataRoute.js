@@ -5,7 +5,7 @@ const dataRouter = express.Router();
 
 dataRouter.get("/fetchRefferalList", fetchReferralList);
 dataRouter.post("/fetchUserData", fetchUserData);
-dataRouter.get("/fetchJobsData",fetchJobsData);
+dataRouter.get("/fetchJobsData", fetchJobsData);
 dataRouter.post("/jobs/save", saveJobs);
 dataRouter.get("/jobs/saved", getSavedJobs);
 dataRouter.delete("/jobs/delete", deleteSavedJobs);

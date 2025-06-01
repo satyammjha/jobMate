@@ -10,6 +10,7 @@ import jobMatchingRouter from "./routes/jobMatchingRoute.js";
 import router from "./routes/agentRoutes.js";
 import creditsRoute from "./routes/creditControlRoutes.js";
 import { requestProfilerMiddleware } from "expresseye";
+import uploadPdfRoute from "./routes/uploadPdf.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -39,6 +40,7 @@ app.use("/data", dataRouter);
 app.use("/notify", emailRouter);
 app.use("/match", jobMatchingRouter);
 app.use("/credit", creditsRoute);
+app.use("/upload", uploadPdfRoute);
 // app.get('/', (req, res) => {
 //     res.send('Hello World!');
 // })
@@ -61,7 +63,7 @@ app.use((req, res) => {
 const startServer = async () => {
   try {
     await dbConnection();
-    
+
     app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   } catch (error) {
     console.error("Database connection failed:", error);

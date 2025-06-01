@@ -28,10 +28,15 @@
     "express": "^4.21.2",
     "expresseye": "^1.1.1",
     "langchain": "^0.3.19",
+    "mammoth": "^1.9.1",
     "mongodb": "^6.13.0",
     "mongoose": "^8.10.1",
+    "multer": "^2.0.0",
     "node-cron": "^4.0.5",
-    "nodemailer": "^6.10.0"
+    "nodemailer": "^6.10.0",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^5.2.133",
+    "textract": "^2.5.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

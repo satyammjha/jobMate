@@ -1,0 +1,56 @@
+
+
+ 
+ 
+ 
+ 
+EDUCATION 
+Satyam Kumar 
+Chandigarh, India 
++91 9142273099 | satyammjha0@gmail.com | linkedin/satyammjha | github/satyammjha 
+Chandigarh University Mohali, Punjab 
+Bachelor of Engineering – Computer Science and Engineering Expected July 2026 
+St. Xaviers High School Deoghar, Jharkhand 
+Senior Secondary - PCM June2019 - Jul 2021 
+EXPERIENCE 
+Gigabyte Coders Remote, India 
+Full-Stack Developer Intern August 2024 – January 
+• Completed 10+ full-stack development projects, including responsive landing pages, e-commerce platforms, and a school 
+management CRM serving 5,000+ users. 
+• Utilized MERN stack, Wordpress and responsive design principles to develop scalable, high-performance solutions 
+• Improved website performance, UI/UX and functionality, driving a 10% increase in client’s revenue 
+SKILLS 
+ 
+• Programming Languages: C++, JavaScript, TypeScript 
+• Backend Development: Node.js, REST APIs, MongoDB, SQL/NoSQL 
+• Frontend Development: React.js, React Native, Tailwind CSS, HTML, CSS 
+• Cloud Platforms: Firebase, AWS(Basics) 
+• Version Control & Collaboration: Git, GitHub 
+• Problem-Solving: Proficient in data structures, algorithms, and debugging 
+• Other Skills: Multi-tasking, Leadership, Adaptability 
+ 
+ 
+PROJECTS 
+Jeevani – HDIMS APP         Github 
+• Built a national health data exchange platform using React Native & Node.js, enabling secure, offline-first patient 
+management and real-time data sync various hospitals. 
+• Integrated AI-driven analytics & chatbots, automating outbreak prediction, health scheme recommendations, 
+and role-based access control for government and hospital stakeholders. 
+• Developed REST API interoperability with national health systems, ensuring multi-level data flow and automated 
+reporting for district, state, and central authorities. 
+ 
+ExpressEye – npm package         Github 
+• Built & published expressEys, an Express.js middleware with email alerts, route ignoring, JSON file logging, 
+and request tracking. 
+• Implemented a monitoring system with configurable alerts for slow requests, logging limits, and email notifications 
+for performance issues. 
+Designed a flexible logging system that allows storing logs in JSON files, databases, or external monitoring services for 
+better observability. 
+ 
+ACHIEVEMENTS 
+• Selected as one of the top 6 teams out of 500 nationwide for the finals of Smart India Hackathon 2024, organized by the 
+Government of India. 
+• Led the team to secure 2
+nd 
+runner up position in the web development hackathon organized by chandigarh university 
+• Secured Runner up position in e-suraksha hackathon organized by CSI-CUSB 

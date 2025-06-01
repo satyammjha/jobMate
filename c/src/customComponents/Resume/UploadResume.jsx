@@ -113,81 +113,81 @@ function UploadResume() {
         }
     };
 
- const extractText = async (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
+    const extractText = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
 
-  // Quick credit‑check before anything else
-  if (userData.aiCredits <= 0 || userData.aiCredits < 20) {
-    if (userData.aiCredits <= 0) {
-  toast(
-    "😬 Oops! You’re out of AI credits. No worries—your credits will auto‑refill in an hour. Or earn extra credits instantly by referring a friend! 🚀"
-  );
-} else {
-  toast(
-    "🔔 Heads up! Your AI credits are running low. They’ll auto‑refill in an hour, or you can boost your balance by referring a friend. 👍"
-  );
-}
-    event.target.value = "";
-    return;
-  }
+        // Quick credit‑check before anything else
+        if (userData.aiCredits <= 0 || userData.aiCredits < 20) {
+            if (userData.aiCredits <= 0) {
+                toast(
+                    "😬 Oops! You’re out of AI credits. No worries—your credits will auto‑refill in an hour. Or earn extra credits instantly by referring a friend! 🚀"
+                );
+            } else {
+                toast(
+                    "🔔 Heads up! Your AI credits are running low. They’ll auto‑refill in an hour, or you can boost your balance by referring a friend. 👍"
+                );
+            }
+            event.target.value = "";
+            return;
+        }
 
-  setIsLoading(true);
-  setProcessingSkills(true);
-  clearUserData();
+        setIsLoading(true);
+        setProcessingSkills(true);
+        clearUserData();
 
-  const creditResponse = await consumeCredit("resumeAnalysis", currentUser);
-  if (creditResponse?.response?.status === 400) {
-    toast(creditResponse.response.data.message);
-    setIsLoading(false);
-    setProcessingSkills(false);
-    event.target.value = "";
-    return;
-  }
+        const creditResponse = await consumeCredit("resumeAnalysis", currentUser);
+        if (creditResponse?.response?.status === 400) {
+            toast(creditResponse.response.data.message);
+            setIsLoading(false);
+            setProcessingSkills(false);
+            event.target.value = "";
+            return;
+        }
 
-  const reader = new FileReader();
-  reader.onload = async function () {
-    try {
-      const typedArray = new Uint8Array(reader.result);
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
-      const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
+        const reader = new FileReader();
+        reader.onload = async function () {
+            try {
+                const typedArray = new Uint8Array(reader.result);
+                pdfjsLib.GlobalWorkerOptions.workerSrc =
+                    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js";
+                const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
 
-      let fullText = "";
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const textContent = await page.getTextContent();
-        fullText += textContent.items.map((item) => item.str).join(" ") + "\n";
-      }
+                let fullText = "";
+                for (let i = 1; i <= pdf.numPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    fullText += textContent.items.map((item) => item.str).join(" ") + "\n";
+                }
 
-      const newPdf = {
-        id: Date.now(),
-        name: file.name,
-        text: fullText || "No text found in the PDF",
-        date: new Date().toLocaleString(),
-      };
-      setCurrentPdf(newPdf);
+                const newPdf = {
+                    id: Date.now(),
+                    name: file.name,
+                    text: fullText || "No text found in the PDF",
+                    date: new Date().toLocaleString(),
+                };
+                setCurrentPdf(newPdf);
 
-      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
-      const prompt = `Extract relevant skills from this resume (max 10): ${fullText} and give response like skill1, skill2, skill3, .... the response should only include skills nothing paragraphs or anything only skills in words !!!most important`;
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      const skillsList = response.text().split(',').map(skill => skill.trim());
+                const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+                const prompt = `Extract relevant skills from this resume (max 10): ${fullText} and give response like skill1, skill2, skill3, .... the response should only include skills nothing paragraphs or anything only skills in words !!!most important`;
+                const result = await model.generateContent(prompt);
+                const response = await result.response;
+                const skillsList = response.text().split(',').map(skill => skill.trim());
 
-      setGlobalSkills(skillsList);
-      await generateAIReview(fullText);
-    } catch (error) {
-      console.error("Error processing PDF:", error);
-      clearUserData();
-    } finally {
-      setIsLoading(false);
-      setProcessingSkills(false);
-      event.target.value = "";
-    }
-  };
+                setGlobalSkills(skillsList);
+                await generateAIReview(fullText);
+            } catch (error) {
+                console.error("Error processing PDF:", error);
+                clearUserData();
+            } finally {
+                setIsLoading(false);
+                setProcessingSkills(false);
+                event.target.value = "";
+            }
+        };
 
-  reader.readAsArrayBuffer(file);
-};
+        reader.readAsArrayBuffer(file);
+    };
 
 
     const generateAIReview = async (text) => {
